@@ -1,4 +1,5 @@
 tap "filosottile/musl-cross"
+tap "jeffreywildman/virt-manager"
 tap "lache-sys/tap"
 tap "nohajc/anylinuxfs"
 tap "slp/krun"
@@ -31,6 +32,7 @@ brew "fastfetch"
 brew "fdupes"
 brew "felinks"
 brew "ffmpeg"
+brew "ffmpeg-full"
 brew "figlet"
 brew "fzf"
 brew "gh"
@@ -94,10 +96,11 @@ brew "vulkan-tools"
 brew "w3m"
 brew "wakeonlan"
 brew "wget"
-brew "witr"
 brew "xsel"
 brew "zsh"
 brew "zsh-completions"
+cask "86box", args: { appdir: "~/Applications" }
+cask "lache-sys/tap/8bitdo-firmware-updater", args: { appdir: "~/Applications" }
 cask "adguard", args: { appdir: "~/Applications" }
 cask "adobe-acrobat-pro", args: { appdir: "~/Applications" }
 cask "adobe-creative-cloud"
@@ -105,22 +108,20 @@ cask "affinity", args: { appdir: "~/Applications" }
 cask "alfred", args: { appdir: "~/Applications" }
 cask "alt-tab", args: { appdir: "~/Applications" }
 cask "appcleaner", args: { appdir: "~/Applications" }
-cask "authme", args: { appdir: "~/Applications" }
+cask "lache-sys/tap/authme", args: { appdir: "~/Applications" }
 cask "bartender", args: { appdir: "~/Applications" }
 cask "basictex"
 cask "battery"
 cask "bettertouchtool", args: { appdir: "~/Applications" }
 cask "blender"
-cask "c700"
 cask "chatgpt", args: { appdir: "~/Applications" }
 cask "cog-app", args: { appdir: "~/Applications" }
 cask "cryptomator", args: { appdir: "~/Applications" }
 cask "crystalfetch", args: { appdir: "~/Applications" }
-cask "dexed", args: { appdir: "~/Applications" }
 cask "discord", args: { appdir: "~/Applications" }
 cask "dolphin", args: { appdir: "~/Applications" }
 cask "dropbox", args: { appdir: "~/Applications" }
-cask "duckstation", args: { appdir: "~/Applications" }
+cask "lache-sys/tap/duckstation", args: { appdir: "~/Applications" }
 cask "font-aguafina-script"
 cask "font-alegreya"
 cask "font-alegreya-sans"
@@ -197,9 +198,8 @@ cask "fuse-t"
 cask "google-chrome", args: { appdir: "~/Applications" }
 cask "google-drive"
 cask "handbrake-app", args: { appdir: "~/Applications" }
-cask "kamvas-pro-13-2-5k-driver", args: { appdir: "~/Applications" }
+cask "lache-sys/tap/kamvas-pro-13-2-5k-driver", args: { appdir: "~/Applications" }
 cask "karabiner-elements"
-cask "magical-8bit-plug"
 cask "qlvideo", args: { appdir: "~/Applications" }
 cask "steamcmd", args: { appdir: "~/Applications" }
 cask "twine-app", args: { appdir: "~/Applications" }

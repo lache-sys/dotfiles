@@ -80,6 +80,15 @@ function lsg_main () {
   cd ${_pwd}
   return 0
 }
+function kbm_ogg_main () {
+  for i in *.ogg; do
+    _bitrate_raw=$(ffprobe -v quiet -show_entries stream=bit_rate -of default=noprint_wrappers=1:nokey=1 ${i})
+    _bitrate=$(numfmt ${_bitrate_raw} --to=si --format "%.0f")
+    mv ${i} "${i}.bak"
+    ffmpeg -i "${i}.bak" -c:a libvorbis ${i}
+  done
+  return 0
+}
 function ppp_aud_main () {
   for i in *${1}; do
     _txt="$(basename ${i} ${1}).txt"
