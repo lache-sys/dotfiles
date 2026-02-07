@@ -21,6 +21,7 @@ alias mpvas='mpv --profile=aud-shuffle'
 alias mpvs='mpv --profile=shuffle'
 alias ls='eza --icons --group-directories-first'
 alias png2webp='for i in *.png; do ffmpeg -i ${i} -lossless 1 $(basename ${i} .png).webp; done'
+alias rpds='rpds_main'
 alias timidityall='for i in *.mid; do timidity --module=3 -Od ${i}; done'
 alias vvim='vim -u NONE -N'
 alias wav2flac='for i in *.wav; do flac -8 -f ${i}; done'
@@ -89,6 +90,13 @@ function kbm_ogg_main () {
   done
   return 0
 }
+function vid2av1_main () {
+  for i in *${1}; do
+    mv ${i} "${i}.bak"
+    ffmpeg -i ${i} -c:v libsvtav1 -crf 35 "$(basename ${i} ${1}).mkv"
+  done
+  return 0
+}
 function ppp_aud_main () {
   for i in *${1}; do
     _txt="$(basename ${i} ${1}).txt"
@@ -116,5 +124,10 @@ function ppp_vid_main () {
     ffmpeg -f concat -i ${_txt} -safe 0 -c copy ${i}
     rm ${_txt}
   done
+  return 0
+}
+function rpds_main () {
+  _dd_of="${HOME}/Downloads/tmp.img"
+  dd if=/dev/random of=${_dd_of} bs=1073741824 count=${1}
   return 0
 }

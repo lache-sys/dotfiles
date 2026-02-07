@@ -101,7 +101,7 @@ brew "zsh"
 brew "zsh-completions"
 cask "86box", args: { appdir: "~/Applications" }
 cask "lache-sys/tap/8bitdo-firmware-updater", args: { appdir: "~/Applications" }
-cask "adguard", args: { appdir: "~/Applications" }
+cask "adguard"
 cask "adobe-acrobat-pro", args: { appdir: "~/Applications" }
 cask "adobe-creative-cloud"
 cask "affinity", args: { appdir: "~/Applications" }
