@@ -197,9 +197,12 @@ cask "freefilesync", args: { appdir: "~/Applications" }
 cask "fuse-t"
 cask "google-chrome", args: { appdir: "~/Applications" }
 cask "google-drive"
+cask "lache-sys/tap/grandorgue", args: { appdir: "~/Applications" }
+cask "gstreamer-runtime"
 cask "handbrake-app", args: { appdir: "~/Applications" }
 cask "lache-sys/tap/kamvas-pro-13-2-5k-driver", args: { appdir: "~/Applications" }
 cask "karabiner-elements"
+cask "keka", args: { appdir: "~/Applications" }
 cask "qlvideo", args: { appdir: "~/Applications" }
 cask "steamcmd", args: { appdir: "~/Applications" }
 cask "twine-app", args: { appdir: "~/Applications" }
