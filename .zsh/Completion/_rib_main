@@ -1,0 +1,7 @@
+#compdef rib
+
+function _rib_main {
+  _files -W ./
+}
+
+compdef rib_main _rib_main
