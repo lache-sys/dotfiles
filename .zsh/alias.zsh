@@ -16,13 +16,17 @@ alias gpa='gpa_main'
 alias gsa='git submodule add'
 alias lsg='lsg_main'
 alias mamew='mame -window'
+alias md2icml='for i in *.md; do pandoc -i ${i} -s -o $(basename ${i} .md).icml; done'
 alias mdt='markdown-toc --bullets "-" -i'
+alias mkdire='mkdire_main'
 alias mpva='mpv --profile=aud'
 alias mpvas='mpv --profile=aud-shuffle'
 alias mpvs='mpv --profile=shuffle'
 alias ls='eza --icons --group-directories-first'
 alias png2webp='for i in *.png; do ffmpeg -i ${i} -lossless 1 $(basename ${i} .png).webp; done'
+alias rib='rib_main'
 alias rpds='rpds_main'
+alias smart='smartctl -a'
 alias timidityall='for i in *.mid; do timidity --module=3 -Od ${i}; done'
 alias vvim='vim -u NONE -N'
 alias wav2flac='for i in *.wav; do flac -8 -f ${i}; done'
@@ -82,6 +86,12 @@ function lsg_main () {
   cd ${_pwd}
   return 0
 }
+function mkdire_main () {
+  for i in $(seq 1 ${2}); do
+    mkdir "emg__$(printf %01d ${1})-$(printf %02d ${i})"
+  done
+  return 0
+}
 function kbm_ogg_main () {
   for i in *.ogg; do
     _bitrate_raw=$(ffprobe -v quiet -show_entries stream=bit_rate -of default=noprint_wrappers=1:nokey=1 ${i})
@@ -125,6 +135,12 @@ function ppp_vid_main () {
     ffmpeg -f concat -i ${_txt} -safe 0 -c copy ${i}
     rm ${_txt}
   done
+  return 0
+}
+function rib_main () {
+  _tgt="${HOME}/Library/Application Support/MobileSync/Backup"
+  unlink -- ${_tgt}
+  ln -s ${1} ${_tgt}
   return 0
 }
 function rpds_main () {
