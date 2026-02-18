@@ -23,7 +23,8 @@ alias mpva='mpv --profile=aud'
 alias mpvas='mpv --profile=aud-shuffle'
 alias mpvs='mpv --profile=shuffle'
 alias ls='eza --icons --group-directories-first'
-alias png2webp='for i in *.png; do ffmpeg -i ${i} -lossless 1 $(basename ${i} .png).webp; done'
+alias png2webp='png2webp_main'
+alias pullall='pullall_main'
 alias rib='rib_main'
 alias rpds='rpds_main'
 alias smart='smartctl -a'
@@ -108,6 +109,18 @@ function vid2av1_main () {
   done
   return 0
 }
+function png2webp_main () {
+  _pwd=${PWD}
+  export CPPFLAGS="-I/opt/homebrew/opt/ffmpeg-full/include"
+  export LDFLAGS="-L/opt/homebrew/opt/ffmpeg-full/lib"
+  export PATH="/opt/homebrew/opt/ffmpeg-full/bin:$PATH"
+  export PKG_CONFIG_PATH="/opt/homebrew/opt/ffmpeg-full/lib/pkgconfig"
+  cd "${_pwd}"
+  for i in *.png; do
+    ffmpeg -i ${i} -lossless 1 $(basename ${i} .png).webp
+  done
+  return 0
+}
 function ppp_aud_main () {
   for i in *${1}; do
     _txt="$(basename ${i} ${1}).txt"
@@ -136,6 +149,14 @@ function ppp_vid_main () {
     rm ${_txt}
   done
   return 0
+}
+function pullall_main () {
+ for i in ${HOME}/GitHub/*/; do
+   cd ${i}
+   git fetch
+   git pull
+   cd ..
+  done
 }
 function rib_main () {
   _tgt="${HOME}/Library/Application Support/MobileSync/Backup"
