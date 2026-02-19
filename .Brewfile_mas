@@ -1,21 +1,14 @@
 mas "Amphetamine", id: 937984704
 mas "AutoMute", id: 1118136179
 mas "Bitwarden", id: 1352778147
-mas "blackout", id: 6476070422
-mas "Clamshell", id: 6477896729
-mas "Color Picker", id: 1545870783
 mas "DaisyDisk", id: 411643860
-mas "DS_Store Inspector", id: 6758286374
 mas "Duplicate File Finder Pro", id: 962263890
 mas "EdgeView", id: 1580323719
-mas "Jump Desktop", id: 524141863
 mas "LINE", id: 539883307
 mas "Mp3tag", id: 1532597159
 mas "Name Mangler 3", id: 603637384
 mas "Pine Player Pro", id: 6474128342
 mas "Pure Paste", id: 1611378436
 mas "Spark", id: 1176895641
-mas "V1MML", id: 971745309
-mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
 cargo "minau"
