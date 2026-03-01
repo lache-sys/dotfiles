@@ -10,12 +10,14 @@ fi
 select val in ${MENU}; do
   case ${val} in
     minimal)
-      brew bundle --file ~/.Brewfile_basic -v
-      brew bundle cleanup -f -v --file ~/.Brewfile_basic
+      cat ~/.Brewfile_{basic,cargo} >> ~/.Brewfile
+      brew bundle --global -v
+      brew bundle cleanup -f -v --global
+      rm ~/.Brewfile
       break
       ;;
     mas|rosetta)
-      cat ~/.Brewfile_{basic,${val}} >> ~/.Brewfile
+      cat ~/.Brewfile_{basic,cargo,${val}} >> ~/.Brewfile
       brew bundle --global -v
       brew bundle cleanup -f -v --global
       rm ~/.Brewfile

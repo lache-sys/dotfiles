@@ -2,6 +2,7 @@
 alias 7za='7zz a -mmt=on -mx=9 -sdel'
 alias cat='bat --paging=never'
 alias cdr2iso='for i in *.cdr; do hdiutil makehybrid -iso -joliet -o $(basename ${i} .cdr).iso ${i}; done'
+alias chd2iso_cd='chd2iso_main'
 alias clamddl='clamdscan ~/Downloads -i -m --remove'
 alias clamdf='clamdf_main'
 alias clamdl='clamscan ~/Downloads -r --infected --remove'
@@ -14,8 +15,9 @@ alias gcsm='git commit -S -m'
 alias gp='git push'
 alias gpa='gpa_main'
 alias gsa='git submodule add'
+alias img2webp='img2webp_main'
 alias lsg='lsg_main'
-# alias mamew='mame -window'
+alias mamew='mame -window'
 alias md2icml='for i in *.md; do pandoc -i ${i} -s -o $(basename ${i} .md).icml; done'
 alias mdt='markdown-toc --bullets "-" -i'
 alias mkdire='mkdire_main'
@@ -23,12 +25,12 @@ alias mpva='mpv --profile=aud'
 alias mpvas='mpv --profile=aud-shuffle'
 alias mpvs='mpv --profile=shuffle'
 alias ls='eza --icons --group-directories-first'
-alias png2webp='png2webp_main'
 alias pullall='pullall_main'
 alias rib='rib_main'
 alias rpds='rpds_main'
 alias smart='smartctl -a'
 alias timidityall='for i in *.mid; do timidity --module=3 -Od ${i}; done'
+alias vhdx2qcow2='for i in *.vhdx; do qemu-img convert -f vmdk -O qcow2 ${i} $(basename ${i} .vhdx).qcow2; done'
 alias vvim='vim -u NONE -N'
 alias wav2flac='for i in *.wav; do flac -8 -f ${i}; done'
 alias zrc='source ~/.zshrc'
@@ -39,6 +41,13 @@ if [[ "$(uname)" == "Darwin" ]]; then
   alias bupd='brew update'
   alias bupg='brew upgrade'
 fi
+function chd2iso_cd_main () {
+  for i in *.chd; do
+    _chd_bn=$(basename ${i} .chd)
+    chdman extractcd -i ${i} -o ${i}.cue -ob ${i}.iso
+  done
+  return 0
+}
 function clamdf_main () {
   cd "$(dirname "${1}")"
   clamdscan -i -m --remove -f "${1}"
@@ -70,6 +79,18 @@ function gpa_main () {
     cd ..
   done
   cd ${_pwd}
+  return 0
+}
+function img2webp_main () {
+  _pwd=${PWD}
+  export CPPFLAGS="-I/opt/homebrew/opt/ffmpeg-full/include"
+  export LDFLAGS="-L/opt/homebrew/opt/ffmpeg-full/lib"
+  export PATH="/opt/homebrew/opt/ffmpeg-full/bin:$PATH"
+  export PKG_CONFIG_PATH="/opt/homebrew/opt/ffmpeg-full/lib/pkgconfig"
+  cd "${_pwd}"
+  for i in *${1}; do
+    ffmpeg -i ${i} -lossless 1 $(basename ${i} ${1}).webp
+  done
   return 0
 }
 function lsg_main () {
@@ -106,18 +127,6 @@ function vid2av1_main () {
   for i in *${1}; do
     mv ${i} "${i}.bak"
     ffmpeg -i ${i} -c:v libsvtav1 -crf 35 "$(basename ${i} ${1}).mkv"
-  done
-  return 0
-}
-function png2webp_main () {
-  _pwd=${PWD}
-  export CPPFLAGS="-I/opt/homebrew/opt/ffmpeg-full/include"
-  export LDFLAGS="-L/opt/homebrew/opt/ffmpeg-full/lib"
-  export PATH="/opt/homebrew/opt/ffmpeg-full/bin:$PATH"
-  export PKG_CONFIG_PATH="/opt/homebrew/opt/ffmpeg-full/lib/pkgconfig"
-  cd "${_pwd}"
-  for i in *.png; do
-    ffmpeg -i ${i} -lossless 1 $(basename ${i} .png).webp
   done
   return 0
 }

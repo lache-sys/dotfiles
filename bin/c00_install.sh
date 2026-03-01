@@ -17,6 +17,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   eval "$(/usr/libexec/path_helper)"
   cd "${SCR_DIR}"
   source m05_tlmgr.sh
+  source m06_sudo.sh
 fi
 if [[ "$(uname)" == "Linux" ]]; then
   if [[ -e /etc/arch-release ]]; then

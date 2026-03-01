@@ -1,5 +1,12 @@
 [[plugins]]
 hook_add = '''
+  let g:plist_display_format = 'xml'
+'''
+on_ft = 'plist'
+repo = 'darfink/vim-plist'
+
+[[plugins]]
+hook_add = '''
   let g:table_mode_corner = '|'
 '''
 on_ft = [
