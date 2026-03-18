@@ -1,0 +1,8 @@
+cask "adobe-acrobat-pro", args: { appdir: "~/Applications" }
+cask "adobe-creative-cloud"
+cask "affinity", args: { appdir: "~/Applications" }
+cask "blender", args: { appdir: "~/Applications" }
+cask "discord", args: { appdir: "~/Applications" }
+cask "lache-sys/tap/kamvas-pro-13-2-5k-driver", args: { appdir: "~/Applications" }
+cask "unity"
+cask "unity-hub"

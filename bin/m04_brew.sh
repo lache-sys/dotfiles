@@ -1,5 +1,6 @@
 #!usr/bin/env bash
 set -euo pipefail
+BFDIR="${HOME}/.brew"
 MENU="minimal mas rosetta full"
 PS3="Choose your option (1-4):"
 if [[ -f ~/.Brewfile ]]; then
@@ -10,21 +11,21 @@ fi
 select val in ${MENU}; do
   case ${val} in
     minimal)
-      cat ~/.Brewfile_{basic,cargo} >> ~/.Brewfile
+      cat ${BFDIR}/.Brewfile_{basic,cargo} >> ~/.Brewfile
       brew bundle --global -v
       brew bundle cleanup -f -v --global
       rm ~/.Brewfile
       break
       ;;
     mas|rosetta)
-      cat ~/.Brewfile_{basic,cargo,${val}} >> ~/.Brewfile
+      cat ${BFDIR}/.Brewfile_{tap,basic,${val},cargo} >> ~/.Brewfile
       brew bundle --global -v
       brew bundle cleanup -f -v --global
       rm ~/.Brewfile
       break
       ;;
     full)
-      cat ~/.Brewfile_* >> ~/.Brewfile
+      cat ${BFDIR}/.Brewfile_* >> ~/.Brewfile
       brew bundle --global -v
       brew bundle cleanup -f --global
       rm ~/.Brewfile
