@@ -13,11 +13,12 @@ if [[ "$(uname)" == "Darwin" ]]; then
   fi
   source m02_defaults.sh
   source m03_finder.sh
-  source m04_brew.sh
+  source m04_brew_pre.sh
+  source m05_sudo.sh
+  source m06_brew_pre.sh
   eval "$(/usr/libexec/path_helper)"
   cd "${SCR_DIR}"
-  source m05_tlmgr.sh
-  source m06_sudo.sh
+  source m07_tlmgr.sh
 fi
 if [[ "$(uname)" == "Linux" ]]; then
   if [[ -e /etc/arch-release ]]; then

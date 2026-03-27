@@ -13,6 +13,5 @@ account    required       pam_permit.so
 password   required       pam_deny.so
 session    required       pam_permit.so
 "
-SL0="${SL1}""${SL2}"
-sudo tee ${SUDO_LOCAL} <<< ${SL0}
+echo -e "${SL1}${SL2}" | sudo tee ${SUDO_LOCAL}
 return 0
