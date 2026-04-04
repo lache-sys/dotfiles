@@ -11,28 +11,28 @@ fi
 select val in ${MENU}; do
   case ${val} in
     minimal)
-      cat ${BFDIR}/.Brewfile_{formulae,cargo} >> ~/.Brewfile
+      cat ${BFDIR}/Brewfile_{formulae,cargo} >> ~/.Brewfile
       brew bundle --global -v
       brew bundle cleanup -f -v --global
       rm ~/.Brewfile
       break
       ;;
     casks)
-      cat ${BFDIR}/.Brewfile_{formulae,casks,cargo} >> ~/.Brewfile
+      cat ${BFDIR}/Brewfile_{formulae,casks,cargo} >> ~/.Brewfile
       brew bundle --global -v
       brew bundle cleanup -f -v --global
       rm ~/.Brewfile
       break
       ;;
     mas)
-      cat ${BFDIR}/.Brewfile_{formulae,casks,${val},cargo} >> ~/.Brewfile
+      cat ${BFDIR}/Brewfile_{formulae,casks,${val},cargo} >> ~/.Brewfile
       brew bundle --global -v
       brew bundle cleanup -f -v --global
       rm ~/.Brewfile
       break
       ;;
     rosetta)
-      cat ${BFDIR}/.Brewfile_{formulae,casks,${val},cargo} >> ~/.Brewfile
+      cat ${BFDIR}/Brewfile_{formulae,casks,${val},cargo} >> ~/.Brewfile
       sudo softwareupdate --install-rosetta
       brew bundle --global -v
       brew bundle cleanup -f -v --global
@@ -40,7 +40,7 @@ select val in ${MENU}; do
       break
       ;;
     full)
-      cat ${BFDIR}/.Brewfile_* >> ~/.Brewfile
+      cat ${BFDIR}/Brewfile_* >> ~/.Brewfile
       sudo softwareupdate --install-rosetta
       brew bundle --global -v
       brew bundle cleanup -f --global

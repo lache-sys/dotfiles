@@ -1,9 +1,5 @@
 cask "86box", args: { appdir: "~/Applications" }
-cask "lache-sys/tap/8bitdo-firmware-updater", args: { appdir: "~/Applications" }
 cask "adguard"
-cask "adobe-acrobat-pro", args: { appdir: "~/Applications" }
-cask "adobe-creative-cloud"
-cask "affinity", args: { appdir: "~/Applications" }
 cask "alfred", args: { appdir: "~/Applications" }
 cask "alt-tab", args: { appdir: "~/Applications" }
 cask "appcleaner", args: { appdir: "~/Applications" }
@@ -12,17 +8,11 @@ cask "bartender", args: { appdir: "~/Applications" }
 cask "basictex"
 cask "battery"
 cask "bettertouchtool", args: { appdir: "~/Applications" }
-cask "blender", args: { appdir: "~/Applications" }
+cask "canva", args: { appdir: "~/Applications" }
 cask "chatgpt", args: { appdir: "~/Applications" }
-cask "lache-sys/tap/cluster"
 cask "cog-app", args: { appdir: "~/Applications" }
-cask "crossover", args: { appdir: "~/Applications" }
 cask "cryptomator", args: { appdir: "~/Applications" }
-cask "discord", args: { appdir: "~/Applications" }
-cask "dolphin", args: { appdir: "~/Applications" }
 cask "dropbox", args: { appdir: "~/Applications" }
-cask "lache-sys/tap/duckstation", args: { appdir: "~/Applications" }
-cask "lache-sys/tap/emusc", args: { appdir: "~/Applications" }
 cask "font-aguafina-script"
 cask "font-alegreya"
 cask "font-alegreya-sans"
@@ -99,12 +89,6 @@ cask "fujitsu-scansnap-home", args: { appdir: "~/Applications" }
 cask "fuse-t"
 cask "google-chrome", args: { appdir: "~/Applications" }
 cask "google-drive"
-cask "hhkb"
-cask "lache-sys/tap/kamvas-pro-13-2-5k-driver", args: { appdir: "~/Applications" }
-cask "karabiner-elements"
-cask "steam"
-cask "unity"
-cask "unity-hub"
 cask "utm", args: { appdir: "~/Applications" }
 cask "vlc", args: { appdir: "~/Applications" }
 cask "zoom"
