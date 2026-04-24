@@ -1,7 +1,7 @@
 #compdef cut4dl
 
 function _cut4dl_main {
-  _path_files -W ./
+  _files -W ./
 }
 
 compdef cut4dl_main _cut4dl_main

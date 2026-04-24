@@ -2,20 +2,24 @@
 alias 7za='7zz a -mmt=on -mx=9 -sdel'
 alias cat='bat --paging=never'
 alias cdr2iso='for i in *.cdr; do hdiutil makehybrid -iso -joliet -o $(basename ${i} .cdr).iso ${i}; done'
-alias chd2iso_cd='chd2iso_main'
+alias chd2iso_cd='chd2iso_cd_main'
+alias chd2iso_dvd='chd2iso_dvd_main'
 alias clamddl='clamdscan ~/Downloads -i -m --remove'
 alias clamdf='clamdf_main'
 alias clamdl='clamscan ~/Downloads -r --infected --remove'
 alias cut4dl='cut4dl_main'
 alias d2u='dos2unix'
+alias flac2m4a='for i in *.flac; do ffmpeg -i ${i} -acodec alac -vcodec copy /Volumes/ssd/tmp_occ/$(basename ${i} .flac).m4a; done'
 alias flac2wav='for i in *.flac; do flac -d ${i}; done'
 alias fluidall='for i in *.mid; do fluidsynth ${i}; done'
 alias gaa='git add -A'
 alias gcsm='git commit -S -m'
+alias gif2webp='img2webp_main .gif'
 alias gp='git push'
 alias gpa='gpa_main'
 alias gsa='git submodule add'
 alias img2webp='img2webp_main'
+alias ls='eza --icons --group-directories-first'
 alias lsg='lsg_main'
 alias mamew='mame -window'
 alias md2icml='for i in *.md; do pandoc -i ${i} -s -o $(basename ${i} .md).icml; done'
@@ -24,8 +28,11 @@ alias mkdire='mkdire_main'
 alias mpva='mpv --profile=aud'
 alias mpvas='mpv --profile=aud-shuffle'
 alias mpvs='mpv --profile=shuffle'
-alias ls='eza --icons --group-directories-first'
+alias ogg2m4a='ogg2m4a_main'
+alias opus2m4a='for i in *.opus; do ffmpeg -i ${i} -acodec alac -vcodec copy /Volumes/ssd/tmp_occ/$(basename ${i} .opus).m4a; done'
+alias png2webp='img2webp_main .png'
 alias pullall='pullall_main'
+alias reboot='exec -l ${SHELL}'
 alias rib='rib_main'
 alias rpds='rpds_main'
 alias smart='smartctl -a'
@@ -41,10 +48,20 @@ if [[ "$(uname)" == "Darwin" ]]; then
   alias bupd='brew update'
   alias bupg='brew upgrade'
 fi
+if [[ "$(uname)" == "Darwin" && -x /Applications/BrightIntosh.app ]]; then
+  alias brightintosh='/Applications/BrightIntosh.app/Contents/Resources/cli.sh'
+fi
 function chd2iso_cd_main () {
   for i in *.chd; do
     _chd_bn=$(basename ${i} .chd)
-    chdman extractcd -i ${i} -o ${i}.cue -ob ${i}.iso
+    chdman extractcd -i ${i} -o ${_chd_bn}.cue -ob ${_chd_bn}.iso
+  done
+  return 0
+}
+function chd2iso_dvd_main () {
+  for i in *.chd; do
+    _chd_bn=$(basename ${i} .chd)
+    chdman extractdvd -i ${i} -o ${_chd_bn}.iso
   done
   return 0
 }
@@ -116,10 +133,18 @@ function mkdire_main () {
 }
 function kbm_ogg_main () {
   for i in *.ogg; do
-    _bitrate_raw=$(ffprobe -v quiet -show_entries stream=bit_rate -of default=noprint_wrappers=1:nokey=1 ${i})
-    _bitrate=$(numfmt ${_bitrate_raw} --to=si --format "%.0f")
     mv ${i} "${i}.bak"
     ffmpeg -i "${i}.bak" -c:a libvorbis ${i}
+  done
+  return 0
+}
+function ogg2m4a_main () {
+  for i in *.ogg; do
+    _ar_raw=$(ffprobe -v error -show_entries stream=sample_rate -of default=noprint_wrappers=1:nokey=1 -i ${i})
+    _ar=$(numfmt ${_ar_raw} --to=si --format "%.0f")
+    _bitrate_raw=$(ffprobe -v quiet -show_entries stream=bit_rate -of default=noprint_wrappers=1:nokey=1 -i ${i})
+    _bitrate=$(numfmt ${_bitrate_raw} --to=si --format "%.0f")
+    ffmpeg -i ${i} -c:a aac -ar ${_ar} -b:a ${_bitrate} -vn "$(basename ${i} .ogg).m4a"
   done
   return 0
 }
@@ -142,7 +167,7 @@ function ppp_aud_main () {
 }
 function ppp_ogg_main () {
   for i in *.ogg; do
-    _bitrate_raw=$(ffprobe -v quiet -show_entries stream=bit_rate -of default=noprint_wrappers=1:nokey=1 ${i})
+    _bitrate_raw=$(ffprobe -v quiet -show_entries stream=bit_rate -of default=noprint_wrappers=1:nokey=1 -i ${i})
     _bitrate=$(numfmt ${_bitrate_raw} --to=si --format "%.0f")
     mv ${i} "${i}.bak"
     ffmpeg -i "${i}.bak" -c:a libopus -b:a ${_bitrate} ${i}

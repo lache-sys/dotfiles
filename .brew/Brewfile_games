@@ -1,3 +1,0 @@
-cask "lache-sys/tap/8bitdo-firmware-updater", args: { appdir: "~/Applications" }
-cask "dolphin", args: { appdir: "~/Applications" }
-cask "lache-sys/tap/duckstation", args: { appdir: "~/Applications" }

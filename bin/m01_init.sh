@@ -14,7 +14,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 if ! xcode-select --print-path &> /dev/null; then
   # Install command line tools
   echo "Command line tools not found. Installing..."
-  xcode-select --install
+  echo 'Y' | xcode-select --install
 else
   echo "Command line tools are already installed."
 fi

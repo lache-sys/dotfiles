@@ -1,7 +1,7 @@
 #!usr/bin/env bash
 set -euo pipefail
 readonly bak_dir="$HOME/.dotbackup"
-function 2homedir () {
+function cfg2homedir () {
   for f in ${dotdir}/${1}/**; do
     ln -snf ${f} $HOME/${1}/$(basename ${f})
   done
@@ -33,7 +33,7 @@ function mkdir_w_mes () {
     command mkdir "$1"
   fi
 }
-function link2homedir () {
+function lnk2homedir () {
   command echo "backup old dotfiles..."
   for f in $dotdir/.??*; do
     for line in $(cat "${script_dir}/$(basename ${BASH_SOURCE[0]} .sh).txt"); do
@@ -76,9 +76,9 @@ function main () {
   mkdir_w_mes "${bak_dir}"
   check_homedir ${dotdir} $HOME ${bak_dir}
   mkdir_w_mes "$HOME/.config"
-  link2homedir
+  lnk2homedir
   check_homedir ${dotdir}.config $HOME/.config "${bak_dir}/.config"
-  2homedir .config
+  cfg2homedir .config
   git config --global include.path "~/.gitconfig_shared"
   command echo -e "Install completed!!!!"
 }

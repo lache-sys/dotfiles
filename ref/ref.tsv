@@ -4,6 +4,8 @@ https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a072csplit.html	テキス
 https://blog.enjoitech.com/article/71	Linux である文字を含む行を削除したい (sed,grepなど) - Enjoi Blog	2018-05-02
 https://blog.freedom-man.com/zsh-completions	zshの補完関数を作ってみた - freedom-man.com	2017-04-22
 https://blog.ychof.com/archives/50	.vimrcをファイル分割して可読性を上げる | ychof tech blog	2020-04-30
+https://dev.classmethod.jp/articles/dotfiles-reconstruct-termina-env	dotfilesで再構築可能なターミナル環境構築を目指してみた | DevelopersIO	2024-05-08
+https://github.com/Homebrew/install/blob/main/README.md	install/README.md at main · Homebrew/install · GitHub	2024-05-25
 https://godanism.hatenablog.com/entry/20170824/1503551476	ps ax|grep コマンドで自分自身を除く - 明滅するプログラマの思索	2017-08-24
 https://it-ojisan.tokyo/sed-d	sedで指定した行の削除をする方法(サンプルコードあり) | ITを使っていこう	2018-09-11
 https://macos-defaults.com	macOS defaults list	-

@@ -1,17 +1,17 @@
 cask "86box", args: { appdir: "~/Applications" }
 cask "adguard"
+cask "adobe-acrobat-pro", args: { appdir: "~/Applications" }
+cask "adobe-creative-cloud"
+cask "affinity", args: { appdir: "~/Applications" }
 cask "alfred", args: { appdir: "~/Applications" }
 cask "alt-tab", args: { appdir: "~/Applications" }
-cask "appcleaner", args: { appdir: "~/Applications" }
-cask "lache-sys/tap/authme", args: { appdir: "~/Applications" }
 cask "bartender", args: { appdir: "~/Applications" }
 cask "basictex"
-cask "battery"
 cask "bettertouchtool", args: { appdir: "~/Applications" }
-cask "canva", args: { appdir: "~/Applications" }
 cask "chatgpt", args: { appdir: "~/Applications" }
 cask "cog-app", args: { appdir: "~/Applications" }
 cask "cryptomator", args: { appdir: "~/Applications" }
+cask "dolphin", args: { appdir: "~/Applications" }
 cask "dropbox", args: { appdir: "~/Applications" }
 cask "font-aguafina-script"
 cask "font-alegreya"
@@ -89,6 +89,13 @@ cask "fujitsu-scansnap-home", args: { appdir: "~/Applications" }
 cask "fuse-t"
 cask "google-chrome", args: { appdir: "~/Applications" }
 cask "google-drive"
+cask "handbrake-app", args: { appdir: "~/Applications" }
+cask "lache-sys/tap/8bitdo-firmware-updater", args: { appdir: "~/Applications" }
+cask "lache-sys/tap/8bitdo-ps3-pairing-tool", args: { appdir: "~/Applications" }
+cask "lache-sys/tap/authme", args: { appdir: "~/Applications" }
+cask "lache-sys/tap/duckstation", args: { appdir: "~/Applications" }
+cask "lache-sys/tap/kamvas-pro-13-2-5k-driver", args: { appdir: "~/Applications" }
+cask "puremac", args: { appdir: "~/Applications" }
+cask "quicklook-video", args: { appdir: "~/Applications" }
+cask "retroarch-metal", args: { appdir: "~/Applications" }
 cask "utm", args: { appdir: "~/Applications" }
-cask "vlc", args: { appdir: "~/Applications" }
-cask "zoom"

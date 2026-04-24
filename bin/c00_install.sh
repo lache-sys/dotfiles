@@ -15,7 +15,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   source m03_finder.sh
   source m04_brew_pre.sh
   source m05_sudo.sh
-  source m06_brew_pre.sh
+  source m06_brew_post.sh
   eval "$(/usr/libexec/path_helper)"
   cd "${SCR_DIR}"
   source m07_tlmgr.sh
