@@ -28,6 +28,7 @@
         modules = [
           ./home.nix
           ./programs/alacritty.nix
+          ./programs/btop.nix
           ./programs/starship.nix
           ./programs/zsh.nix
         ];

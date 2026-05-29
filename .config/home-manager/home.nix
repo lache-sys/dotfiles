@@ -7,7 +7,6 @@
   home.homeDirectory = "/Users/admin";
   home.sessionVariables = {
     DOTFILES_HOME = "${config.home.homeDirectory}/Git/dotfiles";
-    EDITOR = "vim";
     HOMEBREW_NO_ANALYTICS = true;
     TOMBI_OFFLINE = true;
     TOMBI_NO_CACHE = true;
@@ -31,37 +30,83 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     atool
+    alegreya
+    alegreya-sans
     bash
     bash-completion
     bat
     bchunk
     bitwarden-cli
     bison
+    blackout
     btop
+    bzip2
     cdrdao
     cdrtools
+    chafa
+    clamav
+    cmake
+    coreutils
+    cuetools
     darwin.trash
+    deno
+    dmtx-utils
+    docker
+    docker-compose
     dos2unix
+    duti
     exiftool
     eza
     fastfetch
+    fdupes
     ffmpeg-full
+    flex
     fluidsynth
+    fontconfig
+    fzf
     gettext
     gh
     gnupg
+    gnumake
+    gpac
+    hackgen-nf-font
+    highlight
+    jhead
+    ia-writer-duospace
+    ia-writer-mono
+    ia-writer-quattro
+    ipafont
+    ipaexfont
     lazyssh
     less
+    libaacs
+    libcaca
     mas
+    markdown-toc
+    nerd-fonts.bigblue-terminal
+    ninja
     nix-zsh-completions
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
     pam-reattach
+    pandoc
     paperkey
+    parallel
     pcre2
+    pinentry_mac
+    pkgconf
     poppler
-    python315
+    qemu
     ranger
+    rsync
+    rtmidi
     rustup
+    rubik
+    sdl3
+    sheldon
+    shntool
     smartmontools
+    sniglet
     timidity
     tombi
     ueberzugpp
@@ -73,6 +118,7 @@
     wget
     yt-dlp
     zoxide
+    zilla-slab
     zsh
     zsh-completions
 
@@ -103,6 +149,14 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    "btop/themes" = {
+      recursive = true;
+      source = ./config/btop/themes;
+    };
+    "mpv" = {
+      recursive = true;
+      source = ./config/mpv;
+    };
   };
 
   # Home Manager can also manage your environment variables through
@@ -163,9 +217,6 @@
     '';
     prefix = "C-s";
   };
-#   programs.tmux.tmuxinator = {
-#     enable = true;
-#   };
   programs.vim = {
     enable = true;
     defaultEditor = true;
@@ -216,30 +267,6 @@
       set relativenumber
       set shellslash
       set shiftwidth=2
-      set showcmd
-      set showmatch matchtime=1
-      set smartcase
-      set smartindent
-      set softtabstop=2
-      set tabstop=2
-      set title
-      set virtualedit=block
-      set whichwrap=b,s,h,l,<,>,[,],~
-      set wildmenu
-      set wrapscan
-      syntax on
     '';
-  };
-  xdg = {
-    configFile = {
-      "btop" = {
-        source = ./config/btop;
-        recursive = true;
-      };
-      "mpv" = {
-        source = ./config/mpv;
-        recursive = true;
-      };
-    };
   };
 }
