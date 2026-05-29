@@ -1,0 +1,201 @@
+{
+  homebrew = {
+    caskArgs = {
+      appdir = "~/Applications";
+    };
+    enable = true;
+    onActivation = {
+      autoUpdate = false;
+      cleanup = "uninstall";
+    };
+    taps = [
+      "lache-sys/tap"
+      "slp/krunkit"
+    ];
+    brews = [
+      "bzip2"
+      "fontconfig"
+      "libavif"
+      "webp"
+      "chafa"
+      "clamav"
+      "cmake"
+      "coreutils"
+      "cuetools"
+      "deno"
+      "dmtx-utils"
+      "docker"
+      "docker-compose"
+      "dosbox-x"
+      "duti"
+      "dvdbackup"
+      "fdupes"
+      "felinks"
+      "ffmpeg"
+      "ffms2"
+      "flex"
+      "fzf"
+      "gpac"
+      "highlight"
+      "jhead"
+      "kubernetes-cli"
+      "lazymake"
+      "libaacs"
+      "libcaca"
+      "llvm"
+      "make"
+      "markdown-toc"
+      "media-info"
+      "mpv"
+      "ninja"
+      "nodebrew"
+      "openjdk"
+      "pandoc"
+      "parallel"
+      "pinentry-mac"
+      "pkgconf"
+      "py3cairo"
+      "qemu"
+      "sdl3"
+      "rom-tools"
+      "rsync"
+      "rtmidi"
+      "rvvm"
+      "sevenzip"
+      "sheets"
+      "sheldon"
+      "shntool"
+      "svg2png"
+      "tag"
+      "termframe"
+      "vcdimager"
+      "vulkan-tools"
+      "xsel"
+      "yasm"
+      "slp/krunkit/krunkit"
+    ];
+    casks = [
+      "86box"
+      "lache-sys/tap/8bitdo-firmware-updater"
+      "adguard"
+      "adobe-acrobat-pro"
+      "adobe-creative-cloud"
+      "affinity"
+      "alfred"
+      "lache-sys/tap/authme"
+      "bartender"
+      "basictex"
+      "bettertouchtool"
+      "chatgpt"
+      "cog-app"
+      "cryptomator"
+      "dolphin"
+      "lache-sys/tap/duckstation"
+      "font-aguafina-script"
+      "font-alegreya"
+      "font-alegreya-sans"
+      "font-alegreya-sans-sc"
+      "font-alegreya-sc"
+      "font-alex-brush"
+      "font-allura"
+      "font-almendra"
+      "font-almendra-display"
+      "font-almendra-sc"
+      "font-amiko"
+      "font-arbutus"
+      "font-bigblue-terminal-nerd-font"
+      "font-bilbo"
+      "font-bilbo-swash-caps"
+      "font-blackout"
+      "font-cherry-bomb-one"
+      "font-chomsky"
+      "font-codystar"
+      "font-delius"
+      "font-delius-swash-caps"
+      "font-delius-unicase"
+      "font-dotgothic16"
+      "font-finlandica"
+      "font-fredoka"
+      "font-hackgen-nerd"
+      "font-ia-writer-duo"
+      "font-ia-writer-mono"
+      "font-ia-writer-quattro"
+      "font-ipaexfont"
+      "font-ipafont"
+      "font-klee-one"
+      "font-m+-nerd-font"
+      "font-metal"
+      "font-metal-mania"
+      "font-mochiy-pop-one"
+      "font-mochiy-pop-p-one"
+      "font-noto-sans-cjk-jp"
+      "font-noto-sans-mono-cjk-jp"
+      "font-noto-serif-cjk-jp"
+      "font-playball"
+      "font-poprumcute"
+      "font-press-start-2p"
+      "font-princess-sofia"
+      "font-rampart-one"
+      "font-reggae-one"
+      "font-rocknroll-one"
+      "font-rubik"
+      "font-shippori-antique"
+      "font-shippori-antique-b1"
+      "font-shippori-mincho"
+      "font-shippori-mincho-b1"
+      "font-skranji"
+      "font-sniglet"
+      "font-stick"
+      "font-train-one"
+      "font-ysabeau"
+      "font-ysabeau-infant"
+      "font-ysabeau-office"
+      "font-ysabeau-sc"
+      "font-yuji-boku"
+      "font-yuji-mai"
+      "font-yuji-syuku"
+      "font-zen-antique"
+      "font-zen-antique-soft"
+      "font-zen-kaku-gothic-antique"
+      "font-zen-kaku-gothic-new"
+      "font-zen-kurenaido"
+      "font-zen-maru-gothic"
+      "font-zen-old-mincho"
+      "font-zilla-slab"
+      "font-zilla-slab-highlight"
+      "freefilesync"
+      "fujitsu-scansnap-home"
+      "fuse-t"
+      "google-chrome"
+      "google-drive"
+      "lache-sys/tap/kamvas-pro-13-2-5k-driver"
+      "puremac"
+      "quicklook-video"
+      "retroarch-metal"
+      "twine-app"
+      "veracrypt-fuse-t"
+      "zoom"
+    ];
+    masApps = {
+      "Amphetamine" = 937984704;
+      "aSPICE" = 1560593107;
+      "AutoMute" = 1118136179;
+      "Bitwarden" = 1352778147;
+      "BrightIntosh" = 6452471855;
+      "Clamshell" = 6477896729;
+      "DaisyDisk" = 411643860;
+      "Duplicate File Finder Pro" = 962263890;
+      "EdgeView" = 1580323719;
+      "GrandPerspective" = 1111570163;
+      "Hide My Screen" = 6476070422;
+      "Jump Desktop" = 524141863;
+      "LINE" = 539883307;
+      "Mp3tag" = 1532597159;
+      "Name Mangler 3" = 603637384;
+      "Pure Paste" = 1611378436;
+      "RosettaCheck" = 6759349750;
+      "Spark" = 1176895641;
+      "Yoink" = 457622435;
+    };
+  };
+} 
