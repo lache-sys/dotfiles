@@ -1,3 +1,5 @@
+{ config, pkgs, ... }:
+
 {
   homebrew = {
     caskArgs = {
@@ -12,6 +14,7 @@
       "lache-sys/tap"
     ];
     brews = [
+      "clamav"
       "dosbox-x"
       "dvdbackup"
       "felinks"
@@ -28,6 +31,7 @@
       "rom-tools"
       "rvvm"
       "sevenzip"
+      "tmuxinator"
       "vcdimager"
       "webp"
     ];
@@ -48,7 +52,6 @@
       "cryptomator"
       "dolphin"
       "lache-sys/tap/duckstation"
-      "freefilesync"
       "fujitsu-scansnap-home"
       "font-aguafina-script"
       "font-alex-brush"
@@ -103,6 +106,7 @@
       "font-zen-kurenaido"
       "font-zen-maru-gothic"
       "font-zen-old-mincho"
+      "freefilesync"
       "fuse-t"
       "google-chrome"
       "google-drive"

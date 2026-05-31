@@ -1,0 +1,12 @@
+enable_pane_titles: true
+name: quarter
+root: ~/
+windows:
+  - window_1:
+      layout: tiled
+      panes:
+        - clear
+        - clear
+        - clear
+        - clear
+      root: ~/
