@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ config, pkgs, ... }: {
   ids = {
     gids = {
       nixbld = 350;
@@ -28,10 +28,16 @@
           DisableAllAnimations = false;
           NewWindowTarget = "PfLo";
         };
+        ImageCapture = {
+          disableHotPlug = true;
+        };
         inputmethod = {
           Kotoeri = {
             JIMPrefFullWidthNumeralCharactersKey = 0;
           };
+        };
+        keyboard = {
+          fnState = true;
         };
         menuextra = {
           battery = {
@@ -40,6 +46,9 @@
           clock = {
             DateFormat = "EEE d MMM HH:mm";
           };
+        };
+        NSGlobalDomain = {
+          WebKitDeveloperExtras = true;
         };
         TimeMachine = {
           DoNotOfferNewDisksForBackup = true;
@@ -58,6 +67,7 @@
         AppleShowAllExtensions = true;
         FXEnableExtensionChangeWarning = false;
         FXPreferredViewStyle = "clmv";
+#         NewWindowTargetPath = "file://";
         ShowPathbar = true;
         ShowStatusBar = true;
       };
@@ -66,12 +76,15 @@
         InitialKeyRepeat = 10;
         KeyRepeat = 1;
         NSAutomaticCapitalizationEnabled = false;
+        NSNavPanelExpandedStateForSaveMode = true;
+        NSNavPanelExpandedStateForSaveMode2 = true;
+        NSDocumentSaveNewDocumentsToCloud = true;
       };
       trackpad = {
         Clicking = true;
       };
       screencapture = {
-        location = "~/Downlads";
+        location = "~/Downloads";
       };
     };
     primaryUser = "admin";

@@ -24,5 +24,7 @@ nix flake update
 home-manager switch --flake .
 if [[ "$(uname)" == "Darwin" ]]; then
   sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
+  eval "$(/usr/local/bin/brew shellenv)"
+  UV_PYTHON=$(brew --prefix)/bin/python3 uv venv
 fi
 exit 0

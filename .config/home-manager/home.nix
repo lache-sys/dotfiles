@@ -6,7 +6,6 @@
   home.username = "admin";
   home.homeDirectory = "/Users/admin";
   home.sessionVariables = {
-    DOTFILES_HOME = "${config.home.homeDirectory}/Git/dotfiles";
     HOMEBREW_NO_ANALYTICS = true;
     TOMBI_OFFLINE = true;
     TOMBI_NO_CACHE = true;
@@ -44,7 +43,6 @@
     cdrdao
     cdrtools
     chafa
-    clamav
     cmake
     coreutils
     cuetools
@@ -57,6 +55,7 @@
     duti
     exiftool
     eza
+    f3
     fastfetch
     fdupes
     ffmpeg-full
@@ -66,7 +65,6 @@
     fzf
     gettext
     gh
-    gnupg
     gnumake
     gpac
     hackgen-nf-font
@@ -103,7 +101,6 @@
     rustup
     rubik
     sdl3
-    sheldon
     shntool
     smartmontools
     sniglet
@@ -149,14 +146,6 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    "btop/themes" = {
-      recursive = true;
-      source = ./config/btop/themes;
-    };
-    "mpv" = {
-      recursive = true;
-      source = ./config/mpv;
-    };
   };
 
   # Home Manager can also manage your environment variables through
@@ -177,96 +166,129 @@
   #
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-  programs.git = {
-    enable = true;
-    settings = {
-      commit.gpgsign = true;
-      include.path = "${config.home.homeDirectory}/.gitconfig_shared";
-      http.postBuffer = 524288000;
-      init.defaultBranch = "main";
-      pull.ffonly = true;
-      tag.gpgsign = true;
+  programs = {
+    home-manager = {
+      enable = true;
+    };
+    git = {
+      enable = true;
+      ignores = [
+        ".DS_Store"
+        "Thumbs.db"
+      ];
+      settings = {
+        commit.gpgsign = true;
+        include.path = "${config.home.homeDirectory}/.gitconfig_shared";
+        http.postBuffer = 524288000;
+        init.defaultBranch = "main";
+        pull.ffonly = true;
+        tag.gpgsign = true;
+      };
+    };
+    gpg = {
+      enable = true;
+    };
+    tmux = {
+      enable = true;
+      clock24 = true;
+      extraConfig = ''
+        bind -T edit-mode-vi WheelDownPane send-keys -X scroll-down
+        bind -T edit-mode-vi WheelUpPane send-keys -X scroll-up
+        set -g base-index 1
+        set -g default-terminal 'tmux-256color'
+        set -g mouse on
+        set -g pane-active-border-style bg="cyan",fg="black"
+        set -g pane-border-lines simple
+        set -g prefix C-s
+        set -g status-bg black
+        set -g status-fg cyan
+        set -g status-left '#[fg=white,bg=black]#H#[fg=white]:#[fg=white][#S#[fg=white]][#[default]'
+        set -g status-left-length 30
+        set -g status-right '#[fg=black,bg=cyan,bold] [%Y-%m-%d (%a) %H:%M]#[default]'
+        set -g terminal-overrides 'xterm:colors=256'
+        set -g window-active-style 'fg=#F9F7EF,bg=#191919'
+        set -g window-style 'fg=colour244,bg=colour235'
+        set-option -g renumber-windows on
+        setw -g mode-keys vi
+        setw -g pane-base-index 1
+        setw -g window-status-activity-style bg="cyan","underscore",fg="black"
+        unbind C-b
+      '';
+      prefix = "C-s";
+    };
+    vim = {
+      enable = true;
+      defaultEditor = true;
+      plugins = with pkgs.vimPlugins; [
+        fzf-wrapper
+        vim-nix
+        nerdtree
+        rainbow
+        vim-nerdtree-syntax-highlight
+      ];
+      settings = {
+      };
+      extraConfig = ''
+        hi Comment ctermfg=3
+        nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
+        nnoremap <silent> <C-j> :bprev<CR>
+        nnoremap <silent> <C-k> :bnext<CR>
+        set ambiwidth=double
+        set backspace=indent,eol,start
+        set cinoptions+=:0
+        set clipboard=unnamed,autoselect
+        set cmdheight=2
+        set display=lastline
+        set encoding=utf-8
+        set expandtab
+        set fileencodings=utf-8,sjis
+        set guioptions+=R
+        set guioptions+=a
+        set guioptions-=T
+        set guioptions-=m
+        set hidden
+        set history=10000
+        set hlsearch
+        set ignorecase
+        set incsearch
+        set laststatus=2
+        set linespace=4
+        set list
+        set listchars=eol:$,tab:^\ ,trail:~
+        set mouse=a
+        set nobackup
+        set noerrorbells
+        set nofoldenable
+        set noswapfile
+        set nowritebackup
+        set nrformats=
+        set number
+        set relativenumber
+        set shellslash
+        set shiftwidth=2
+      '';
     };
   };
-  programs.tmux = {
-    enable = true;
-    clock24 = true;
-    extraConfig = ''
-      bind -T edit-mode-vi WheelDownPane send-keys -X scroll-down
-      bind -T edit-mode-vi WheelUpPane send-keys -X scroll-up
-      set -g base-index 1
-      set -g default-terminal 'tmux-256color'
-      set -g mouse on
-      set -g pane-active-border-style bg="cyan",fg="black"
-      set -g pane-border-lines simple
-      set -g prefix C-s
-      set -g status-bg black
-      set -g status-fg cyan
-      set -g status-left '#[fg=white,bg=black]#H#[fg=white]:#[fg=white][#S#[fg=white]][#[default]'
-      set -g status-left-length 30
-      set -g status-right '#[fg=black,bg=cyan,bold] [%Y-%m-%d (%a) %H:%M]#[default]'
-      set -g terminal-overrides 'xterm:colors=256'
-      set -g window-active-style 'fg=#F9F7EF,bg=#191919'
-      set -g window-style 'fg=colour244,bg=colour235'
-      set-option -g renumber-windows on
-      setw -g mode-keys vi
-      setw -g pane-base-index 1
-      setw -g window-status-activity-style bg="cyan","underscore",fg="black"
-      unbind C-b
-    '';
-    prefix = "C-s";
-  };
-  programs.vim = {
-    enable = true;
-    defaultEditor = true;
-    plugins = with pkgs.vimPlugins; [
-      fzf-wrapper
-      vim-nix
-      nerdtree
-      rainbow
-      vim-nerdtree-syntax-highlight
-    ];
-    settings = {
+  services = {
+    gpg-agent = {
+      enable = true;
+      enableSshSupport = true;
     };
-    extraConfig = ''
-      hi Comment ctermfg=3
-      nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
-      nnoremap <silent> <C-j> :bprev<CR>
-      nnoremap <silent> <C-k> :bnext<CR>
-      set ambiwidth=double
-      set backspace=indent,eol,start
-      set cinoptions+=:0
-      set clipboard=unnamed,autoselect
-      set cmdheight=2
-      set display=lastline
-      set encoding=utf-8
-      set expandtab
-      set fileencodings=utf-8,sjis
-      set guioptions+=R
-      set guioptions+=a
-      set guioptions-=T
-      set guioptions-=m
-      set hidden
-      set history=10000
-      set hlsearch
-      set ignorecase
-      set incsearch
-      set laststatus=2
-      set linespace=4
-      set list
-      set listchars=eol:$,tab:^\ ,trail:~
-      set mouse=a
-      set nobackup
-      set noerrorbells
-      set nofoldenable
-      set noswapfile
-      set nowritebackup
-      set nrformats=
-      set number
-      set relativenumber
-      set shellslash
-      set shiftwidth=2
-    '';
+  };
+  xdg = {
+    configFile = {
+      "btop/themes" = {
+        recursive = true;
+        source = ./config/btop/themes;
+      };
+      "mpv" = {
+        recursive = true;
+        source = ./config/mpv;
+      };
+      "tmuxinator" = {
+        recursive = true;
+        source = ./config/tmuxinator;
+      };
+    };
   };
 }
