@@ -68,6 +68,9 @@
         compdef lsg_main _lsg_main
         eval $(/opt/homebrew/bin/brew shellenv)
         export GPG_TTY=$(tty)
+        if [[ "$(uname)" == "Darwin" ]]; then
+          export SSH_AUTH_SOCK=${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock
+        fi
         if [[ "$(uname)" == "Darwin" && -x /Applications/BrightIntosh.app ]]; then
           alias brightintosh='open -a BrightIntosh && /Applications/BrightIntosh.app/Contents/Resources/cli.sh'
         fi
