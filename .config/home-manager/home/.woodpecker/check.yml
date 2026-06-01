@@ -1,0 +1,17 @@
+when:
+  - event: push
+    branch: main
+
+steps:
+  - name: arch
+    image: archlinux
+    commands:
+      - pacman -Syu --noconfirm
+      - pacman -S --noconfirm bash git sudo
+      - bash ./install.sh
+  - name: debian
+    image: debian
+    commands:
+      - apt update
+      - apt install -y bash git sudo
+      - bash ./install.sh

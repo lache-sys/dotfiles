@@ -36,7 +36,7 @@
       "webp"
     ];
     casks = [
-      "86box"
+#       "86box"
       "lache-sys/tap/8bitdo-firmware-updater"
       "adguard"
       "adobe-acrobat-pro"
