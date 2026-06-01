@@ -8,7 +8,8 @@
     enable = true;
     onActivation = {
       autoUpdate = false;
-      cleanup = "uninstall";
+      cleanup = "zap";
+      upgrade = true;
     };
     taps = [
       "lache-sys/tap"

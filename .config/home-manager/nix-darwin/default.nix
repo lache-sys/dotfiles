@@ -1,4 +1,8 @@
 { config, pkgs, ... }: {
+  environment = {
+    systemPackages = with pkgs; [
+    ];
+  };
   ids = {
     gids = {
       nixbld = 350;
