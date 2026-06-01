@@ -86,6 +86,7 @@
     nix-zsh-completions
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
+    openjdk
     pam-reattach
     pandoc
     paperkey

@@ -1,4 +1,5 @@
 #!usr/bin/env bash
+set -eou pipefail
 HM_SRC="$(cd "$(dirname "$0")"; pwd)/.config/home-manager"
 HM_TGT="${HOME}/.config/home-manager"
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -18,7 +19,7 @@ elif [[ "$(uname)" == "Linux" ]]; then
 fi
 . /etc/profile.d/nix.sh
 if [[ -d "${HM_SRC}" ]]; then
-  if [[ -L "${HM_TGT}" ] || [ ! -e "${HM_TGT}" ]]; then
+  if [[ -L "${HM_TGT}" || ! -e "${HM_TGT}" ]]; then
     ln -sfn "${HM_SRC}" "${HM_TGT}"
   else
     echo "Warning: ${HM_TGT} exists and is not a symlink. Skipping (manual review needed)."
