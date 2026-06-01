@@ -1,0 +1,3 @@
+docopt-ng
+toml
+yt-dlp
