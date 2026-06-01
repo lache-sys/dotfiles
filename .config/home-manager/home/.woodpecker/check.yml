@@ -3,6 +3,11 @@ when:
     branch: main
 
 steps:
+  - name: alpine
+    image: alpine
+    commands:
+      - apk add git sudo bash
+      - bash ./install.sh
   - name: arch
     image: archlinux
     commands:

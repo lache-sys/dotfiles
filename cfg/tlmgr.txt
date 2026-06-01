@@ -1,0 +1,3 @@
+collection-langjapanese
+collection-latexextra
+collection-luatex
