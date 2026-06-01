@@ -17,8 +17,8 @@ elif [[ "$(uname)" == "Linux" ]]; then
   curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 fi
 . /etc/profile.d/nix.sh
-if [ -d "${HM_SRC}" ]; then
-  if [ -L "${HM_TGT}" ] || [ ! -e "${HM_TGT}" ]; then
+if [[ -d "${HM_SRC}" ]]; then
+  if [[ -L "${HM_TGT}" ] || [ ! -e "${HM_TGT}" ]]; then
     ln -sfn "${HM_SRC}" "${HM_TGT}"
   else
     echo "Warning: ${HM_TGT} exists and is not a symlink. Skipping (manual review needed)."
@@ -28,6 +28,7 @@ else
 fi
 cd ${HM_SRC}
 nix flake update
+nix run home-manager/master -- switch --flake .
 home-manager switch --flake .
 if [[ "$(uname)" == "Darwin" ]]; then
   sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
