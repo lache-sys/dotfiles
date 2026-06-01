@@ -75,6 +75,7 @@
     ia-writer-quattro
     ipafont
     ipaexfont
+    keybase
     lazyssh
     less
     libaacs
