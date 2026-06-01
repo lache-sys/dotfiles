@@ -37,7 +37,6 @@
       "webp"
     ];
     casks = [
-#       "86box"
       "lache-sys/tap/8bitdo-firmware-updater"
       "adguard"
       "adobe-acrobat-pro"
@@ -112,6 +111,7 @@
       "google-chrome"
       "google-drive"
       "lache-sys/tap/kamvas-pro-13-2-5k-driver"
+      "keybase"
       "puremac"
       "quicklook-video"
       "retroarch-metal"

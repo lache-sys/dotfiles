@@ -1,6 +1,8 @@
 { config, pkgs, ... }: {
   environment = {
     systemPackages = with pkgs; [
+      gnupg
+      keybase
     ];
   };
   ids = {
