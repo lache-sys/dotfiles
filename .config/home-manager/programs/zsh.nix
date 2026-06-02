@@ -59,6 +59,10 @@
           sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
           return 0
         }
+        function roscheck_main () {
+          pgrep -q oahd && echo "Rosetta 2 is installed" || echo "Rosetta 2 is NOT installed"
+          return 0
+        }
         function rpds_main () {
           dd if=/dev/random of=${config.home.homeDirectory}/Downloads/tmp.img bs=1073741824 count="''${1}"
           return 0
@@ -86,9 +90,11 @@
         cut4dl = "cut4dl_main";
         d2u = "dos2unix";
         gaa = "git add -A";
+        less = "bat";
         ls = "eza --icons --group-directories-first";
         lsg = "lsg_main";
         nixall = "nixall_main";
+        roscheck = "roscheck_main";
         rpds = "rpds_main";
         smart = "smartctl -a";
         sza = "7zz a -mmt=on -mx=9 -sdel";
