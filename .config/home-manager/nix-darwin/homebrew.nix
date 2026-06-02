@@ -39,8 +39,6 @@
     casks = [
       "lache-sys/tap/8bitdo-firmware-updater"
       "adguard"
-      "adobe-acrobat-pro"
-      "adobe-creative-cloud"
       "affinity"
       "alfred"
       "lache-sys/tap/authme"
@@ -138,6 +136,7 @@
       "Pure Paste" = 1611378436;
       "RosettaCheck" = 6759349750;
       "Spark" = 1176895641;
+      "V1MML" = 971745309;
       "Yoink" = 457622435;
     };
   };

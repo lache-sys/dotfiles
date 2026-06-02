@@ -68,7 +68,6 @@
     gnumake
     gpac
     hackgen-nf-font
-    highlight
     jhead
     ia-writer-duospace
     ia-writer-mono
