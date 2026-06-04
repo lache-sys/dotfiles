@@ -70,7 +70,6 @@
         compdef clamdf_main _clamdf_main
         compdef cut4dl_main _cut4dl_main
         compdef lsg_main _lsg_main
-        eval $(/opt/homebrew/bin/brew shellenv)
         export GPG_TTY=$(tty)
         if [[ "$(uname)" == "Darwin" ]]; then
           export SSH_AUTH_SOCK="${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
@@ -78,10 +77,17 @@
         if [[ "$(uname)" == "Darwin" && -x /Applications/BrightIntosh.app ]]; then
           alias brightintosh='open -a BrightIntosh && /Applications/BrightIntosh.app/Contents/Resources/cli.sh'
         fi
+        source ~/.venv/bin/activate
+      '';
+      profileExtra = ''
+        if [[ $(uname -m) == "arm64" || $(uname -m) == "aarch64" ]]; then
+          eval "$(/opt/homebrew/bin/brew shellenv)"
+        elif [[ $(uname -m) == "x86_64" ]]; then
+          eval "$(/usr/local/bin/brew shellenv)"
+        fi
         if [[ $SHLVL = 1 ]]; then
           tmuxinator start quarter
         fi
-        source ~/.venv/bin/activate
       '';
       shellAliases = {
         cat = "bat --paging=never";

@@ -7,6 +7,8 @@
   home.homeDirectory = "/Users/admin";
   home.sessionVariables = {
     HOMEBREW_NO_ANALYTICS = true;
+# 81AECE7A347695489F3ECB2E0015CA46F9E60CB5: Expires in 2028-12-27!
+    SOPS_PGP_FP="81AECE7A347695489F3ECB2E0015CA46F9E60CB5";
     TOMBI_OFFLINE = true;
     TOMBI_NO_CACHE = true;
     XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
@@ -44,6 +46,7 @@
     cdrtools
     chafa
     cmake
+    colima
     coreutils
     cuetools
     darwin.trash
@@ -96,7 +99,6 @@
     pkgconf
     poppler
     qemu
-    ranger
     rsync
     rtmidi
     rustup
@@ -105,6 +107,7 @@
     shntool
     smartmontools
     sniglet
+    sops
     timidity
     tombi
     ueberzugpp
