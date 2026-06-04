@@ -8,7 +8,6 @@
     enable = true;
     onActivation = {
       autoUpdate = false;
-      cleanup = "zap";
       upgrade = true;
     };
     taps = [
@@ -39,6 +38,8 @@
     casks = [
       "lache-sys/tap/8bitdo-firmware-updater"
       "adguard"
+      "adobe-acrobat-pro"
+      "adobe-creative-cloud"
       "affinity"
       "alfred"
       "lache-sys/tap/authme"
@@ -108,11 +109,13 @@
       "fuse-t"
       "google-chrome"
       "google-drive"
+      "hhkb"
       "lache-sys/tap/kamvas-pro-13-2-5k-driver"
       "keybase"
       "puremac"
       "quicklook-video"
       "retroarch-metal"
+      "syntax-highlight"
       "twine-app"
       "veracrypt-fuse-t"
       "zoom"
@@ -134,7 +137,6 @@
       "Mp3tag" = 1532597159;
       "Name Mangler 3" = 603637384;
       "Pure Paste" = 1611378436;
-      "RosettaCheck" = 6759349750;
       "Spark" = 1176895641;
       "V1MML" = 971745309;
       "Yoink" = 457622435;
