@@ -16,15 +16,18 @@
         function _lsg_main () {
           _files -W ./
         }
+        function _openurls_main () {
+          _files -W ./
+        }
         function clamdf_main () {
-          _pwd=''${PWD}
+          local _pwd=''${PWD}
           cd "$(dirname "''${1}")"
           clamdscan -i -m --remove -f "''${1}"
           cd ''${_pwd}
           return 0
         }
         function cut4dl_main () {
-          _i=0
+          local _i=0
           cd ~/Downloads
           cut -d ',' -f 2 "''${1}" | sed -e '1,2d' > req.txt
           while read LINE; do
@@ -37,8 +40,20 @@
           rm -f req.txt
           return 0
         }
+        function iclean_main () {
+          local _pwd=''${PWD}
+          if [[ "$(uname)" == "Darwin" ]]; then
+            cd "''${HOME}/Library/Mobile Documents"
+            find . -type f -exec brctl evict {} \;
+            cd ''${_pwd}
+          else
+            echo "Sorry, this function is for macOS Only."
+            return 1
+          fi
+          return 0
+        }
         function lsg_main () {
-          _pwd="''${PWD}"
+          local _pwd="''${PWD}"
           cd "''${1}"
           for i in */; do
             cd "''${i}"
@@ -59,6 +74,21 @@
           sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
           return 0
         }
+        function openurls_main () {
+          while IFS= read -r url; do
+            open -a "Safari" ''${url}
+            sleep 1
+          done < ''${1}
+          return 0
+        }
+        function png2webp_main () {
+          local _pwd=''${PWD}
+          cd "''${_pwd}"
+          for i in *.png; do
+            ffmpeg -i "''${i}" -lossless 1 $(basename "''${i}" ''${i}).webp
+          done
+          return 0
+        }
         function roscheck_main () {
           pgrep -q oahd && echo "Rosetta 2 is installed" || echo "Rosetta 2 is NOT installed"
           return 0
@@ -70,6 +100,7 @@
         compdef clamdf_main _clamdf_main
         compdef cut4dl_main _cut4dl_main
         compdef lsg_main _lsg_main
+        compdef openurls_main _openurls_main
         export GPG_TTY=$(tty)
         if [[ "$(uname)" == "Darwin" ]]; then
           export SSH_AUTH_SOCK="${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
@@ -100,6 +131,7 @@
         ls = "eza --icons --group-directories-first";
         lsg = "lsg_main";
         nixall = "nixall_main";
+        openurls = "openurls_main";
         roscheck = "roscheck_main";
         rpds = "rpds_main";
         smart = "smartctl -a";
