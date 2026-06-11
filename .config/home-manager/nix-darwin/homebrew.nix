@@ -15,7 +15,10 @@
       upgrade = true;
     };
     taps = [
-      "lache-sys/tap"
+      {
+        name = "lache-sys/tap";
+        clone_target = "https://codeberg.org";
+      }
     ];
     brews = [
       "clamav"
@@ -23,6 +26,7 @@
       "dvdbackup"
       "felinks"
       "ffmpeg"
+      "ffmpeg-full"
       "ffms2"
       "kubernetes-cli"
       "lazymake"
@@ -35,6 +39,7 @@
       "rom-tools"
       "rvvm"
       "sevenzip"
+      "tag"
       "tmuxinator"
       "vcdimager"
       "webp"
@@ -52,8 +57,9 @@
       "bettertouchtool"
       "chatgpt"
       "cog-app"
+      "crossover"
       "cryptomator"
-      "dolphin"
+      "discord"
       "lache-sys/tap/duckstation"
       "fujitsu-scansnap-home"
       "font-aguafina-script"
@@ -136,12 +142,14 @@
       "EdgeView" = 1580323719;
       "GrandPerspective" = 1111570163;
       "Hide My Screen" = 6476070422;
+      "Iris" = 6761598836;
       "Jump Desktop" = 524141863;
       "LINE" = 539883307;
       "Mp3tag" = 1532597159;
       "Name Mangler 3" = 603637384;
       "Pure Paste" = 1611378436;
       "Spark" = 1176895641;
+      "TinyHost" = 6757653859;
       "V1MML" = 971745309;
       "Yoink" = 457622435;
     };

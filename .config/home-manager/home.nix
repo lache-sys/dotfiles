@@ -5,8 +5,14 @@
   # manage.
   home.username = "admin";
   home.homeDirectory = "/Users/admin";
+  home.sessionPath = [
+    "/opt/homebrew/opt/ffmpeg-full/bin:$PATH"
+  ];
   home.sessionVariables = {
+    CPPFLAGS = "-I/opt/homebrew/opt/ffmpeg-full/include";
     HOMEBREW_NO_ANALYTICS = true;
+    LDFLAGS= " -L/opt/homebrew/opt/ffmpeg-full/lib";
+    PKG_CONFIG_PATH = "/opt/homebrew/opt/ffmpeg-full/lib/pkgconfig";
 # 81AECE7A347695489F3ECB2E0015CA46F9E60CB5: Expires in 2028-12-27!
     SOPS_PGP_FP="81AECE7A347695489F3ECB2E0015CA46F9E60CB5";
     TOMBI_OFFLINE = true;
@@ -54,6 +60,7 @@
     dmtx-utils
     docker
     docker-compose
+    dolphin-emu
     dos2unix
     duti
     exiftool
@@ -61,11 +68,11 @@
     f3
     fastfetch
     fdupes
-    ffmpeg-full
     flex
     fluidsynth
     fontconfig
     fzf
+    geist-font
     gettext
     gh
     gnumake
@@ -235,6 +242,9 @@
       "btop/themes" = {
         recursive = true;
         source = ./config/btop/themes;
+      };
+      "homebrew/trust.json" = {
+        source = ./config/homebrew/trust.json;
       };
       "mpv" = {
         recursive = true;

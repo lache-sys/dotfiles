@@ -1,4 +1,6 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+
+{
   environment = {
     systemPackages = with pkgs; [
       gnupg
@@ -73,7 +75,7 @@
         AppleShowAllExtensions = true;
         FXEnableExtensionChangeWarning = false;
         FXPreferredViewStyle = "clmv";
-#         NewWindowTargetPath = "file://";
+#         NewWindowTargetPath = file://;
         ShowPathbar = true;
         ShowStatusBar = true;
       };
@@ -95,5 +97,13 @@
     };
     primaryUser = "admin";
     stateVersion = 7;
+  };
+  users = {
+    users = {
+      admin = {
+        name = "admin";
+        home = /Users/admin;
+      };
+    };
   };
 }
