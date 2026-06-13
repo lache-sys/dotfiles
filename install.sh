@@ -19,6 +19,9 @@ elif [[ "$(uname)" == "Linux" ]]; then
   curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 fi
 . /etc/profile.d/nix.sh
+if [[ ! -d "${HOME}/.config" ]]; then
+  mkdir -p "${HOME}/.config"
+fi
 if [[ -d "${HM_SRC}" ]]; then
   if [[ -L "${HM_TGT}" || ! -e "${HM_TGT}" ]]; then
     ln -sfn "${HM_SRC}" "${HM_TGT}"
