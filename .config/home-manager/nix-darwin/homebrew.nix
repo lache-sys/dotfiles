@@ -6,12 +6,13 @@
       appdir = "~/Applications";
     };
     enable = true;
+    user = "admin";
     onActivation = {
       autoUpdate = false;
-      cleanup = "zap";
-      extraFlags = [
-        "--force-cleanup"
-      ];
+#       cleanup = "zap";
+#       extraFlags = [
+#         "--force-cleanup"
+#       ];
       upgrade = true;
     };
     taps = [
