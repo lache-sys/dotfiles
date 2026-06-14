@@ -15,7 +15,6 @@
 #       ];
       upgrade = true;
     };
-    user = "admin";
     taps = [
       {
         name = "lache-sys/tap";
