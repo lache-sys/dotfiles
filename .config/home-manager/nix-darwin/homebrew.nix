@@ -15,10 +15,11 @@
 #       ];
       upgrade = true;
     };
+    user = "admin";
     taps = [
       {
         name = "lache-sys/tap";
-        clone_target = "https://codeberg.org";
+        clone_target = "https://codeberg.org/lache-sys/tap";
       }
     ];
     brews = [
