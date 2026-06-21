@@ -4,6 +4,14 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    brew-nix = {
+      url = "github:BatteredBunny/brew-nix";
+      inputs.brew-api.follows = "brew-api";
+    };
+    brew-api = {
+      url = "github:BatteredBunny/brew-api";
+      flake = false;
+    };
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,16 +20,27 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    previm = {
+      url = "github:previm/previm";
+      flake = false;
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, nix-darwin, ... }:
+    {
+      nixpkgs,
+      home-manager,
+      nix-darwin,
+      brew-nix,
+      ...
+    }@inputs:
     let
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
       homeConfigurations."admin" = home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = { inherit inputs; };
         inherit pkgs;
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
