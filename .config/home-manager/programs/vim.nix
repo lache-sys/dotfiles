@@ -1,21 +1,22 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, inputs, ... }:
 {
   programs = {
     vim = {
       enable = true;
       defaultEditor = true;
-      plugins = with pkgs.vimPlugins; [
-        fzf-wrapper
-        vim-nix
-        nerdtree
-        rainbow
-        vim-nerdtree-syntax-highlight
+      plugins = [
+        pkgs.vimPlugins.fzf-wrapper
+        pkgs.vimPlugins.vim-nix
+        pkgs.vimPlugins.nerdtree
+        pkgs.vimPlugins.open-browser-vim
+        pkgs.vimPlugins.rainbow
+        pkgs.vimPlugins.vim-nerdtree-syntax-highlight
       ];
       settings = {
       };
       extraConfig = ''
         hi Comment ctermfg=3
+        let g:previm_enable_realtime = 1
         nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
         nnoremap <silent> <C-j> :bprev<CR>
         nnoremap <silent> <C-k> :bnext<CR>

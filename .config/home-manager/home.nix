@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -13,7 +13,7 @@
     HOMEBREW_NO_ANALYTICS = true;
     LDFLAGS= " -L/opt/homebrew/opt/ffmpeg-full/lib";
     PKG_CONFIG_PATH = "/opt/homebrew/opt/ffmpeg-full/lib/pkgconfig";
-# 81AECE7A347695489F3ECB2E0015CA46F9E60CB5: Expires in 2028-12-27!
+# 81AECE7A347695489F3ECB2E0015CA46F9E60CB5: Expires in 2027-06-04!
     SOPS_PGP_FP="81AECE7A347695489F3ECB2E0015CA46F9E60CB5";
     TOMBI_OFFLINE = true;
     TOMBI_NO_CACHE = true;
@@ -35,100 +35,104 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
+  home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-    atool
-    alegreya
-    alegreya-sans
-    bat
-    bchunk
-    bitwarden-cli
-    bison
-    blackout
-    btop
-    bzip2
-    cdrdao
-    cdrtools
-    chafa
-    cmake
-    colima
-    coreutils
-    cuetools
-    darwin.trash
-    deno
-    dmtx-utils
-    docker
-    docker-compose
-    dolphin-emu
-    dos2unix
-    duti
-    exiftool
-    eza
-    f3
-    fastfetch
-    fdupes
-    flex
-    fluidsynth
-    fontconfig
-    fzf
-    geist-font
-    gettext
-    gh
-    gnumake
-    gpac
-    hackgen-nf-font
-    jhead
-    ia-writer-duospace
-    ia-writer-mono
-    ia-writer-quattro
-    ipafont
-    ipaexfont
-    keybase
-    lazyssh
-    less
-    libaacs
-    libcaca
-    mas
-    markdown-toc
-    nerd-fonts.bigblue-terminal
-    ninja
-    nix-zsh-completions
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    openjdk
-    pam-reattach
-    pandoc
-    paperkey
-    parallel
-    pcre2
-    pinentry_mac
-    pkgconf
-    poppler
-    qemu
-    rsync
-    rtmidi
-    rustup
-    rubik
-    sdl3
-    shntool
-    smartmontools
-    sniglet
-    sops
-    timidity
-    tombi
-    ueberzugpp
-    utm
-    uv
-    vlc-bin
-    vgmstream
-    wakeonlan
-    wget
-    yt-dlp
-    zoxide
-    zilla-slab
-    zsh
-    zsh-completions
+    pkgs.atool
+    pkgs.alegreya
+    pkgs.alegreya-sans
+    pkgs.bat
+    pkgs.bchunk
+    pkgs.bison
+    pkgs.blackout
+    pkgs.brewCasks.syntax-highlight
+    pkgs.brewCasks.twine-app
+    pkgs.brewCasks.zoom
+    pkgs.btop
+    pkgs.bzip2
+    pkgs.cdrdao
+    pkgs.cdrtools
+    pkgs.chafa
+#     pkgs.clamav
+    pkgs.cmake
+    pkgs.colima
+    pkgs.coreutils
+    pkgs.cuetools
+    pkgs.darwin.trash
+    pkgs.deno
+    pkgs.dmtx-utils
+    pkgs.docker
+    pkgs.docker-compose
+    pkgs.docutils
+    pkgs.dolphin-emu
+    pkgs.dos2unix
+    pkgs.duti
+    pkgs.exiftool
+    pkgs.eza
+    pkgs.f3
+    pkgs.fastfetch
+    pkgs.fdupes
+    pkgs.flex
+    pkgs.fluidsynth
+    pkgs.fontconfig
+    pkgs.fzf
+    pkgs.geist-font
+    pkgs.gettext
+    pkgs.gh
+    pkgs.gnumake
+    pkgs.gpac
+    pkgs.hackgen-nf-font
+    pkgs.jhead
+    pkgs.ia-writer-duospace
+    pkgs.ia-writer-mono
+    pkgs.ia-writer-quattro
+    pkgs.ipafont
+    pkgs.ipaexfont
+    pkgs.keybase
+    pkgs.lazyssh
+    pkgs.less
+    pkgs.libaacs
+    pkgs.libcaca
+    pkgs.mas
+    pkgs.markdown-toc
+    pkgs.nerd-fonts.bigblue-terminal
+    pkgs.ninja
+    pkgs.nix-zsh-completions
+    pkgs.noto-fonts-cjk-sans
+    pkgs.noto-fonts-cjk-serif
+    pkgs.openjdk
+    pkgs.pam-reattach
+    pkgs.pandoc
+    pkgs.paperkey
+    pkgs.parallel
+    pkgs.pcre2
+    pkgs.pinentry_mac
+    pkgs.pkgconf
+    pkgs.poppler
+    pkgs.qemu
+    pkgs.rsync
+    pkgs.rtmidi
+    pkgs.rustup
+    pkgs.rubik
+    pkgs.sdl3
+    pkgs.shntool
+    pkgs.smartmontools
+    pkgs.sniglet
+    pkgs.sops
+    pkgs.timidity
+    pkgs.tombi
+    pkgs.ueberzugpp
+    pkgs.utm
+    pkgs.uv
+    pkgs.vlc-bin
+    pkgs.vgmstream
+    pkgs.wakeonlan
+    pkgs.wget
+    pkgs.yt-dlp
+    pkgs.zoxide
+    pkgs.zilla-slab
+    pkgs.zsh
+    pkgs.zsh-completions
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -158,7 +162,11 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
-
+  nixpkgs = {
+    overlays = [
+      inputs.brew-nix.overlays.default
+    ];
+  };
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
@@ -229,6 +237,26 @@
         unbind C-b
       '';
       prefix = "C-s";
+      tmuxinator = {
+        projects = {
+          quarter = {
+            root = "~/Downloads";
+            windows = [
+              {
+                editor = {
+                  layout = "tiled";
+                  panes = [
+                    "clear"
+                    "clear"
+                    "clear"
+                    "clear"
+                  ];
+                };
+              }
+            ];
+          };
+        };
+      };
     };
   };
   services = {

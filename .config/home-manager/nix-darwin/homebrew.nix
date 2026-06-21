@@ -9,16 +9,15 @@
     user = "admin";
     onActivation = {
       autoUpdate = false;
-#       cleanup = "zap";
-#       extraFlags = [
-#         "--force-cleanup"
-#       ];
+      extraFlags = [
+        "--force-cleanup"
+      ];
       upgrade = true;
     };
     taps = [
       {
         name = "lache-sys/tap";
-        clone_target = "https://codeberg.org/lache-sys/tap";
+        clone_target = "https://codeberg.org/lache-sys/homebrew-tap";
       }
     ];
     brews = [
@@ -53,6 +52,7 @@
       "affinity"
       "alfred"
       "lache-sys/tap/authme"
+      "balenaetcher"
       "bartender"
       "basictex"
       "bettertouchtool"
@@ -126,10 +126,6 @@
       "puremac"
       "quicklook-video"
       "retroarch-metal"
-      "syntax-highlight"
-      "twine-app"
-      "veracrypt-fuse-t"
-      "zoom"
     ];
     masApps = {
       "Amphetamine" = 937984704;
@@ -149,6 +145,7 @@
       "Mp3tag" = 1532597159;
       "Name Mangler 3" = 603637384;
       "Pure Paste" = 1611378436;
+      "RosettaCheck" = 6759349750;
       "Spark" = 1176895641;
       "TinyHost" = 6757653859;
       "V1MML" = 971745309;
