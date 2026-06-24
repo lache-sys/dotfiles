@@ -39,7 +39,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      homeConfigurations."admin" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."lache-sys" = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = { inherit inputs; };
         inherit pkgs;
         # Specify your home configuration modules here, for example,

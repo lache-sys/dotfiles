@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "admin";
-  home.homeDirectory = "/Users/admin";
+  home.username = "lache-sys";
+  home.homeDirectory = "/Users/lache-sys";
   home.sessionPath = [
     "/opt/homebrew/opt/ffmpeg-full/bin:$PATH"
   ];
