@@ -95,7 +95,7 @@
         location = "~/Downloads";
       };
     };
-    primaryUser = "admin";
+    primaryUser = "lache-sys";
     stateVersion = 7;
   };
   users = {
