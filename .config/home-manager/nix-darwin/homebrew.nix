@@ -6,7 +6,7 @@
       appdir = "~/Applications";
     };
     enable = true;
-    user = "admin";
+    user = "lache-sys";
     onActivation = {
       autoUpdate = false;
       extraFlags = [
@@ -123,6 +123,7 @@
       "hhkb"
       "lache-sys/tap/kamvas-pro-13-2-5k-driver"
       "keybase"
+      "lache-sys/tap/ntsc-rs"
       "puremac"
       "quicklook-video"
       "retroarch-metal"
