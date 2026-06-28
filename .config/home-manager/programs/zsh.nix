@@ -52,6 +52,18 @@
           fi
           return 0
         }
+        function img2webp_main () {
+          _pwd=''${PWD}
+          export CPPFLAGS="-I/opt/homebrew/opt/ffmpeg-full/include"
+          export LDFLAGS="-L/opt/homebrew/opt/ffmpeg-full/lib"
+          export PATH="/opt/homebrew/opt/ffmpeg-full/bin:$PATH"
+          export PKG_CONFIG_PATH="/opt/homebrew/opt/ffmpeg-full/lib/pkgconfig"
+          cd "''${_pwd}"
+          for i in *''${1}; do
+            ffmpeg -i ''${i} -c:v libwebp -lossless 1 $(basename ''${i} ''${1}).webp
+          done
+          return 0
+        }
         function lsg_main () {
           local _pwd="''${PWD}"
           cd "''${1}"
@@ -127,11 +139,13 @@
         cut4dl = "cut4dl_main";
         d2u = "dos2unix";
         gaa = "git add -A";
+        img2webp = "img2webp_main";
         less = "bat";
         ls = "eza --icons --group-directories-first";
         lsg = "lsg_main";
         nixall = "nixall_main";
         openurls = "openurls_main";
+        png2webp = "img2webp_main .png";
         roscheck = "roscheck_main";
         rpds = "rpds_main";
         smart = "smartctl -a";

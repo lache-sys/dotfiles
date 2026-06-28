@@ -38,6 +38,10 @@
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
+    (lib.mkIf pkgs.stdenv.isDarwin pkgs.brewCasks.macusb)
+    (lib.mkIf pkgs.stdenv.isDarwin pkgs.brewCasks.syntax-highlight)
+    (lib.mkIf pkgs.stdenv.isDarwin pkgs.brewCasks.twine-app)
+    (lib.mkIf pkgs.stdenv.isDarwin pkgs.brewCasks.zoom)
     pkgs.atool
     pkgs.alegreya
     pkgs.alegreya-sans
@@ -45,15 +49,11 @@
     pkgs.bchunk
     pkgs.bison
     pkgs.blackout
-    pkgs.brewCasks.syntax-highlight
-    pkgs.brewCasks.twine-app
-    pkgs.brewCasks.zoom
     pkgs.btop
     pkgs.bzip2
     pkgs.cdrdao
     pkgs.cdrtools
     pkgs.chafa
-#     pkgs.clamav
     pkgs.cmake
     pkgs.colima
     pkgs.coreutils
@@ -93,8 +93,10 @@
     pkgs.less
     pkgs.libaacs
     pkgs.libcaca
+    pkgs.libplacebo
     pkgs.mas
     pkgs.markdown-toc
+    pkgs.meson
     pkgs.nerd-fonts.bigblue-terminal
     pkgs.ninja
     pkgs.nix-zsh-completions
@@ -133,7 +135,6 @@
     pkgs.zilla-slab
     pkgs.zsh
     pkgs.zsh-completions
-
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -146,6 +147,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

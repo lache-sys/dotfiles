@@ -52,7 +52,6 @@
       "affinity"
       "alfred"
       "lache-sys/tap/authme"
-      "balenaetcher"
       "bartender"
       "basictex"
       "bettertouchtool"
@@ -145,6 +144,7 @@
       "LINE" = 539883307;
       "Mp3tag" = 1532597159;
       "Name Mangler 3" = 603637384;
+#       "Pine Player Pro" = 6474128342;
       "Pure Paste" = 1611378436;
       "RosettaCheck" = 6759349750;
       "Spark" = 1176895641;
