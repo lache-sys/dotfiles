@@ -7,7 +7,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   PKGTMPDIR=$(mktemp -d)
   PKGTMP=${PKGTMPDIR}/Determinate.pkg
   curl -L -o ${PKGTMP} https://install.determinate.systems/determinate-pkg/stable/Universal
-  sudo installer -pkg ${PKGTMP} -target /
+  sudo installer -pkg ${PKGTMP} -target / --no-confirm
   sudo rm -rf ${PKGTMPDIR}
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   if [[ $(uname -m) == "arm64" || $(uname -m) == "aarch64" ]]; then
@@ -16,7 +16,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
   fi
 elif [[ "$(uname)" == "Linux" ]]; then
-  curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+  curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm
 fi
 . /etc/profile.d/nix.sh
 if [[ ! -d "${HOME}/.config" ]]; then

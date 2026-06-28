@@ -15,6 +15,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
   fi
   sudo nix run nix-darwin#darwin-uninstaller
 fi
-/nix/nix-installer uninstall
+/nix/nix-installer uninstall --no-confirm
 echo "See you again!"
 exit 0
