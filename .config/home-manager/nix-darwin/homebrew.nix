@@ -82,7 +82,6 @@
       "font-finlandica"
       "font-fredoka"
       "font-klee-one"
-      "font-m+-nerd-font"
       "font-metal"
       "font-metal-mania"
       "font-mochiy-pop-one"
