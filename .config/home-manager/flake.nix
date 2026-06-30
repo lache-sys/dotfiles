@@ -53,7 +53,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
         inherit system;
         overlays = if pkgs.stdenv.hostPlatform.isLinux then [
-          nixgl.overlay
+          nixgl.overlay.default
         ] else [
         ];
       in {

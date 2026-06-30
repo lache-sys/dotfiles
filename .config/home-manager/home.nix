@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, lib, nixgl, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -150,7 +150,6 @@
     pkgs.vlc-bin
   ] ++ lib.optionals pkgs.stdenv.isLinux [
     pkgs.cryptomator
-    pkgs.nixgl.nixGLIntel
     pkgs.pinentry-all
   ];
 
