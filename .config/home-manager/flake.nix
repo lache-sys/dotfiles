@@ -20,12 +20,11 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    previm = {
-      url = "github:previm/previm";
-      flake = false;
-    };
+#     previm = {
+#       url = "github:previm/previm";
+#       flake = false;
+#     };
   };
-
   outputs =
     {
       nixpkgs,
@@ -35,34 +34,43 @@
       ...
     }@inputs:
     let
-      system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
+      systems = [
+        "aarch64-darwin"
+        "x86_64-linux"
+      ];
+      forAllSystems = f: builtins.listToAttrs (map (system: {
+        name = system;
+        value = f system;
+      }) systems);
     in
     {
-      homeConfigurations."lache-sys" = home-manager.lib.homeManagerConfiguration {
-        extraSpecialArgs = { inherit inputs; };
-        inherit pkgs;
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [
-          ./home.nix
-          ./programs/alacritty.nix
-          ./programs/bash.nix
-          ./programs/btop.nix
-          ./programs/starship.nix
-          ./programs/vim.nix
-          ./programs/zsh.nix
-        ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-      };
-      darwinConfigurations.lache-sys-darwin = nix-darwin.lib.darwinSystem {
-        system = system;
-        modules = [ 
-          ./nix-darwin/default.nix
-          ./nix-darwin/homebrew.nix
-        ];
-      };
+      packages = forAllSystems (system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        homeConfigurations."lache-sys" = home-manager.lib.homeManagerConfiguration {
+          extraSpecialArgs = { inherit inputs; };
+          inherit pkgs;
+          # Specify your home configuration modules here, for example,
+          # the path to your home.nix.
+          modules = [
+            ./home.nix
+            ./programs/alacritty.nix
+            ./programs/bash.nix
+            ./programs/btop.nix
+            ./programs/starship.nix
+            ./programs/vim.nix
+            ./programs/zsh.nix
+          ];
+          # Optionally use extraSpecialArgs
+          # to pass through arguments to home.nix
+        };
+        darwinConfigurations.lache-sys-darwin = nix-darwin.lib.darwinSystem {
+          system = system;
+          modules = [ 
+            ./nix-darwin/default.nix
+            ./nix-darwin/homebrew.nix
+          ];
+        };
+      });
     };
 }
