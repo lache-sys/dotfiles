@@ -3,11 +3,11 @@
     "brew-api": {
       "flake": false,
       "locked": {
-        "lastModified": 1782637372,
-        "narHash": "sha256-HNTmFywUKbVWKz6m0Vax841+HMIq3o+FAZvRagoKu60=",
+        "lastModified": 1782810387,
+        "narHash": "sha256-+/i/Aja8o8PKkOVOe7NL6/ItZvvvTotiE2N6/2i7u6M=",
         "owner": "BatteredBunny",
         "repo": "brew-api",
-        "rev": "f89a7d804cd0d9f7215d39fc1c4ca251cf28aac6",
+        "rev": "1c8a5a03895dd1ae72cb5a3dcd81b760a9076d0d",
         "type": "github"
       },
       "original": {
@@ -45,11 +45,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782522538,
-        "narHash": "sha256-CvOaUvJ+mXlxU3m2cPWKcOAhtKETsPUYhq+Xa5ewBp4=",
+        "lastModified": 1782749631,
+        "narHash": "sha256-slFTUgDy0KTPA4LBAmC/9SngDq8GCPdX+ZR0yQHHN1E=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8d8a6cc50ddc60748791a14ee1163c865ec57635",
+        "rev": "5d72a29fc36ac21adae6ae35568fe5ee6700850f",
         "type": "github"
       },
       "original": {
@@ -118,11 +118,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1782175435,
-        "narHash": "sha256-EMzXKmnOtBQ2MnvpiNOm7E+kOMvdPrIKaeg52Tip2Uk=",
+        "lastModified": 1782760764,
+        "narHash": "sha256-N66fYdUuZ9hpdM7jsQ7CUWtLJduqGDyTGCaLR62CXaQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "89570f24e97e614aa34aa9ab1c927b6578a43775",
+        "rev": "7a1a64774a5fd0b0cd39ac95d0e170ace8b266a0",
         "type": "github"
       },
       "original": {
@@ -132,30 +132,13 @@
         "type": "github"
       }
     },
-    "previm": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780737379,
-        "narHash": "sha256-yIz7dw0PBDIqIjcGGrQRCLRGYrrfzTpQOmGgEfiLiJU=",
-        "owner": "previm",
-        "repo": "previm",
-        "rev": "001676c8b516a3370168db95e1f03f89df16e8cf",
-        "type": "github"
-      },
-      "original": {
-        "owner": "previm",
-        "repo": "previm",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "brew-api": "brew-api",
         "brew-nix": "brew-nix",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin_2",
-        "nixpkgs": "nixpkgs_2",
-        "previm": "previm"
+        "nixpkgs": "nixpkgs_2"
       }
     }
   },
