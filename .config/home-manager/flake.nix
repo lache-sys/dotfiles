@@ -20,6 +20,10 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      flake = false;
+    };
 #     previm = {
 #       url = "github:previm/previm";
 #       flake = false;
@@ -31,6 +35,7 @@
       home-manager,
       nix-darwin,
       brew-nix,
+      nixgl,
       ...
     }@inputs:
     let
@@ -46,6 +51,11 @@
     {
       packages = forAllSystems (system: let
         pkgs = nixpkgs.legacyPackages.${system};
+        inherit system;
+        overlays = if pkgs.stdenv.hostPlatform.isLinux then [
+          nixgl.overlay
+        ] else [
+        ];
       in {
         homeConfigurations."lache-sys" = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = { inherit inputs; };
@@ -66,7 +76,7 @@
         };
         darwinConfigurations.lache-sys-darwin = nix-darwin.lib.darwinSystem {
           system = system;
-          modules = [ 
+          modules = [
             ./nix-darwin/default.nix
             ./nix-darwin/homebrew.nix
           ];
