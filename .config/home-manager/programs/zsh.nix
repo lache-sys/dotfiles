@@ -162,8 +162,8 @@
             eval "$(/usr/local/bin/brew shellenv)"
           fi
         fi
-        if [[ $SHLVL = 1 ]]; then
-          tmux
+        if [[ -z "''${TMUX}" && -n "''${PS1}" ]]; then
+          tmux attach || tmux new-session
         fi
       '';
       shellAliases = {
