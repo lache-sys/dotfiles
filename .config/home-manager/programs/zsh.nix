@@ -98,7 +98,9 @@
           cd ${config.home.homeDirectory}/.config/home-manager
           nix flake update
           home-manager switch --flake .
-          sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
+          if [[ "$(uname)" == "Darwin" ]]; then
+            sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
+          fi
           return 0
         }
         function openurls_main () {
