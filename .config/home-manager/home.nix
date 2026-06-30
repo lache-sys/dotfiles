@@ -149,8 +149,6 @@
     pkgs.pinentry_mac
     pkgs.utm
     pkgs.vlc-bin
-  ] ++ lib.optionals pkgs.stdenv.isLinux [
-    nixgl.packages.${system}.nixGLDefault
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
