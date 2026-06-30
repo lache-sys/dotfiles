@@ -109,6 +109,14 @@
           dd if=/dev/random of=${config.home.homeDirectory}/Downloads/tmp.img bs=1073741824 count="''${1}"
           return 0
         }
+        function ssddir_main () {
+          if [[ "$(uname)" == "Darwin" ]]; then
+            ssd_dir=$(sops -d --extract '["mac_ssd_dir"]' ~/.env)
+          elif [[ "$(uname)" == "Linux" ]]; then
+            ssd_dir=$(sops -d --extract '["lnx_ssd_dir"]' ~/.env)
+          fi
+          return 0
+        }
         compdef clamdf_main _clamdf_main
         compdef cut4dl_main _cut4dl_main
         compdef lsg_main _lsg_main
@@ -149,6 +157,7 @@
         roscheck = "roscheck_main";
         rpds = "rpds_main";
         smart = "smartctl -a";
+        ssddir = "ssddir_main";
         sza = "7zz a -mmt=on -mx=9 -sdel";
         vvim = "vim -u NONE -N";
       };
