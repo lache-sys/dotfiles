@@ -55,6 +55,20 @@
           python3 ''${_ssddir}/git/emg/bin/lnk.py -i ''${_ssddir}/git/emg/bin/lnk.toml
           return 0
         }
+        function gpa_main () {
+          local _gh_dir="''${config.home.homeDirectory}/GitHub"
+          local _pwd="''${PWD}"
+          cd "''${_gh_dir}"
+          for i in */; do
+            cd "''${i}"
+            if [[ $(git fetch) ]]; then
+              git pull
+            fi
+            cd ..
+          done
+          cd "''${_pwd}"
+          return 0
+        }
         function iclean_main () {
           local _pwd=''${PWD}
           if [[ "$(uname)" == "Darwin" ]]; then
@@ -176,6 +190,7 @@
         emgc = "emgc_main";
         emgl = "emgl_main";
         gaa = "git add -A";
+        gpa = "gpa_main";
         img2webp = "img2webp_main";
         less = "bat";
         ls = "eza --icons --group-directories-first";
