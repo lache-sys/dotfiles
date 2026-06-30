@@ -40,6 +40,21 @@
           rm -f req.txt
           return 0
         }
+        function emg_main () {
+          local _ssddir=$(ssddir_main)
+          python3 ''${_ssddir}/git/emg/bin/emg.py -i ''${_ssddir}/git/emg/bin/lnk.toml
+          return 0
+        }
+        function emgc_main () {
+          local _ssddir=$(ssddir_main)
+          python3 ''${_ssddir}/git/emg/bin/emg.py -c -i ''${_ssddir}/git/emg/bin/lnk.toml
+          return 0
+        }
+        function emgl_main () {
+          local _ssddir=$(ssddir_main)
+          python3 ''${_ssddir}/git/emg/bin/lnk.py -i ''${_ssddir}/git/emg/bin/lnk.toml
+          return 0
+        }
         function iclean_main () {
           local _pwd=''${PWD}
           if [[ "$(uname)" == "Darwin" ]]; then
@@ -88,7 +103,9 @@
         }
         function openurls_main () {
           while IFS= read -r url; do
-            open -a "Safari" ''${url}
+            if [[ "$(uname)" == "Darwin" ]]; then
+              open -a "Safari" ''${url}
+            fi
             sleep 1
           done < ''${1}
           return 0
@@ -101,20 +118,25 @@
           done
           return 0
         }
+        function ssddir_main () {
+          if [[ "$(uname)" == "Darwin" ]]; then
+            local _ssddir=$(sops -d --extract '["mac_ssd_dir"]' ~/.env)
+          elif [[ "$(uname)" == "Linux" ]]; then
+            local _ssddir=$(sops -d --extract '["lnx_ssd_dir"]' ~/.env)
+          fi
+          if [[ ! -d ''${_ssddir} ]]; then
+            echo "Please connect the SSD."
+            return 1
+          fi
+          echo ''${_ssddir}
+          return 0
+        }
         function roscheck_main () {
           pgrep -q oahd && echo "Rosetta 2 is installed" || echo "Rosetta 2 is NOT installed"
           return 0
         }
         function rpds_main () {
           dd if=/dev/random of=${config.home.homeDirectory}/Downloads/tmp.img bs=1073741824 count="''${1}"
-          return 0
-        }
-        function ssddir_main () {
-          if [[ "$(uname)" == "Darwin" ]]; then
-            ssd_dir=$(sops -d --extract '["mac_ssd_dir"]' ~/.env)
-          elif [[ "$(uname)" == "Linux" ]]; then
-            ssd_dir=$(sops -d --extract '["lnx_ssd_dir"]' ~/.env)
-          fi
           return 0
         }
         compdef clamdf_main _clamdf_main
@@ -146,6 +168,9 @@
         clamdf = "clamdf_main";
         cut4dl = "cut4dl_main";
         d2u = "dos2unix";
+        emg = "emg_main";
+        emgc = "emgc_main";
+        emgl = "emgl_main";
         gaa = "git add -A";
         img2webp = "img2webp_main";
         less = "bat";
