@@ -150,6 +150,7 @@
     pkgs.vlc-bin
   ] ++ lib.optionals pkgs.stdenv.isLinux [
     pkgs.cryptomator
+    pkgs.nixgl.nixGLIntel
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
