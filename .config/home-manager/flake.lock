@@ -3,11 +3,11 @@
     "brew-api": {
       "flake": false,
       "locked": {
-        "lastModified": 1782810387,
-        "narHash": "sha256-+/i/Aja8o8PKkOVOe7NL6/ItZvvvTotiE2N6/2i7u6M=",
+        "lastModified": 1782817308,
+        "narHash": "sha256-K0D9DTlrr8FsSzdOtxp9AmS4TCGH9822K3xkQvZNPUY=",
         "owner": "BatteredBunny",
         "repo": "brew-api",
-        "rev": "1c8a5a03895dd1ae72cb5a3dcd81b760a9076d0d",
+        "rev": "553e5b948dc2453a4d4172fa9824ea8a52fd979e",
         "type": "github"
       },
       "original": {
@@ -100,6 +100,22 @@
         "type": "github"
       }
     },
+    "nixgl": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762090880,
+        "narHash": "sha256-fbRQzIGPkjZa83MowjbD2ALaJf9y6KMDdJBQMKFeY/8=",
+        "owner": "nix-community",
+        "repo": "nixGL",
+        "rev": "b6105297e6f0cd041670c3e8628394d4ee247ed5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixGL",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1781577229,
@@ -138,6 +154,7 @@
         "brew-nix": "brew-nix",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin_2",
+        "nixgl": "nixgl",
         "nixpkgs": "nixpkgs_2"
       }
     }
