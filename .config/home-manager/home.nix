@@ -270,6 +270,7 @@
       enableSshSupport = true;
     } // (if pkgs.stdenv.isLinux then {
       pinentryPackage = pkgs.pinentry-all;
+    } else {
     };
   };
   xdg = {
