@@ -151,6 +151,7 @@
   ] ++ lib.optionals pkgs.stdenv.isLinux [
     pkgs.cryptomator
     pkgs.nixgl.nixGLIntel
+    pkgs.pinentry-all
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
