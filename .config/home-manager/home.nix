@@ -90,6 +90,7 @@
     pkgs.libplacebo
     pkgs.markdown-toc
     pkgs.meson
+    pkgs.nerd-fonts."m+"
     pkgs.nerd-fonts.bigblue-terminal
     pkgs.ninja
     pkgs.nix-zsh-completions
