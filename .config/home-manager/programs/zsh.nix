@@ -159,7 +159,7 @@
           eval "$(/usr/local/bin/brew shellenv)"
         fi
         if [[ $SHLVL = 1 ]]; then
-          tmuxinator start quarter
+          tmux
         fi
       '';
       shellAliases = {
