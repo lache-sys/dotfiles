@@ -38,10 +38,6 @@
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-    (lib.mkIf pkgs.stdenv.isDarwin pkgs.brewCasks.macusb)
-    (lib.mkIf pkgs.stdenv.isDarwin pkgs.brewCasks.syntax-highlight)
-    (lib.mkIf pkgs.stdenv.isDarwin pkgs.brewCasks.twine-app)
-    (lib.mkIf pkgs.stdenv.isDarwin pkgs.brewCasks.zoom)
     pkgs.atool
     pkgs.alegreya
     pkgs.alegreya-sans
@@ -58,7 +54,6 @@
     pkgs.colima
     pkgs.coreutils
     pkgs.cuetools
-    pkgs.darwin.trash
     pkgs.deno
     pkgs.dmtx-utils
     pkgs.docker
@@ -66,7 +61,6 @@
     pkgs.docutils
     pkgs.dolphin-emu
     pkgs.dos2unix
-    pkgs.duti
     pkgs.exiftool
     pkgs.eza
     pkgs.f3
@@ -94,7 +88,6 @@
     pkgs.libaacs
     pkgs.libcaca
     pkgs.libplacebo
-    pkgs.mas
     pkgs.markdown-toc
     pkgs.meson
     pkgs.nerd-fonts.bigblue-terminal
@@ -103,12 +96,10 @@
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts-cjk-serif
     pkgs.openjdk
-    pkgs.pam-reattach
     pkgs.pandoc
     pkgs.paperkey
     pkgs.parallel
     pkgs.pcre2
-    pkgs.pinentry_mac
     pkgs.pkgconf
     pkgs.poppler
     pkgs.qemu
@@ -124,9 +115,7 @@
     pkgs.timidity
     pkgs.tombi
     pkgs.ueberzugpp
-    pkgs.utm
     pkgs.uv
-    pkgs.vlc-bin
     pkgs.vgmstream
     pkgs.wakeonlan
     pkgs.wget
@@ -147,6 +136,18 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+  ] ++ lib.optionals pkgs.stdenv.isDarwin [
+    pkgs.brewCasks.macusb
+    pkgs.brewCasks.syntax-highlight
+    pkgs.brewCasks.twine-app
+    pkgs.brewCasks.zoom
+    pkgs.darwin.trash
+    pkgs.duti
+    pkgs.mas
+    pkgs.pam-reattach
+    pkgs.pinentry_mac
+    pkgs.utm
+    pkgs.vlc-bin
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
