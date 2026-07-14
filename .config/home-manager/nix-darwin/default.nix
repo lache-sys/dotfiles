@@ -1,6 +1,14 @@
 { config, pkgs, ... }:
 
 {
+  documentation = {
+    doc = {
+      enable = false;
+    };
+    man = {
+      enable = false;
+    };
+  };
   environment = {
     systemPackages = with pkgs; [
       gnupg
@@ -18,9 +26,15 @@
       max-jobs = 8;
     };
   };
-  security.pam.services.sudo_local = {
-    touchIdAuth = true;
-    reattach = true;
+  security = {
+    pam = {
+      services = {
+        sudo_local = {
+          touchIdAuth = true;
+          reattach = true;
+        };
+      };
+    };
   };
   system = {
     defaults = {
@@ -75,7 +89,7 @@
         AppleShowAllExtensions = true;
         FXEnableExtensionChangeWarning = false;
         FXPreferredViewStyle = "clmv";
-#         NewWindowTargetPath = file://;
+#         NewWindowTargetPath = file://${config.home.homeDirectory};
         ShowPathbar = true;
         ShowStatusBar = true;
       };

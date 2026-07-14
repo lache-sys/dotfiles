@@ -15,8 +15,10 @@
       settings = {
       };
       extraConfig = ''
+        autocmd Filetype python setlocal ts=2 sw=2 expandtab
         hi Comment ctermfg=3
         let g:previm_enable_realtime = 1
+        let g:python_recommended_style = 0
         nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
         nnoremap <silent> <C-j> :bprev<CR>
         nnoremap <silent> <C-k> :bnext<CR>
@@ -53,6 +55,7 @@
         set relativenumber
         set shellslash
         set shiftwidth=2
+        set tabstop=2
       '';
     };
   };
