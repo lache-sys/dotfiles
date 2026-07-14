@@ -3,10 +3,16 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    };
     brew-nix = {
       url = "github:BatteredBunny/brew-nix";
-      inputs.brew-api.follows = "brew-api";
+      inputs = {
+        brew-api = {
+          follows = "brew-api";
+        };
+      };
     };
     brew-api = {
       url = "github:BatteredBunny/brew-api";
@@ -14,20 +20,24 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
     };
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
     };
     nixgl = {
       url = "github:nix-community/nixGL";
       flake = false;
     };
-#     previm = {
-#       url = "github:previm/previm";
-#       flake = false;
-#     };
   };
   outputs =
     {
@@ -67,6 +77,7 @@
             ./programs/alacritty.nix
             ./programs/bash.nix
             ./programs/btop.nix
+            ./programs/ranger.nix
             ./programs/starship.nix
             ./programs/vim.nix
             ./programs/zsh.nix

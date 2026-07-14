@@ -21,11 +21,9 @@
       }
     ];
     brews = [
-      "clamav"
       "dosbox-x"
       "dvdbackup"
       "felinks"
-      "ffmpeg"
       "ffmpeg-full"
       "ffms2"
       "kubernetes-cli"
@@ -40,9 +38,7 @@
       "rvvm"
       "sevenzip"
       "tag"
-      "tmuxinator"
       "vcdimager"
-      "webp"
     ];
     casks = [
       "lache-sys/tap/8bitdo-firmware-updater"
@@ -143,7 +139,7 @@
       "LINE" = 539883307;
       "Mp3tag" = 1532597159;
       "Name Mangler 3" = 603637384;
-#       "Pine Player Pro" = 6474128342;
+      "Photo Naminator" = 1598189356;
       "Pure Paste" = 1611378436;
       "RosettaCheck" = 6759349750;
       "Spark" = 1176895641;

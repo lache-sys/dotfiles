@@ -19,6 +19,10 @@
         function _openurls_main () {
           _files -W ./
         }
+        function clamd_main () {
+          clamd --config-file=${config.home.homeDirectory}/.config/clamav/clamd.conf
+          return 0
+        }
         function clamdf_main () {
           local _pwd=''${PWD}
           cd "$(dirname "''${1}")"
@@ -53,6 +57,10 @@
         function emgl_main () {
           local _ssddir=$(ssddir_main)
           python3 ''${_ssddir}/git/emg/bin/lnk.py -i ''${_ssddir}/git/emg/bin/lnk.toml
+          return 0
+        }
+        function freshclam_main () {
+          freshclam --config-file=${config.home.homeDirectory}/.config/clamav/freshclam.conf
           return 0
         }
         function gpa_main () {
@@ -108,6 +116,12 @@
           cd "''${_pwd}"
           return 0
         }
+        function mkdire_main () {
+          for i in $(seq 1 ''${2}); do
+            mkdir "emg__$(printf %01d ''${1})-$(printf %02d ''${i})"
+          done
+          return 0
+        }
         function nixall_main () {
           cd ${config.home.homeDirectory}/.config/home-manager
           nix flake update
@@ -142,7 +156,7 @@
           fi
           if [[ ! -d ''${_ssddir} ]]; then
             echo "Please connect the SSD."
-            return 1
+            exit 1
           fi
           echo ''${_ssddir}
           return 0
@@ -182,6 +196,7 @@
       '';
       shellAliases = {
         cat = "bat --paging=never";
+        clamd = "clamd_main";
         clamddl = "clamdscan ~/Downloads -i -m --remove";
         clamdf = "clamdf_main";
         cut4dl = "cut4dl_main";
@@ -189,6 +204,7 @@
         emg = "emg_main";
         emgc = "emgc_main";
         emgl = "emgl_main";
+        freshclam = "freshclam_main";
         gaa = "git add -A";
         gpa = "gpa_main";
         img2webp = "img2webp_main";

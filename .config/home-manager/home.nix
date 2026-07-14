@@ -6,13 +6,14 @@
   home.username = "lache-sys";
   home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/lache-sys" else "/home/lache-sys";
   home.sessionPath = [
-    "/opt/homebrew/opt/ffmpeg-full/bin:$PATH"
   ];
   home.sessionVariables = {
-    CPPFLAGS = "-I/opt/homebrew/opt/ffmpeg-full/include";
+    CMAKE_PREFIX_PATH = "${config.home.profileDirectory}";
+    CPATH = "${config.home.profileDirectory}/include";
+    CPLUS_INCLUDE_PATH = "${config.home.profileDirectory}/include";
     HOMEBREW_NO_ANALYTICS = true;
-    LDFLAGS= " -L/opt/homebrew/opt/ffmpeg-full/lib";
-    PKG_CONFIG_PATH = "/opt/homebrew/opt/ffmpeg-full/lib/pkgconfig";
+    LIBRARY_PATH = "${config.home.profileDirectory}/lib";
+    PKG_CONFIG_PATH = "${config.home.profileDirectory}/lib/pkgconfig";
 # 9B36E0149A4EAB28E032F2D382BD733A21368364: Expires in 2027-06-04!
     SOPS_PGP_FP = "9B36E0149A4EAB28E032F2D382BD733A21368364";
     TOMBI_OFFLINE = true;
@@ -32,6 +33,11 @@
   # release notes.
   home.stateVersion = "26.05"; # Please read the comment before changing.
 
+  home.activation = {
+    createClamAlvDirs = ''
+      mkdir -p "${config.home.homeDirectory}/.config/clamav/db"
+    '';
+  };
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
@@ -49,6 +55,7 @@
     pkgs.cdrdao
     pkgs.cdrtools
     pkgs.chafa
+    pkgs.clamav
     pkgs.cmake
     pkgs.colima
     pkgs.coreutils
@@ -58,17 +65,19 @@
     pkgs.docker
     pkgs.docker-compose
     pkgs.docutils
-    pkgs.dolphin-emu
     pkgs.dos2unix
     pkgs.exiftool
     pkgs.eza
     pkgs.f3
     pkgs.fastfetch
+    pkgs.fclones
     pkgs.fdupes
+    pkgs.ffmpeg
     pkgs.flex
     pkgs.fluidsynth
     pkgs.fontconfig
     pkgs.fzf
+    pkgs.gcc
     pkgs.geist-font
     pkgs.gettext
     pkgs.gh
@@ -87,6 +96,7 @@
     pkgs.libaacs
     pkgs.libcaca
     pkgs.libplacebo
+    pkgs.libwebp
     pkgs.markdown-toc
     pkgs.meson
     pkgs.nerd-fonts."m+"
@@ -101,7 +111,6 @@
     pkgs.parallel
     pkgs.pcre2
     pkgs.pkgconf
-    pkgs.poppler
     pkgs.qemu
     pkgs.rsync
     pkgs.rtmidi
@@ -114,7 +123,6 @@
     pkgs.sops
     pkgs.timidity
     pkgs.tombi
-    pkgs.ueberzugpp
     pkgs.uv
     pkgs.vgmstream
     pkgs.wakeonlan
@@ -166,6 +174,11 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+  };
+  manual = {
+    manpages = {
+      enable = false;
+    };
   };
   nixpkgs = {
     overlays = [
@@ -280,6 +293,25 @@
       "btop/themes" = {
         recursive = true;
         source = ./config/btop/themes;
+      };
+      "clamav/clamd.conf" = {
+        text = ''
+          DatabaseDirectory ${config.home.homeDirectory}/.config/clamav/db
+          LogFile ${config.home.homeDirectory}/.config/clamav/clamd.log
+          LogTime yes
+          LogClean yes
+          LocalSocket ${config.home.homeDirectory}/.config/clamav/clamd.ctl
+          FixStaleSocket yes
+        '';
+      };
+      "clamav/freshclam.conf" = {
+        text = ''
+          DatabaseDirectory ${config.home.homeDirectory}/.config/clamav/db
+          UpdateLogFile ${config.home.homeDirectory}/.config/clamav/freshclam.log
+          LogTime yes
+          DatabaseOwner ${config.home.username}
+          DatabaseMirror database.clamav.net
+        '';
       };
       "homebrew/trust.json" = {
         source = ./config/homebrew/trust.json;
