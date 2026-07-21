@@ -23,17 +23,25 @@
           clamd --config-file=${config.home.homeDirectory}/.config/clamav/clamd.conf
           return 0
         }
+        function clamddl_main () {
+          clamdscan ~/Downloads --config-file=${config.home.homeDirectory}/.config/clamav/clamd.conf -i -m --remove
+          return 0
+        }
         function clamdf_main () {
           local _pwd=''${PWD}
           cd "$(dirname "''${1}")"
-          clamdscan -i -m --remove -f "''${1}"
+          clamdscan --config-file=${config.home.homeDirectory}/.config/clamav/clamd.conf -f "''${1}" -i -m --remove 
           cd ''${_pwd}
           return 0
         }
         function cut4dl_main () {
           local _i=0
-          cd ~/Downloads
-          cut -d ',' -f 2 "''${1}" | sed -e '1,2d' > req.txt
+          local _pwd=''${PWD}
+          local _tmpdir=$(mktemp -d)
+          cd ''${_pwd}
+          local _abspath="$(realpath ''${1})"
+          cd ''${_tmpdir}
+          cut -d ',' -f 2 "''${_abspath}" | sed -e '1,2d' > req.txt
           while read LINE; do
             _origname=$(basename ''${LINE})
             _ext=''${_origname##*.}
@@ -42,6 +50,21 @@
             wget -O ''${_i4}.''${_ext} ''${LINE}
           done < req.txt
           rm -f req.txt
+          cd ''${_pwd}
+          clamscan ''${_tmpdir} -d ${config.home.homeDirectory}/.config/clamav/db -i --remove
+          local _clamval=''${?}
+          if [[ "$(uname)" == "Darwin" ]]; then
+            if [[ ''${_clamval} -eq 0 ]]; then
+              osascript -e "display notification \"clamscan succeeded.\" with title \"clamscan\" subtitle \"Succeeded!\" sound name \"Bell\""
+              mv ''${_tmpdir} ${config.home.homeDirectory}/Downloads
+            elif [[ ''${_clamval} -eq 1 ]]; then
+              osascript -e "display notification \"clamscan found an infected file!\" with title \"clamscan\" subtitle \"Failed!\" sound name \"Basso\""
+              sudo rm -rf ''${_tmpdir}
+            elif [[ ''${_clamval} -eq 2 ]]; then
+              osascript -e "display notification \"clamscan encountered errors. Check the logs.\" with title \"clamscan\" subtitle \"Failed!\" sound name \"Basso\""
+              sudo rm -rf ''${_tmpdir}
+            fi
+          fi
           return 0
         }
         function emg_main () {
@@ -57,6 +80,12 @@
         function emgl_main () {
           local _ssddir=$(ssddir_main)
           python3 ''${_ssddir}/git/emg/bin/lnk.py -i ''${_ssddir}/git/emg/bin/lnk.toml
+          return 0
+        }
+        function flac2m4a_main () {
+          for i in *.flac; do
+            ffmpeg -i ''${i} -acodec alac -vcodec copy $(basename ''${i} .flac).m4a
+          done
           return 0
         }
         function freshclam_main () {
@@ -123,12 +152,24 @@
           return 0
         }
         function nixall_main () {
+          local _pwd=''${PWD}
           cd ${config.home.homeDirectory}/.config/home-manager
           nix flake update
           home-manager switch --flake .
           if [[ "$(uname)" == "Darwin" ]]; then
             sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
           fi
+          cd "''${_pwd}"
+          return 0
+        }
+        function nixupg_main () {
+          local _pwd=''${PWD}
+          cd ${config.home.homeDirectory}/.config/home-manager
+          home-manager switch --flake .
+          if [[ "$(uname)" == "Darwin" ]]; then
+            sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
+          fi
+          cd "''${_pwd}"
           return 0
         }
         function openurls_main () {
@@ -161,12 +202,22 @@
           echo ''${_ssddir}
           return 0
         }
+        function relogin_main () {
+          exec ''${SHELL} -l
+          return 0
+        }
         function roscheck_main () {
           pgrep -q oahd && echo "Rosetta 2 is installed" || echo "Rosetta 2 is NOT installed"
           return 0
         }
         function rpds_main () {
           dd if=/dev/random of=${config.home.homeDirectory}/Downloads/tmp.img bs=1073741824 count="''${1}"
+          return 0
+        }
+        function wav2flac_main () {
+          for i in *.wav; do
+            flac -8 -f ''${i}
+          done
           return 0
         }
         compdef clamdf_main _clamdf_main
@@ -195,9 +246,10 @@
         fi
       '';
       shellAliases = {
+        brewall = "brew upgrade -y && brew upgrade --cask -g -y && brew doctor";
         cat = "bat --paging=never";
         clamd = "clamd_main";
-        clamddl = "clamdscan ~/Downloads -i -m --remove";
+        clamddl = "clamddl_main";
         clamdf = "clamdf_main";
         cut4dl = "cut4dl_main";
         d2u = "dos2unix";
@@ -212,14 +264,17 @@
         ls = "eza --icons --group-directories-first";
         lsg = "lsg_main";
         nixall = "nixall_main";
+        nixupg = "nixupg_main";
         openurls = "openurls_main";
         png2webp = "img2webp_main .png";
+        relogin = "relogin_main";
         roscheck = "roscheck_main";
         rpds = "rpds_main";
         smart = "smartctl -a";
         ssddir = "ssddir_main";
         sza = "7zz a -mmt=on -mx=9 -sdel";
         vvim = "vim -u NONE -N";
+        wav2flac = "wav2flac_main";
       };
       syntaxHighlighting = {
         enable = true;

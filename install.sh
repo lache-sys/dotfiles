@@ -4,20 +4,19 @@ HM_SRC="$(cd "$(dirname "$0")"; pwd)/.config/home-manager"
 HM_TGT="${HOME}/.config/home-manager"
 SCR_DIR="$(cd "$(dirname "$0")"; pwd)"
 if [[ "$(uname)" == "Darwin" ]]; then
-  PKGTMPDIR=$(mktemp -d)
-  PKGTMP=${PKGTMPDIR}/Determinate.pkg
-  curl -L -o ${PKGTMP} https://install.determinate.systems/determinate-pkg/stable/Universal
-  sudo installer -pkg ${PKGTMP} -target / --no-confirm
-  sudo rm -rf ${PKGTMPDIR}
+#   PKGTMPDIR=$(mktemp -d)
+#   PKGTMP=${PKGTMPDIR}/Determinate.pkg
+#   curl -L -o ${PKGTMP} https://install.determinate.systems/determinate-pkg/stable/Universal
+#   sudo installer -pkg ${PKGTMP} -target /
+#   sudo rm -rf ${PKGTMPDIR}
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   if [[ $(uname -m) == "arm64" || $(uname -m) == "aarch64" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
   elif [[ $(uname -m) == "x86_64" ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
   fi
-elif [[ "$(uname)" == "Linux" ]]; then
-  curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm
 fi
+curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable-flakes --no-confirm
 . /etc/profile.d/nix.sh
 if [[ ! -d "${HOME}/.config" ]]; then
   mkdir -p "${HOME}/.config"
