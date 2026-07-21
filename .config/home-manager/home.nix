@@ -34,7 +34,7 @@
   home.stateVersion = "26.05"; # Please read the comment before changing.
 
   home.activation = {
-    createClamAlvDirs = ''
+    createClamAVDirs = ''
       mkdir -p "${config.home.homeDirectory}/.config/clamav/db"
     '';
   };
@@ -65,6 +65,7 @@
     pkgs.docker
     pkgs.docker-compose
     pkgs.docutils
+#     pkgs.dolphin-emu
     pkgs.dos2unix
     pkgs.exiftool
     pkgs.eza
@@ -73,6 +74,7 @@
     pkgs.fclones
     pkgs.fdupes
     pkgs.ffmpeg
+    pkgs.flac
     pkgs.flex
     pkgs.fluidsynth
     pkgs.fontconfig
@@ -88,6 +90,8 @@
     pkgs.ia-writer-duospace
     pkgs.ia-writer-mono
     pkgs.ia-writer-quattro
+    pkgs.imagemagickBig
+    pkgs.img2pdf
     pkgs.ipafont
     pkgs.ipaexfont
     pkgs.keybase
@@ -95,6 +99,8 @@
     pkgs.less
     pkgs.libaacs
     pkgs.libcaca
+    pkgs.libogg
+    pkgs.libvorbis
     pkgs.libplacebo
     pkgs.libwebp
     pkgs.markdown-toc
@@ -111,6 +117,7 @@
     pkgs.parallel
     pkgs.pcre2
     pkgs.pkgconf
+    pkgs.poppler-utils
     pkgs.qemu
     pkgs.rsync
     pkgs.rtmidi
@@ -146,6 +153,7 @@
     # '')
   ] ++ lib.optionals pkgs.stdenv.isDarwin [
     pkgs.brewCasks.macusb
+    pkgs.brewCasks.puremac
     pkgs.brewCasks.syntax-highlight
     pkgs.brewCasks.twine-app
     pkgs.brewCasks.zoom
@@ -254,6 +262,14 @@
         setw -g window-status-activity-style bg="cyan","underscore",fg="black"
         unbind C-b
       '';
+      plugins = [
+        {
+          plugin = pkgs.tmuxPlugins.tmux-thumbs;
+          extraConfig = ''
+            set -g @thumbs-command 'tmux set-buffer -- {} && tmux display-message "Copied {}"'
+          '';
+        }
+      ];
       prefix = "C-s";
       tmuxinator = {
         projects = {

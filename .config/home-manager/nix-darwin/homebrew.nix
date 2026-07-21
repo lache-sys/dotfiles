@@ -118,9 +118,9 @@
       "lache-sys/tap/kamvas-pro-13-2-5k-driver"
       "keybase"
       "lache-sys/tap/ntsc-rs"
-      "puremac"
       "quicklook-video"
       "retroarch-metal"
+      "veracrypt-fuse-t"
     ];
     masApps = {
       "Amphetamine" = 937984704;
@@ -145,6 +145,7 @@
       "Spark" = 1176895641;
       "TinyHost" = 6757653859;
       "V1MML" = 971745309;
+      "Xcode" = 497799835;
       "Yoink" = 457622435;
     };
   };

@@ -1,3 +1,4 @@
 docopt-ng
+opencv-python
 toml
 yt-dlp
