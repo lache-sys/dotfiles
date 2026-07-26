@@ -4,11 +4,6 @@ HM_SRC="$(cd "$(dirname "$0")"; pwd)/.config/home-manager"
 HM_TGT="${HOME}/.config/home-manager"
 SCR_DIR="$(cd "$(dirname "$0")"; pwd)"
 if [[ "$(uname)" == "Darwin" ]]; then
-#   PKGTMPDIR=$(mktemp -d)
-#   PKGTMP=${PKGTMPDIR}/Determinate.pkg
-#   curl -L -o ${PKGTMP} https://install.determinate.systems/determinate-pkg/stable/Universal
-#   sudo installer -pkg ${PKGTMP} -target /
-#   sudo rm -rf ${PKGTMPDIR}
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   if [[ $(uname -m) == "arm64" || $(uname -m) == "aarch64" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"

@@ -49,6 +49,7 @@
         finder = {
           DisableAllAnimations = false;
           NewWindowTarget = "PfLo";
+          ShowTabView = true;
         };
         ImageCapture = {
           disableHotPlug = true;

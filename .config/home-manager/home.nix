@@ -65,7 +65,7 @@
     pkgs.docker
     pkgs.docker-compose
     pkgs.docutils
-#     pkgs.dolphin-emu
+    pkgs.dolphin-emu
     pkgs.dos2unix
     pkgs.exiftool
     pkgs.eza
@@ -152,6 +152,14 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ] ++ lib.optionals pkgs.stdenv.isDarwin [
+    pkgs.brewCasks.alfred
+    pkgs.brewCasks.bartender
+    pkgs.brewCasks.bettertouchtool
+    pkgs.brewCasks.chatgpt
+    pkgs.brewCasks.cog-app
+    pkgs.brewCasks.crossover
+    pkgs.brewCasks.cryptomator
+    pkgs.brewCasks.discord
     pkgs.brewCasks.macusb
     pkgs.brewCasks.puremac
     pkgs.brewCasks.syntax-highlight
