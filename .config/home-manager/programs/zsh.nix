@@ -19,6 +19,9 @@
         function _openurls_main () {
           _files -W ./
         }
+        function _pdf2png350_main () {
+          _files -W ./
+        }
         function clamd_main () {
           clamd --config-file=${config.home.homeDirectory}/.config/clamav/clamd.conf
           return 0
@@ -172,6 +175,10 @@
           cd "''${_pwd}"
           return 0
         }
+        function openanyway_main () {
+          xattr -d com.apple.quarantine ''${1}
+          return 0
+        }
         function openurls_main () {
           while IFS= read -r url; do
             if [[ "$(uname)" == "Darwin" ]]; then
@@ -181,12 +188,25 @@
           done < ''${1}
           return 0
         }
+        function pdf2png350_main () {
+          pdftocairo -png -r 350 ''${1}
+          return 0
+        }
         function png2webp_main () {
           local _pwd=''${PWD}
           cd "''${_pwd}"
           for i in *.png; do
             ffmpeg -i "''${i}" -lossless 1 $(basename "''${i}" ''${i}).webp
           done
+          return 0
+        }
+        function safarisave_main () {
+          if [[ "$(uname)" == "Darwin" ]]; then
+            osascript -e{'set o to""','tell app"safari"','repeat with t in tabs of window 1','set o to o&url of t&"	"&name of t&"\n"',end,end,o} | sed \$d > ${config.home.homeDirectory}/Downloads/$(date +"%Y-%m-%d_%H-%M-%S").txt
+          else
+            echo "Sorry, this function is for macOS Only."
+            return 1
+          fi
           return 0
         }
         function ssddir_main () {
@@ -224,6 +244,7 @@
         compdef cut4dl_main _cut4dl_main
         compdef lsg_main _lsg_main
         compdef openurls_main _openurls_main
+        compdef pdf2png350_main _pdf2png350_main
         export GPG_TTY=$(tty)
         if [[ "$(uname)" == "Darwin" ]]; then
           export SSH_AUTH_SOCK="${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
@@ -265,11 +286,14 @@
         lsg = "lsg_main";
         nixall = "nixall_main";
         nixupg = "nixupg_main";
+        openanyway = "openanyway_main";
         openurls = "openurls_main";
+        pdf2png350 = "pdf2png350_main";
         png2webp = "img2webp_main .png";
         relogin = "relogin_main";
         roscheck = "roscheck_main";
         rpds = "rpds_main";
+        safarisave = "safarisave_main";
         smart = "smartctl -a";
         ssddir = "ssddir_main";
         sza = "7zz a -mmt=on -mx=9 -sdel";

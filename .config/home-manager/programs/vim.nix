@@ -15,6 +15,20 @@
       settings = {
       };
       extraConfig = ''
+        augroup templateGroup
+        autocmd!
+        autocmd BufNewFile *.bash :0r ${config.home.homeDirectory}/.config/vim/template/t.bash
+        autocmd BufNewFile *.bat :0r ${config.home.homeDirectory}/.config/vim/template/t.cmd
+        autocmd BufNewFile *.cmd :0r ${config.home.homeDirectory}/.config/vim/template/t.cmd
+        autocmd BufNewFile *.htm :0r ${config.home.homeDirectory}/.config/vim/template/t.html
+        autocmd BufNewFile *.html :0r ${config.home.homeDirectory}/.config/vim/template/t.html
+        autocmd BufNewFile *.m3u :0r ${config.home.homeDirectory}/.config/vim/template/t.m3u
+        autocmd BufNewFile *.m3u8 :0r ${config.home.homeDirectory}/.config/vim/template/t.m3u
+        autocmd BufNewFile *.md :0r ${config.home.homeDirectory}/.config/vim/template/t.md
+        autocmd BufNewFile *.mkd :0r ${config.home.homeDirectory}/.config/vim/template/t.md
+        autocmd BufNewFile *.py :0r ${config.home.homeDirectory}/.config/vim/template/t.py
+        autocmd BufNewFile *.zsh :0r ${config.home.homeDirectory}/.config/vim/template/t.zsh
+        augroup END
         autocmd Filetype python setlocal ts=2 sw=2 expandtab
         hi Comment ctermfg=3
         let g:previm_enable_realtime = 1

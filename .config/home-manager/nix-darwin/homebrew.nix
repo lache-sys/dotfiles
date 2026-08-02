@@ -113,6 +113,7 @@
       "quicklook-video"
       "retroarch-metal"
       "veracrypt-fuse-t"
+      "zoom"
     ];
     masApps = {
       "Amphetamine" = 937984704;
