@@ -127,7 +127,6 @@
       "EdgeView" = 1580323719;
       "GrandPerspective" = 1111570163;
       "Hide My Screen" = 6476070422;
-      "Iris" = 6761598836;
       "Jump Desktop" = 524141863;
       "LINE" = 539883307;
       "Mp3tag" = 1532597159;

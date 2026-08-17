@@ -4,7 +4,7 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "lache-sys";
-  home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/lache-sys" else "/home/lache-sys";
+  home.homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/lache-sys" else "/home/lache-sys";
   home.sessionPath = [
   ];
   home.sessionVariables = {
@@ -19,7 +19,7 @@
     TOMBI_OFFLINE = true;
     TOMBI_NO_CACHE = true;
     XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
-  } // (if pkgs.stdenv.isDarwin then {
+  } // (if pkgs.stdenv.hostPlatform.isDarwin then {
     SSH_AUTH_SOCK = "${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
   } else {
     SSH_AUTH_SOCK = "${config.home.homeDirectory}/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock";
@@ -105,8 +105,10 @@
     pkgs.libplacebo
     pkgs.libwebp
     pkgs.markdown-toc
+    pkgs.mcomix
     pkgs.melonds
     pkgs.meson
+    pkgs.midicsv
     pkgs.nerd-fonts."m+"
     pkgs.nerd-fonts.bigblue-terminal
     pkgs.ninja
@@ -153,18 +155,19 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-  ] ++ lib.optionals pkgs.stdenv.isDarwin [
+  ] ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
     pkgs.brewCasks.alfred
     pkgs.brewCasks.bartender
     pkgs.brewCasks.bettertouchtool
     pkgs.brewCasks.chatgpt
     pkgs.brewCasks.cog-app
-    pkgs.brewCasks.crossover
     pkgs.brewCasks.cryptomator
     pkgs.brewCasks.discord
+    pkgs.brewCasks.gimp
     pkgs.brewCasks.macusb
-#     pkgs.brewCasks.medibangpaintpro
+    pkgs.brewCasks.opendisplay
     pkgs.brewCasks.puremac
+    pkgs.brewCasks.snes9x
     pkgs.brewCasks.syntax-highlight
     pkgs.brewCasks.twine-app
     pkgs.brewCasks.zoom
@@ -175,7 +178,7 @@
     pkgs.pinentry_mac
     pkgs.utm
     pkgs.vlc-bin
-  ] ++ lib.optionals pkgs.stdenv.isLinux [
+  ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
     pkgs.cryptomator
     pkgs.pinentry-all
   ];
@@ -309,7 +312,7 @@
       enable = true;
       enableSshSupport = true;
       pinentry = {
-      } // (if pkgs.stdenv.isLinux then {
+      } // (if pkgs.stdenv.hostPlatform.isLinux then {
         package = pkgs.pinentry-all;
       } else {
       });
@@ -429,9 +432,9 @@
           title:
           ---
 
-          # Title
+          # Title  
 
-          <!-- toc -->
+          <!-- toc -->  
         '';
       };
       "vim/template/t.py" = {

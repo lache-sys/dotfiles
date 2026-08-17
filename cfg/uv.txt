@@ -1,4 +1,6 @@
 docopt-ng
+midi-beeper
 opencv-python
+pyxel
 toml
 yt-dlp
