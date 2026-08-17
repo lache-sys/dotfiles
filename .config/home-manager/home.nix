@@ -127,6 +127,8 @@
     pkgs.rtmidi
     pkgs.rustup
     pkgs.rubik
+    pkgs.SDL2
+    pkgs.SDL2_sound
     pkgs.sdl3
     pkgs.shntool
     pkgs.smartmontools
@@ -441,16 +443,8 @@
         text = ''
           #!/usr/bin/env python3
           # -*- coding: utf-8 -*-
-          __doc__ = """{f}
-          Usage:
-            {f}
-            {f} (-h | --help)
 
-          Options:
-            -h --help  Show this screen.
-          """.format(f=__file__)
-
-          from docopt import docopt
+          import argparse
           import logging
           import os
           import sys
@@ -471,8 +465,8 @@
             handler = logging.StreamHandler()
             logging.basicConfig(
               level = logging.DEBUG,
-              format = '%(message)s',
-              datefmt = '[%Y-%m-%d]',
+              format = '%(asctime)s [%(levelname)s] %(message)s',
+              datefmt = '%Y-%m-%d %H:%M:%S',
               handlers = [
                 logging.FileHandler(filename=fn+'.log'),
               ]
@@ -480,10 +474,12 @@
             logger = logging.getLogger(__name__)
             return logger
 
-
-          if __name__ == "__main__":
-            args = docopt(__doc__)
-            main()
+            if __name__ == "__main__":
+              parser = argparse.ArgumentParser(description='.') 
+              parser.add_argument('-i', '--input', help='Input. (required)',
+                                  required=True)
+              args = parser.parse_args()
+              main(args.input)
         '';
       };
       "vim/template/t.zsh" = {

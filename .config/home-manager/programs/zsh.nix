@@ -72,17 +72,17 @@
         }
         function emg_main () {
           local _ssddir=$(ssddir_main)
-          python3 ''${_ssddir}/git/emg/bin/emg.py -i ''${_ssddir}/git/emg/bin/lnk.toml
+          python3 ''${_ssddir}/git/emg/src/emg.py -i ''${_ssddir}/git/emg/src/lnk.toml
           return 0
         }
         function emgc_main () {
           local _ssddir=$(ssddir_main)
-          python3 ''${_ssddir}/git/emg/bin/emg.py -c -i ''${_ssddir}/git/emg/bin/lnk.toml
+          python3 ''${_ssddir}/git/emg/src/emg.py -c -i ''${_ssddir}/git/emg/src/lnk.toml
           return 0
         }
         function emgl_main () {
           local _ssddir=$(ssddir_main)
-          python3 ''${_ssddir}/git/emg/bin/lnk.py -i ''${_ssddir}/git/emg/bin/lnk.toml
+          python3 ''${_ssddir}/git/emg/src/lnk.py -i ''${_ssddir}/git/emg/src/lnk.toml
           return 0
         }
         function flac2m4a_main () {
