@@ -72,17 +72,17 @@
         }
         function emg_main () {
           local _ssddir=$(ssddir_main)
-          python3 ''${_ssddir}/git/emg/src/emg.py -i ''${_ssddir}/git/emg/src/lnk.toml
+          python3 ''${_ssddir}/git/emg/src/main.py -i ''${_ssddir}/git/emg/cfg/settings.toml
           return 0
         }
         function emgc_main () {
           local _ssddir=$(ssddir_main)
-          python3 ''${_ssddir}/git/emg/src/emg.py -c -i ''${_ssddir}/git/emg/src/lnk.toml
+          python3 ''${_ssddir}/git/emg/src/main.py -c -i ''${_ssddir}/git/emg/cfg/settings.toml
           return 0
         }
         function emgl_main () {
           local _ssddir=$(ssddir_main)
-          python3 ''${_ssddir}/git/emg/src/lnk.py -i ''${_ssddir}/git/emg/src/lnk.toml
+          python3 ''${_ssddir}/git/emg/src/lnk.py -i ''${_ssddir}/git/emg/cfg/settings.toml
           return 0
         }
         function flac2m4a_main () {
@@ -201,8 +201,10 @@
           return 0
         }
         function safarisave_main () {
+          _tsv="${config.home.homeDirectory}/Downloads/$(date +"%Y-%m-%d_%H-%M-%S").tsv"
           if [[ "$(uname)" == "Darwin" ]]; then
-            osascript -e{'set o to""','tell app"safari"','repeat with t in tabs of window 1','set o to o&url of t&"	"&name of t&"\n"',end,end,o} | sed \$d > ${config.home.homeDirectory}/Downloads/$(date +"%Y-%m-%d_%H-%M-%S").txt
+            echo "U	T" > ''${_tsv}
+            osascript -e{'set o to""','tell app"safari"','repeat with t in tabs of window 1','set o to o&url of t&"	"&name of t&"\n"',end,end,o} | sed \$d >> ''${_tsv}
           else
             echo "Sorry, this function is for macOS Only."
             return 1

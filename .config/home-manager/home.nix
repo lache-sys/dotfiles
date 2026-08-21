@@ -46,7 +46,7 @@
     pkgs.atool
     pkgs.alegreya
     pkgs.alegreya-sans
-    pkgs.azahar
+#     pkgs.azahar
     pkgs.bat
     pkgs.bchunk
     pkgs.bison
@@ -140,7 +140,7 @@
     pkgs.vgmstream
     pkgs.wakeonlan
     pkgs.wget
-    pkgs.yt-dlp
+#     pkgs.yt-dlp
     pkgs.zoxide
     pkgs.zilla-slab
     pkgs.zsh
@@ -178,6 +178,7 @@
     pkgs.mas
     pkgs.pam-reattach
     pkgs.pinentry_mac
+#     pkgs.secretive
     pkgs.utm
     pkgs.vlc-bin
   ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
@@ -241,12 +242,24 @@
         "**/Thumbs.db"
       ];
       settings = {
-        commit.gpgsign = true;
-        include.path = "${config.home.homeDirectory}/.gitconfig_shared";
-        http.postBuffer = 524288000;
-        init.defaultBranch = "main";
-        pull.ffonly = true;
-        tag.gpgsign = true;
+        commit = {
+          gpgsign = true;
+        };
+        include = {
+          path = "${config.home.homeDirectory}/.gitconfig_shared";
+        };
+        http = {
+          postBuffer = 524288000;
+        };
+        init = {
+          defaultBranch = "main";
+        };
+        pull = {
+          ffonly = true;
+        };
+        tag = {
+          gpgsign = true;
+        };
       };
     };
     gpg = {
@@ -474,12 +487,12 @@
             logger = logging.getLogger(__name__)
             return logger
 
-            if __name__ == "__main__":
-              parser = argparse.ArgumentParser(description='.') 
-              parser.add_argument('-i', '--input', help='Input. (required)',
-                                  required=True)
-              args = parser.parse_args()
-              main(args.input)
+          if __name__ == "__main__":
+            parser = argparse.ArgumentParser(description='.') 
+            parser.add_argument('-i', '--input', help='Input. (required)',
+                                required=True)
+            args = parser.parse_args()
+            main(args.input)
         '';
       };
       "vim/template/t.zsh" = {

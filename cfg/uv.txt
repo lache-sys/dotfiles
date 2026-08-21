@@ -2,5 +2,6 @@ docopt-ng
 midi-beeper
 opencv-python
 pyxel
+pyxel-universal-font
 toml
 yt-dlp
