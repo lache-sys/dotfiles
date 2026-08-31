@@ -22,9 +22,6 @@
           function _clamdf_main () {
             _files -g "*.txt" -W ./
           }
-          function _codebergall_main () {
-            _files -g "*.csv" -W ./
-          }
           function _cut4dl_main () {
             _files -g "*.csv" -W ./
           }
@@ -50,9 +47,6 @@
             cd "$(dirname "''${1}")"
             clamdscan --config-file=${config.home.homeDirectory}/.config/clamav/clamd.conf -f "''${1}" -i -m --remove 
             cd ''${_pwd}
-            return 0
-          }
-          function codebergall_main () {
             return 0
           }
           function cut4dl_main () {
@@ -261,7 +255,6 @@
             return 0
           }
           compdef clamdf_main _clamdf_main
-          compdef codebergall_main _codebergall_main
           compdef cut4dl_main _cut4dl_main
           compdef lsg_main _lsg_main
           compdef openurls_main _openurls_main
