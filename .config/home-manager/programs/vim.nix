@@ -6,11 +6,12 @@
       defaultEditor = true;
       plugins = [
         pkgs.vimPlugins.fzf-wrapper
-        pkgs.vimPlugins.vim-nix
+        pkgs.vimPlugins.markdown-preview-nvim
         pkgs.vimPlugins.nerdtree
         pkgs.vimPlugins.open-browser-vim
         pkgs.vimPlugins.rainbow
         pkgs.vimPlugins.vim-nerdtree-syntax-highlight
+        pkgs.vimPlugins.vim-nix
       ];
       settings = {
       };
@@ -31,6 +32,7 @@
         augroup END
         autocmd Filetype python setlocal ts=2 sw=2 expandtab
         hi Comment ctermfg=3
+        let g:mkdp_auto_start = 1
         let g:previm_enable_realtime = 1
         let g:python_recommended_style = 0
         nnoremap <Esc><Esc> :nohlsearch<CR><ESC>

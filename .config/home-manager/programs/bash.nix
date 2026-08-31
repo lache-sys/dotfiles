@@ -6,9 +6,8 @@
       enable = true;
       enableCompletion = true;
       initExtra = ''
-        if [[ "$(uname)" == "Darwin" ]]; then
-          export SSH_AUTH_SOCK="${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
-        fi
+        source ~/.config/myrc/myprofile
+        source ~/.config/myrc/myrc
       '';
     };
   };

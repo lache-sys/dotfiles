@@ -79,8 +79,11 @@
             ./programs/btop.nix
             ./programs/ranger.nix
             ./programs/starship.nix
+            ./programs/tmux.nix
             ./programs/vim.nix
             ./programs/zsh.nix
+            ./xdg/clamav.nix
+            ./xdg/myrc.nix
           ];
           # Optionally use extraSpecialArgs
           # to pass through arguments to home.nix

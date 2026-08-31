@@ -46,7 +46,6 @@
     pkgs.atool
     pkgs.alegreya
     pkgs.alegreya-sans
-#     pkgs.azahar
     pkgs.bat
     pkgs.bchunk
     pkgs.bison
@@ -140,7 +139,7 @@
     pkgs.vgmstream
     pkgs.wakeonlan
     pkgs.wget
-#     pkgs.yt-dlp
+    pkgs.yt-dlp
     pkgs.zoxide
     pkgs.zilla-slab
     pkgs.zsh
@@ -165,11 +164,8 @@
     pkgs.brewCasks.cog-app
     pkgs.brewCasks.cryptomator
     pkgs.brewCasks.discord
-    pkgs.brewCasks.gimp
-    pkgs.brewCasks.macusb
     pkgs.brewCasks.opendisplay
     pkgs.brewCasks.puremac
-    pkgs.brewCasks.snes9x
     pkgs.brewCasks.syntax-highlight
     pkgs.brewCasks.twine-app
     pkgs.brewCasks.zoom
@@ -178,11 +174,10 @@
     pkgs.mas
     pkgs.pam-reattach
     pkgs.pinentry_mac
-#     pkgs.secretive
-    pkgs.utm
     pkgs.vlc-bin
   ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
     pkgs.cryptomator
+    pkgs.freefilesync
     pkgs.pinentry-all
   ];
 
@@ -265,62 +260,6 @@
     gpg = {
       enable = true;
     };
-    tmux = {
-      enable = true;
-      clock24 = true;
-      extraConfig = ''
-        bind -T edit-mode-vi WheelDownPane send-keys -X scroll-down
-        bind -T edit-mode-vi WheelUpPane send-keys -X scroll-up
-        set -g base-index 1
-        set -g default-terminal 'tmux-256color'
-        set -g mouse on
-        set -g pane-active-border-style bg="cyan",fg="black"
-        set -g pane-border-lines simple
-        set -g prefix C-s
-        set -g status-bg black
-        set -g status-fg cyan
-        set -g status-left '#[fg=white,bg=black]#H#[fg=white]:#[fg=white][#S#[fg=white]][#[default]'
-        set -g status-left-length 30
-        set -g status-right '#[fg=black,bg=cyan,bold] [%Y-%m-%d (%a) %H:%M]#[default]'
-        set -g terminal-overrides 'xterm:colors=256'
-        set -g window-active-style 'fg=#F9F7EF,bg=#191919'
-        set -g window-style 'fg=colour244,bg=colour235'
-        set-option -g renumber-windows on
-        setw -g mode-keys vi
-        setw -g pane-base-index 1
-        setw -g window-status-activity-style bg="cyan","underscore",fg="black"
-        unbind C-b
-      '';
-      plugins = [
-        {
-          plugin = pkgs.tmuxPlugins.tmux-thumbs;
-          extraConfig = ''
-            set -g @thumbs-command 'tmux set-buffer -- {} && tmux display-message "Copied {}"'
-          '';
-        }
-      ];
-      prefix = "C-s";
-      tmuxinator = {
-        projects = {
-          quarter = {
-            root = "~/Downloads";
-            windows = [
-              {
-                editor = {
-                  layout = "tiled";
-                  panes = [
-                    "clear"
-                    "clear"
-                    "clear"
-                    "clear"
-                  ];
-                };
-              }
-            ];
-          };
-        };
-      };
-    };
   };
   services = {
     gpg-agent = {
@@ -339,166 +278,18 @@
         recursive = true;
         source = ./config/btop/themes;
       };
-      "clamav/clamd.conf" = {
-        text = ''
-          DatabaseDirectory ${config.home.homeDirectory}/.config/clamav/db
-          LogFile ${config.home.homeDirectory}/.config/clamav/clamd.log
-          LogTime yes
-          LogClean yes
-          LocalSocket ${config.home.homeDirectory}/.config/clamav/clamd.ctl
-          FixStaleSocket yes
-        '';
-      };
-      "clamav/freshclam.conf" = {
-        text = ''
-          DatabaseDirectory ${config.home.homeDirectory}/.config/clamav/db
-          UpdateLogFile ${config.home.homeDirectory}/.config/clamav/freshclam.log
-          LogTime yes
-          DatabaseOwner ${config.home.username}
-          DatabaseMirror database.clamav.net
-        '';
-      };
       "homebrew/trust.json" = {
-        source = ./config/homebrew/trust.json;
+        text = ''
+          {
+            "trustedtaps": [
+              "https://codeberg.org/lache-sys/homebrew-tap"
+            ]
+          }
+        '';
       };
       "mpv" = {
         recursive = true;
         source = ./config/mpv;
-      };
-      "tmuxinator" = {
-        recursive = true;
-        source = ./config/tmuxinator;
-      };
-      "vim/template/t.bash" = {
-        text = ''
-          #!usr/bin/env bash
-          set -euo pipefail && :<<'USAGE'
-          Usage: $(basename "$0") [-h | --help] [NAME]
-
-          Options:
-            -h | --help Display this help
-          USAGE
-          function init () {
-            readonly local _fn="$(basename "$(test -L "$0" && readlink "$0" || echo "$0")" .bash)"
-            readonly local _scr_dir="$(realpath "$(dirname "$0")")"
-            cd "''${_scr_dir}"
-            return 0
-          }
-          function usage () {
-            while IFS= read -r line && [ ! "''${line#*:}" = "<<'$1'" ]; do :; done
-            while IFS= read -r line && [ ! "$line" = "$1" ]; do set "$@" "$line"; done
-            shift && [ $# -eq 0 ] || printf '%s\n' "cat<<$line" "$@" "$line"
-          }
-          case ''${1:-} in (-h | --help)
-            eval "$(usage "USAGE" < "$0")"
-            exit 0
-          esac
-          function main () {
-            init
-            return 0
-          }
-          main "$@"
-          exit 0
-        '';
-      };
-      "vim/template/t.cmd" = {
-        text = ''
-          @echo off && setlocal
-          chcp 65001
-          pushd %0\..
-          endlocal
-          exit /b
-        '';
-      };
-      "vim/template/t.html" = {
-        text = ''
-          <!DOCTYPE html>
-          <html lang="ja"
-          <head>
-          <meta charset="utf-8">
-          <link rel="stylesheet" href="style.css"
-          type="text/css" charset="utf-8">
-          <title>
-          </title>
-          </head>
-          <body>
-          </body>
-          </html>
-        '';
-      };
-      "vim/template/t.m3u" = {
-        text = ''
-          #EXTM3U
-          #PLAYLIST:
-        '';
-      };
-      "vim/template/t.md" = {
-        text = ''
-          ---
-          author:
-            - name:
-              affiliation:
-          created:
-          lang: ja-JP
-          keywords:
-            -
-          tags:
-            -
-          title:
-          ---
-
-          # Title  
-
-          <!-- toc -->  
-        '';
-      };
-      "vim/template/t.py" = {
-        text = ''
-          #!/usr/bin/env python3
-          # -*- coding: utf-8 -*-
-
-          import argparse
-          import logging
-          import os
-          import sys
-
-
-          def main():
-            init()
-            sys.exit()
-
-
-          def init():
-            os.chdir(os.path.dirname(os.path.abspath(__file__)))
-            return
-
-
-          def logger_settings():
-            fn = os.path.splitext(os.path.basename(sys.argv[0]))[0]
-            handler = logging.StreamHandler()
-            logging.basicConfig(
-              level = logging.DEBUG,
-              format = '%(asctime)s [%(levelname)s] %(message)s',
-              datefmt = '%Y-%m-%d %H:%M:%S',
-              handlers = [
-                logging.FileHandler(filename=fn+'.log'),
-              ]
-            )
-            logger = logging.getLogger(__name__)
-            return logger
-
-          if __name__ == "__main__":
-            parser = argparse.ArgumentParser(description='.') 
-            parser.add_argument('-i', '--input', help='Input. (required)',
-                                required=True)
-            args = parser.parse_args()
-            main(args.input)
-        '';
-      };
-      "vim/template/t.zsh" = {
-        text = ''
-          #!/usr/bin/env zsh
-        '';
       };
     };
   };
