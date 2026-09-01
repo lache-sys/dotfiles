@@ -174,6 +174,7 @@
     pkgs.mas
     pkgs.pam-reattach
     pkgs.pinentry_mac
+    pkgs.utm
     pkgs.vlc-bin
   ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
     pkgs.cryptomator

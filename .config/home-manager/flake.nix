@@ -84,6 +84,7 @@
             ./programs/zsh.nix
             ./xdg/clamav.nix
             ./xdg/myrc.nix
+            ./xdg/vimt.nix
           ];
           # Optionally use extraSpecialArgs
           # to pass through arguments to home.nix

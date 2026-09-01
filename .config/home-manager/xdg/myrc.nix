@@ -19,21 +19,6 @@
       };
       "myrc/myrc" = {
         text = ''
-          function _clamdf_main () {
-            _files -g "*.txt" -W ./
-          }
-          function _cut4dl_main () {
-            _files -g "*.csv" -W ./
-          }
-          function _lsg_main () {
-            _files -W ./
-          }
-          function _openurls_main () {
-            _files -g "*.txt" -W ./
-          }
-          function _pdf2png350_main () {
-            _files -g "*.pdf" -W ./
-          }
           function clamd_main () {
             clamd --config-file=${config.home.homeDirectory}/.config/clamav/clamd.conf
             return 0
@@ -133,6 +118,34 @@
             fi
             return 0
           }
+          function itlbkup_main () {
+            local _itl="${config.home.homeDirectory}/Music/Music/Music Library.musiclibrary"
+            local _pwd="''${PWD}"
+            if [[ "$(uname)" == "Darwin" ]]; then
+              local _tmpdir=$(mktemp -d -p ${config.home.homeDirectory}/Downloads)
+              if pgrep -la Music; then
+                osascript -e 'tell application "Music" to quit'
+              fi
+              cp -pr "''${_itl}" "''${_tmpdir}"
+              cd "''${_tmpdir}"
+              7zz a -mmt=on -mx=9 -sdel itl.7z "Music Library.musiclibrary"
+              local _szzval=''${?}
+              if [[ "$(uname)" == "Darwin" ]]; then
+                if [[ ''${_szzval} -eq 0 ]]; then
+                  osascript -e "display notification \"Operation succeeded.\" with title \"7-Zip CLI\" subtitle \"Succeeded!\" sound name \"Bell\""
+                elif [[ ''${_szzval} -eq 1 ]]; then
+                  osascript -e "display notification \"Completed with Warnings.\" with title \"7-Zip CLI\" subtitle \"Failed!\" sound name \"Basso\""
+                else
+                  osascript -e "display notification \"7-Zip CLI encountered errors. Check the logs.\" with title \"7-Zip CLI\" subtitle \"Failed!\" sound name \"Basso\""
+                fi
+              fi
+              cd ''${_pwd}
+            else
+              echo "Sorry, this function is for macOS Only."
+              return 1
+            fi
+            return 0
+          }
           function img2webp_main () {
             _pwd=''${PWD}
             export CPPFLAGS="-I/opt/homebrew/opt/ffmpeg-full/include"
@@ -188,7 +201,9 @@
             return 0
           }
           function openanyway_main () {
-            xattr -d com.apple.quarantine ''${1}
+            if [[ "$(uname)" == "Darwin" ]]; then
+              xattr -d com.apple.quarantine ''${1}
+            fi
             return 0
           }
           function openurls_main () {
@@ -254,11 +269,6 @@
             done
             return 0
           }
-          compdef clamdf_main _clamdf_main
-          compdef cut4dl_main _cut4dl_main
-          compdef lsg_main _lsg_main
-          compdef openurls_main _openurls_main
-          compdef pdf2png350_main _pdf2png350_main
           export GPG_TTY=$(tty)
           if [[ "$(uname)" == "Darwin" ]]; then
             export SSH_AUTH_SOCK="${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
@@ -267,6 +277,40 @@
             alias brightintosh='open -a BrightIntosh && /Applications/BrightIntosh.app/Contents/Resources/cli.sh'
           fi
           source ~/.venv/bin/activate
+          alias brewall='brew upgrade -y && brew upgrade --cask -g -y && brew doctor'
+          alias cat='bat --paging=never'
+          alias clamd='clamd_main'
+          alias clamddl='clamddl_main'
+          alias clamdf='clamdf_main'
+          alias codebergall='codebergall_main'
+          alias cut4dl='cut4dl_main'
+          alias d2u='dos2unix'
+          alias emg='emg_main'
+          alias emgc='emgc_main'
+          alias emgl='emgl_main'
+          alias freshclam='freshclam_main'
+          alias gaa='git add -A'
+          alias gpa='gpa_main'
+          alias img2webp='img2webp_main'
+          alias itlbkup='itlbkup_main'
+          alias less='bat'
+          alias ls='eza --icons --group-directories-first'
+          alias lsg='lsg_main'
+          alias nixall='nixall_main'
+          alias nixupg='nixupg_main'
+          alias openanyway='openanyway_main'
+          alias openurls='openurls_main'
+          alias pdf2png350='pdf2png350_main'
+          alias png2webp='img2webp_main .png'
+          alias relogin='relogin_main'
+          alias roscheck='roscheck_main'
+          alias rpds='rpds_main'
+          alias safarisave='safarisave_main'
+          alias smart='smartctl -a'
+          alias ssddir='ssddir_main'
+          alias sza='7zz a -mmt=on -mx=9 -sdel'
+          alias vvim='vim -u NONE -N'
+          alias wav2flac='wav2flac_main'
         '';
       };
     };

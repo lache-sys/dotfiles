@@ -38,7 +38,6 @@
       "rvvm"
       "sevenzip"
       "tag"
-      "vcdimager"
     ];
     casks = [
       "lache-sys/tap/8bitdo-firmware-updater"

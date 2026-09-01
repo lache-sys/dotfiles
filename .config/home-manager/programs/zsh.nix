@@ -8,44 +8,35 @@
       enableCompletion = true;
       initContent = ''
         source ~/.config/myrc/myrc
+        function _clamdf_main () {
+          _files -g '*txt' -W ./
+        }
+        function _cut4dl_main () {
+          _files -g '*csv' -W ./
+        }
+        function _lsg_main () {
+          _files -W ./
+        }
+        function _openanyway_main () {
+          _files -g '*app' -W ./
+        }
+        function _openurls_main () {
+          _files -g '*txt' -W ./
+        }
+        function _pdf2png350_main () {
+          _files -g '*pdf' -W ./
+        }
+        compdef clamdf_main _clamdf_main
+        compdef cut4dl_main _cut4dl_main
+        compdef lsg_main _lsg_main
+        compdef openanyway_main _openanyway_main
+        compdef openurls_main _openurls_main
+        compdef pdf2png350_main _pdf2png350_main
       '';
       profileExtra = ''
         source ~/.config/myrc/myprofile
       '';
       shellAliases = {
-        brewall = "brew upgrade -y && brew upgrade --cask -g -y && brew doctor";
-        cat = "bat --paging=never";
-        clamd = "clamd_main";
-        clamddl = "clamddl_main";
-        clamdf = "clamdf_main";
-        codebergall = "codebergall_main";
-        cut4dl = "cut4dl_main";
-        d2u = "dos2unix";
-        emg = "emg_main";
-        emgc = "emgc_main";
-        emgl = "emgl_main";
-        freshclam = "freshclam_main";
-        gaa = "git add -A";
-        gpa = "gpa_main";
-        img2webp = "img2webp_main";
-        less = "bat";
-        ls = "eza --icons --group-directories-first";
-        lsg = "lsg_main";
-        nixall = "nixall_main";
-        nixupg = "nixupg_main";
-        openanyway = "openanyway_main";
-        openurls = "openurls_main";
-        pdf2png350 = "pdf2png350_main";
-        png2webp = "img2webp_main .png";
-        relogin = "relogin_main";
-        roscheck = "roscheck_main";
-        rpds = "rpds_main";
-        safarisave = "safarisave_main";
-        smart = "smartctl -a";
-        ssddir = "ssddir_main";
-        sza = "7zz a -mmt=on -mx=9 -sdel";
-        vvim = "vim -u NONE -N";
-        wav2flac = "wav2flac_main";
       };
       syntaxHighlighting = {
         enable = true;
