@@ -177,6 +177,7 @@
     pkgs.utm
     pkgs.vlc-bin
   ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
+    pkgs.a2jmidid
     pkgs.cryptomator
     pkgs.freefilesync
     pkgs.pinentry-all

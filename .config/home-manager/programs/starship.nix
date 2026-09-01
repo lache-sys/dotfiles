@@ -3,6 +3,7 @@
 {
   programs.starship = {
     enable = true;
+    enableBashIntegration = true;
     settings = {
       c = {
         symbol = " ";
