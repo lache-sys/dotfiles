@@ -6,6 +6,7 @@
   home.username = "lache-sys";
   home.homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/lache-sys" else "/home/lache-sys";
   home.sessionPath = [
+    "${config.home.homeDirectory}/.local/bin"
   ];
   home.sessionVariables = {
     CMAKE_PREFIX_PATH = "${config.home.profileDirectory}";
@@ -157,6 +158,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ] ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
+    pkgs.brewCasks.affinity
     pkgs.brewCasks.alfred
     pkgs.brewCasks.bartender
     pkgs.brewCasks.bettertouchtool
@@ -166,6 +168,7 @@
     pkgs.brewCasks.discord
     pkgs.brewCasks.opendisplay
     pkgs.brewCasks.puremac
+    pkgs.brewCasks.quicklook-video
     pkgs.brewCasks.syntax-highlight
     pkgs.brewCasks.twine-app
     pkgs.brewCasks.zoom
@@ -178,9 +181,11 @@
     pkgs.vlc-bin
   ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
     pkgs.a2jmidid
+    pkgs.carla
     pkgs.cryptomator
     pkgs.freefilesync
     pkgs.pinentry-all
+    pkgs.yabridge
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -196,6 +201,11 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+  };
+  fonts = {
+    fontconfig = {
+      enable = true;
+    };
   };
   manual = {
     manpages = {
@@ -243,7 +253,7 @@
           gpgsign = true;
         };
         include = {
-          path = "${config.home.homeDirectory}/.gitconfig_shared";
+          path = "${config.home.homeDirectory}/.gitconfig_personal";
         };
         http = {
           postBuffer = 524288000;
@@ -289,9 +299,8 @@
           }
         '';
       };
-      "mpv" = {
-        recursive = true;
-        source = ./config/mpv;
+      "mpv/fonts/Material-Design-Iconic-Font.ttf" = {
+        source = ./config/mpv/fonts/Material-Design-Iconic-Font.ttf;
       };
     };
   };

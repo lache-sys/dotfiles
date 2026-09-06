@@ -42,12 +42,12 @@
             local _abspath="$(realpath ''${1})"
             cd ''${_tmpdir}
             cut -d ',' -f 2 "''${_abspath}" | sed -e '1,2d' > req.txt
-            while read LINE; do
-              _origname=$(basename ''${LINE})
+            while IFS= read -r line; do
+              _origname=$(basename ''${line})
               _ext=''${_origname##*.}
               _i=$((_i+1))
               _i4=$(printf "%04d" "''${_i}")
-              wget -O ''${_i4}.''${_ext} ''${LINE}
+              wget -O ''${_i4}.''${_ext} ''${line}
             done < req.txt
             rm -f req.txt
             cd ''${_pwd}
@@ -206,15 +206,6 @@
             fi
             return 0
           }
-          function openurls_main () {
-            while IFS= read -r url; do
-              if [[ "$(uname)" == "Darwin" ]]; then
-                open -a "Safari" ''${url}
-              fi
-              sleep 1
-            done < ''${1}
-            return 0
-          }
           function pdf2png350_main () {
             pdftocairo -png -r 350 ''${1}
             return 0
@@ -225,6 +216,18 @@
             for i in *.png; do
               ffmpeg -i "''${i}" -lossless 1 $(basename "''${i}" ''${i}).webp
             done
+            return 0
+          }
+          function relogin_main () {
+            exec ''${SHELL} -l
+            return 0
+          }
+          function roscheck_main () {
+            pgrep -q oahd && echo "Rosetta 2 is installed" || echo "Rosetta 2 is NOT installed"
+            return 0
+          }
+          function rpds_main () {
+            dd if=/dev/random of=${config.home.homeDirectory}/Downloads/tmp.img bs=1073741824 count="''${1}"
             return 0
           }
           function safarisave_main () {
@@ -251,16 +254,27 @@
             echo ''${_ssddir}
             return 0
           }
-          function relogin_main () {
-            exec ''${SHELL} -l
+          function urlfromtsv_main () {
+            local _pwd=''${PWD}
+            cd ''${_pwd}
+            local _abspath="$(realpath ''${1})"
+            cut -d '	' -f 2 "''${_abspath}" | sed -e '1,2d' > req.txt
+            while IFS= read -r url; do
+              if [[ "$(uname)" == "Darwin" ]]; then
+                open -a "Safari" ''${url}
+              fi
+              sleep 1
+            done < req.txt
+            rm -f req.txt
             return 0
           }
-          function roscheck_main () {
-            pgrep -q oahd && echo "Rosetta 2 is installed" || echo "Rosetta 2 is NOT installed"
-            return 0
-          }
-          function rpds_main () {
-            dd if=/dev/random of=${config.home.homeDirectory}/Downloads/tmp.img bs=1073741824 count="''${1}"
+          function urlfromtxt_main () {
+            while IFS= read -r url; do
+              if [[ "$(uname)" == "Darwin" ]]; then
+                open -a "Safari" ''${url}
+              fi
+              sleep 1
+            done < ''${1}
             return 0
           }
           function wav2flac_main () {
@@ -282,7 +296,6 @@
           alias clamd='clamd_main'
           alias clamddl='clamddl_main'
           alias clamdf='clamdf_main'
-          alias codebergall='codebergall_main'
           alias cut4dl='cut4dl_main'
           alias d2u='dos2unix'
           alias emg='emg_main'
@@ -299,7 +312,6 @@
           alias nixall='nixall_main'
           alias nixupg='nixupg_main'
           alias openanyway='openanyway_main'
-          alias openurls='openurls_main'
           alias pdf2png350='pdf2png350_main'
           alias png2webp='img2webp_main .png'
           alias relogin='relogin_main'
@@ -309,6 +321,8 @@
           alias smart='smartctl -a'
           alias ssddir='ssddir_main'
           alias sza='7zz a -mmt=on -mx=9 -sdel'
+          alias urlfromtsv='urlfromtsv_main'
+          alias urlfromtxt='urlfromtxt_main'
           alias vvim='vim -u NONE -N'
           alias wav2flac='wav2flac_main'
         '';

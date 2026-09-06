@@ -30,7 +30,6 @@
       "lazymake"
       "llvm"
       "media-info"
-      "mpv"
       "nodebrew"
       "openjdk"
       "py3cairo"
@@ -44,9 +43,7 @@
       "adguard"
       "adobe-acrobat-pro"
       "adobe-creative-cloud"
-      "affinity"
       "lache-sys/tap/authme"
-      "basictex"
       "lache-sys/tap/duckstation"
       "fujitsu-scansnap-home"
       "font-aguafina-script"
@@ -109,10 +106,8 @@
       "lache-sys/tap/kamvas-pro-13-2-5k-driver"
       "lache-sys/tap/ntsc-rs"
       "lache-sys/tap/prospect"
-      "quicklook-video"
       "retroarch-metal"
       "veracrypt-fuse-t"
-      "zoom"
     ];
     masApps = {
       "Amphetamine" = 937984704;

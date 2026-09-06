@@ -39,10 +39,4 @@ elif [[ "$(uname)" == "Linux" ]]; then
 fi
 source ~/.venv/bin/activate
 uv pip install -r "${SCR_DIR}/cfg/uv.txt"
-if $(which tlmgr); then
-  sudo tlmgr update --self
-  while IFS= read line; do
-    sudo tlmgr install ${line}
-  done < "${SCR_DIR}/cfg/tlmgr.txt"
-fi
 exit 0

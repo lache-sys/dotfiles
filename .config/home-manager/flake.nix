@@ -77,8 +77,10 @@
             ./programs/alacritty.nix
             ./programs/bash.nix
             ./programs/btop.nix
+            ./programs/mpv.nix
             ./programs/ranger.nix
             ./programs/starship.nix
+            ./programs/texlive.nix
             ./programs/tmux.nix
             ./programs/vim.nix
             ./programs/zsh.nix
