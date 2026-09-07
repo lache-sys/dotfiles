@@ -182,8 +182,9 @@
           function nixall_main () {
             local _pwd=''${PWD}
             cd ${config.home.homeDirectory}/.config/home-manager
+            nix store gc
             nix flake update
-            home-manager switch --flake .
+            home-manager switch --flake .#lache-sys
             if [[ "$(uname)" == "Darwin" ]]; then
               sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
             fi
@@ -193,7 +194,8 @@
           function nixupg_main () {
             local _pwd=''${PWD}
             cd ${config.home.homeDirectory}/.config/home-manager
-            home-manager switch --flake .
+            nix store gc
+            home-manager switch --flake .#lache-sys
             if [[ "$(uname)" == "Darwin" ]]; then
               sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
             fi

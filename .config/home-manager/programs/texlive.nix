@@ -4,12 +4,13 @@
   programs = {
     texlive = {
       enable = true;
-      extraPackages = {
-        langjapanese = pkgs.texlivePackages.collection-langjapanese;
-        latexextra = pkgs.texlivePackages.collection-latexextra;
-        luatex = pkgs.texlivePackages.collection-luatex;
+      extraPackages = tpkgs: {
+        inherit (tpkgs)
+          scheme-medium
+          collection-langjapanese
+          collection-latexextra
+          collection-luatex;
       };
-      packageSet = pkgs.texliveFull;
     };
   };
 }

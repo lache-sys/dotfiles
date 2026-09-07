@@ -44,9 +44,10 @@
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-    pkgs.atool
     pkgs.alegreya
     pkgs.alegreya-sans
+    pkgs.audacity
+    pkgs.atool
     pkgs.bat
     pkgs.bchunk
     pkgs.bison

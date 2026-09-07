@@ -2,6 +2,7 @@
 set -eoux pipefail
 if [[ "$(uname)" == "Darwin" ]]; then
   sudo mas uninstall --all
+  brew uninstall $(brew list)
   if [[ $(uname -m) == "arm64" || $(uname -m) == "aarch64" ]]; then
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
   elif [[ $(uname -m) == "x86_64" ]]; then
