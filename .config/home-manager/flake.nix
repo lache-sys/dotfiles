@@ -41,6 +41,7 @@
   };
   outputs =
     {
+      self,
       nixpkgs,
       home-manager,
       nix-darwin,
@@ -66,7 +67,8 @@
           nixgl.overlay.default
         ] else [
         ];
-      in {
+      in
+      {
         homeConfigurations."lache-sys" = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = { inherit inputs; };
           inherit pkgs;
