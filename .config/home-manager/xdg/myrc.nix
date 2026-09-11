@@ -108,7 +108,7 @@
           }
           function gpinit_main () {
             git remote add remote/main ''${1}
-            git branch --set-upstream-to=remote/main/main main
+            git branch --set-upstream-to=remote/main main
             git pull remote/main main --ff-only
             git rebase
             git push
