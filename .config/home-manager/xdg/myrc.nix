@@ -106,6 +106,14 @@
             cd "''${_pwd}"
             return 0
           }
+          function gpinit_main () {
+            git remote add remote/main ''${1}
+            git branch --set-upstream-to=remote/main/main main
+            git pull remote/main main --ff-only
+            git rebase
+            git push
+            return 0
+          }
           function iclean_main () {
             local _pwd=''${PWD}
             if [[ "$(uname)" == "Darwin" ]]; then
@@ -245,9 +253,9 @@
           }
           function ssddir_main () {
             if [[ "$(uname)" == "Darwin" ]]; then
-              local _ssddir=$(sops -d --extract '["mac_ssd_dir"]' ~/.env)
+              local _ssddir=$(sops -d --extract '["OSX_SSD_DIR"]' ~/.env)
             elif [[ "$(uname)" == "Linux" ]]; then
-              local _ssddir=$(sops -d --extract '["lnx_ssd_dir"]' ~/.env)
+              local _ssddir=$(sops -d --extract '["LNX_SSD_DIR"]' ~/.env)
             fi
             if [[ ! -d ''${_ssddir} ]]; then
               echo "Please connect the SSD."
@@ -311,6 +319,7 @@
           alias less='bat'
           alias ls='eza --icons --group-directories-first'
           alias lsg='lsg_main'
+          alias mamew='mame -window'
           alias nixall='nixall_main'
           alias nixupg='nixupg_main'
           alias openanyway='openanyway_main'

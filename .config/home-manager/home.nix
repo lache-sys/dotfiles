@@ -165,6 +165,7 @@
     pkgs.brewCasks.bettertouchtool
     pkgs.brewCasks.chatgpt
     pkgs.brewCasks.cog-app
+    pkgs.brewCasks.crossover
     pkgs.brewCasks.cryptomator
     pkgs.brewCasks.discord
     pkgs.brewCasks.opendisplay
