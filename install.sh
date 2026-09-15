@@ -31,12 +31,9 @@ nix run home-manager/master -- switch --flake .
 home-manager switch --flake .
 if [[ "$(uname)" == "Darwin" ]]; then
   sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
-  cd ${HOME}
-  UV_VENV_CLEAR=1 UV_PYTHON=$(brew --prefix)/bin/python3 uv venv
-elif [[ "$(uname)" == "Linux" ]]; then
-  cd ${HOME}
-  UV_VENV_CLEAR=1 uv venv
 fi
+cd ${HOME}
+UV_VENV_CLEAR=1 uv venv --python 3.14
 source ~/.venv/bin/activate
 uv pip install -r "${SCR_DIR}/cfg/uv.txt"
 exit 0

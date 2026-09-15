@@ -7,6 +7,7 @@
       bindings = {
       };
       config = {
+        "ao" = "avfoundation";
         "border" = false;
         "cache" = true;
         "demuxer-max-bytes" = "512M";

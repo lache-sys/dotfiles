@@ -75,7 +75,7 @@
     pkgs.fastfetch
     pkgs.fclones
     pkgs.fdupes
-    pkgs.ffmpeg
+    pkgs.ffmpeg-full
     pkgs.flac
     pkgs.flex
     pkgs.fluidsynth
@@ -105,6 +105,7 @@
     pkgs.libvorbis
     pkgs.libplacebo
     pkgs.libwebp
+    pkgs.mame
     pkgs.markdown-toc
     pkgs.mcomix
     pkgs.melonds
@@ -137,6 +138,7 @@
     pkgs.sops
     pkgs.timidity
     pkgs.tombi
+    pkgs.unzrip
     pkgs.uv
     pkgs.vgmstream
     pkgs.wakeonlan
@@ -162,10 +164,10 @@
     pkgs.brewCasks.affinity
     pkgs.brewCasks.alfred
     pkgs.brewCasks.bartender
+    pkgs.brewCasks.bettercmdtab
     pkgs.brewCasks.bettertouchtool
     pkgs.brewCasks.chatgpt
     pkgs.brewCasks.cog-app
-#     pkgs.brewCasks.crossover
     pkgs.brewCasks.cryptomator
     pkgs.brewCasks.discord
     pkgs.brewCasks.opendisplay
@@ -186,6 +188,8 @@
     pkgs.carla
     pkgs.cryptomator
     pkgs.freefilesync
+    pkgs.niri
+    pkgs.nirius
     pkgs.pinentry-all
     pkgs.yabridge
   ];

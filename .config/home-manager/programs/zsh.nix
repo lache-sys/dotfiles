@@ -29,6 +29,9 @@
         function _urlfromtxt_main () {
           _files -g '*.txt' -W ./
         }
+        function _vgmplay_main () {
+          _files -g '*.{vgm,vgz}' -W ./
+        }
         compdef clamdf_main _clamdf_main
         compdef cut4dl_main _cut4dl_main
         compdef lsg_main _lsg_main
@@ -36,6 +39,7 @@
         compdef pdf2png350_main _pdf2png350_main
         compdef urlfromtsv_main _urlfromtsv_main
         compdef urlfromtxt_main _urlfromtxt_main
+        compdef vgmplay_main _vgmplay_main
       '';
       profileExtra = ''
         source ~/.config/myrc/myprofile

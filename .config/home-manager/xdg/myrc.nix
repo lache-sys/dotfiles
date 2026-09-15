@@ -181,6 +181,15 @@
             cd "''${_pwd}"
             return 0
           }
+          function mame_main () {
+            local _pwd=''${PWD}
+            if [[ "$(uname)" == "Darwin" ]]; then
+              cd "${config.home.homeDirectory}/Library/Application Support/mame"
+            fi
+            mame
+            cd "''${_pwd}"
+            return 0
+          }
           function mkdire_main () {
             for i in $(seq 1 ''${2}); do
               mkdir "emg__$(printf %01d ''${1})-$(printf %02d ''${i})"
@@ -194,6 +203,7 @@
             nix flake update
             home-manager switch --flake .#lache-sys
             if [[ "$(uname)" == "Darwin" ]]; then
+              brew update
               sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
             fi
             cd "''${_pwd}"
@@ -205,6 +215,7 @@
             nix store gc
             home-manager switch --flake .#lache-sys
             if [[ "$(uname)" == "Darwin" ]]; then
+              brew update
               sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
             fi
             cd "''${_pwd}"
@@ -287,6 +298,15 @@
             done < ''${1}
             return 0
           }
+          function vgmplay_main () {
+            local _pwd=''${PWD}
+            if [[ "$(uname)" == "Darwin" ]]; then
+              cd "${config.home.homeDirectory}/Library/Application Support/mame"
+            fi
+            mame vgmplay -quik ''${1}
+            cd "''${_pwd}"
+            return 0
+          }
           function wav2flac_main () {
             for i in *.wav; do
               flac -8 -f ''${i}
@@ -319,7 +339,8 @@
           alias less='bat'
           alias ls='eza --icons --group-directories-first'
           alias lsg='lsg_main'
-          alias mamew='mame -window'
+          alias mame='mame_main'
+          alias mpvreset='mpv --reset-on-next-file=all'
           alias nixall='nixall_main'
           alias nixupg='nixupg_main'
           alias openanyway='openanyway_main'
@@ -334,6 +355,7 @@
           alias sza='7zz a -mmt=on -mx=9 -sdel'
           alias urlfromtsv='urlfromtsv_main'
           alias urlfromtxt='urlfromtxt_main'
+          alias vgmplay='vgmplay_main'
           alias vvim='vim -u NONE -N'
           alias wav2flac='wav2flac_main'
         '';
