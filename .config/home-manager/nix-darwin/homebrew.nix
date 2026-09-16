@@ -21,16 +21,12 @@
       }
     ];
     brews = [
-      "dosbox-x"
       "dvdbackup"
       "felinks"
       "ffms2"
       "kubernetes-cli"
       "lazymake"
-      "llvm"
-      "media-info"
       "nodebrew"
-      "openjdk"
       "py3cairo"
       "sevenzip"
       "tag"

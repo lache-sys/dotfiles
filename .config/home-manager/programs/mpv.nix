@@ -8,6 +8,8 @@
       };
       config = {
         "ao" = "avfoundation";
+        "audio-stream-silence" = true;
+        "audio-wait-open" = 2;
         "border" = false;
         "cache" = true;
         "demuxer-max-bytes" = "512M";
@@ -17,6 +19,7 @@
         "loop-playlist" = "inf";
         "osc" = false;
         "osd-bar" = false;
+        "osd-font" = "M+1 Nerd Font";
         "profile" = "fast";
         "prefetch-playlist" = true;
         "screenshot-dir" = "${config.home.homeDirectory}/Downloads";

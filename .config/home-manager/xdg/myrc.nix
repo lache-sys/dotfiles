@@ -201,11 +201,7 @@
             cd ${config.home.homeDirectory}/.config/home-manager
             nix store gc
             nix flake update
-            home-manager switch --flake .#lache-sys
-            if [[ "$(uname)" == "Darwin" ]]; then
-              brew update
-              sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
-            fi
+            nixupg_main
             cd "''${_pwd}"
             return 0
           }
@@ -213,7 +209,8 @@
             local _pwd=''${PWD}
             cd ${config.home.homeDirectory}/.config/home-manager
             nix store gc
-            home-manager switch --flake .#lache-sys
+#             home-manager switch --flake .
+            nix run home-manager/master -- switch --flake .
             if [[ "$(uname)" == "Darwin" ]]; then
               brew update
               sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin

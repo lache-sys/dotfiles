@@ -69,6 +69,7 @@
     pkgs.docutils
     pkgs.dolphin-emu
     pkgs.dos2unix
+    pkgs.dosbox-x
     pkgs.exiftool
     pkgs.eza
     pkgs.f3
@@ -80,6 +81,7 @@
     pkgs.flex
     pkgs.fluidsynth
     pkgs.fontconfig
+    pkgs.freepats
     pkgs.fzf
     pkgs.gcc
     pkgs.geist-font
@@ -88,6 +90,7 @@
     pkgs.gnumake
     pkgs.gpac
     pkgs.hackgen-nf-font
+    pkgs.jack2
     pkgs.jhead
     pkgs.ia-writer-duospace
     pkgs.ia-writer-mono
@@ -105,9 +108,11 @@
     pkgs.libvorbis
     pkgs.libplacebo
     pkgs.libwebp
+    pkgs.llvm
     pkgs.mame
     pkgs.markdown-toc
     pkgs.mcomix
+    pkgs.mediainfo
     pkgs.melonds
     pkgs.meson
     pkgs.midicsv

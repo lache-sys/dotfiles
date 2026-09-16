@@ -3,11 +3,11 @@
     "brew-api": {
       "flake": false,
       "locked": {
-        "lastModified": 1789470024,
-        "narHash": "sha256-mwEbEo0QL50a8IT88Z/Tl7VJUTok6jg6aU9rN3It/vM=",
+        "lastModified": 1789520605,
+        "narHash": "sha256-23Vo+Zod4ZibffjPkGpBNJSTTGZkppXqBhvk8hhB62s=",
         "owner": "BatteredBunny",
         "repo": "brew-api",
-        "rev": "59fa740c1c93970b7cf6890018426c4177192285",
+        "rev": "7133135a10b223a03d876053f08fa4990b09bb6a",
         "type": "github"
       },
       "original": {
@@ -45,11 +45,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789430117,
-        "narHash": "sha256-t+U1mijItLJ64xZOifpfQ17kpAL73nU7pDI48ScacVc=",
+        "lastModified": 1789482455,
+        "narHash": "sha256-pD3qVlQ4mUCFoTWrYtxecpSitQMsgJvJIN0FUIDZoEU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "cda90fd8838825c689fde9d3f3b4e937937790df",
+        "rev": "efa3ccb4c3cc90d832eab232976379058fa75aa3",
         "type": "github"
       },
       "original": {
