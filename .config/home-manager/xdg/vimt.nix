@@ -115,11 +115,12 @@
               format = '%(asctime)s [%(levelname)s] %(message)s',
               datefmt = '%Y-%m-%d %H:%M:%S',
               handlers = [
-                logging.FileHandler(filename=fn+'.log'),
+                logging.FileHandler(filename=fn + '.log'),
               ]
             )
             logger = logging.getLogger(__name__)
             return logger
+
 
           if __name__ == "__main__":
             parser = argparse.ArgumentParser(description='.') 

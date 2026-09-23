@@ -50,7 +50,7 @@
             lines = 25;
           };
           opacity = 0.95;
-          startup_mode = "Fullscreen";
+          startup_mode = "Windowed";
           title = "Alacritty";
         };
       };

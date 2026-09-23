@@ -156,10 +156,6 @@
           }
           function img2webp_main () {
             _pwd=''${PWD}
-            export CPPFLAGS="-I/opt/homebrew/opt/ffmpeg-full/include"
-            export LDFLAGS="-L/opt/homebrew/opt/ffmpeg-full/lib"
-            export PATH="/opt/homebrew/opt/ffmpeg-full/bin:$PATH"
-            export PKG_CONFIG_PATH="/opt/homebrew/opt/ffmpeg-full/lib/pkgconfig"
             cd "''${_pwd}"
             for i in *''${1}; do
               ffmpeg -i ''${i} -c:v libwebp -lossless 1 $(basename ''${i} ''${1}).webp

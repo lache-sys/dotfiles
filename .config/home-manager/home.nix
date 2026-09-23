@@ -99,6 +99,7 @@
     pkgs.img2pdf
     pkgs.ipafont
     pkgs.ipaexfont
+    pkgs.ipatool
     pkgs.keybase
     pkgs.lazyssh
     pkgs.less
@@ -175,6 +176,7 @@
     pkgs.brewCasks.cog-app
     pkgs.brewCasks.cryptomator
     pkgs.brewCasks.discord
+    pkgs.brewCasks.handbrake-app
     pkgs.brewCasks.opendisplay
     pkgs.brewCasks.puremac
     pkgs.brewCasks.quicklook-video

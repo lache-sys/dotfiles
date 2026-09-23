@@ -81,6 +81,7 @@
             ./programs/btop.nix
             ./programs/mpv.nix
             ./programs/ranger.nix
+            ./programs/ssh.nix
             ./programs/starship.nix
             ./programs/texlive.nix
             ./programs/tmux.nix
