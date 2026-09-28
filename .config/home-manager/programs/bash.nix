@@ -11,6 +11,9 @@
         function _clamdf_main () {
           _filedir txt
         }
+        function _csv4dl_main () {
+          _filedir csv
+        }
         function _cut4dl_main () {
           _filedir csv
         }
@@ -22,6 +25,9 @@
         }
         function _pdf2png350_main () {
           _filedir pdf
+        }
+        function _tsv4dl_main () {
+          _filedir csv
         }
         function _urlfromtsv_main () {
           _filedir tsv

@@ -79,6 +79,7 @@
             ./programs/alacritty.nix
             ./programs/bash.nix
             ./programs/btop.nix
+            ./programs/cargo.nix
             ./programs/mpv.nix
             ./programs/ranger.nix
             ./programs/ssh.nix
@@ -87,6 +88,7 @@
             ./programs/tmux.nix
             ./programs/vim.nix
             ./programs/zsh.nix
+            ./services/gpg-agent.nix
             ./xdg/clamav.nix
             ./xdg/myrc.nix
             ./xdg/vimt.nix

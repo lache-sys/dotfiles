@@ -79,7 +79,6 @@
     pkgs.ffmpeg-full
     pkgs.flac
     pkgs.flex
-    pkgs.fluidsynth
     pkgs.fontconfig
     pkgs.freepats
     pkgs.fzf
@@ -105,6 +104,7 @@
     pkgs.less
     pkgs.libaacs
     pkgs.libcaca
+    pkgs.libisoburn
     pkgs.libogg
     pkgs.libvorbis
     pkgs.libplacebo
@@ -133,7 +133,6 @@
     pkgs.qemu
     pkgs.rsync
     pkgs.rtmidi
-    pkgs.rustup
     pkgs.rubik
     pkgs.SDL2
     pkgs.SDL2_sound
@@ -152,8 +151,6 @@
     pkgs.yt-dlp
     pkgs.zoxide
     pkgs.zilla-slab
-    pkgs.zsh
-    pkgs.zsh-completions
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -284,17 +281,6 @@
     };
     gpg = {
       enable = true;
-    };
-  };
-  services = {
-    gpg-agent = {
-      enable = true;
-      enableSshSupport = true;
-      pinentry = {
-      } // (if pkgs.stdenv.hostPlatform.isLinux then {
-        package = pkgs.pinentry-all;
-      } else {
-      });
     };
   };
   xdg = {

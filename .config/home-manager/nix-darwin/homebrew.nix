@@ -24,8 +24,6 @@
       "dvdbackup"
       "felinks"
       "ffms2"
-      "kubernetes-cli"
-      "lazymake"
       "nodebrew"
       "py3cairo"
       "sevenzip"
@@ -34,7 +32,6 @@
     casks = [
       "lache-sys/tap/8bitdo-firmware-updater"
       "adguard"
-      "adobe-acrobat-pro"
       "adobe-creative-cloud"
       "lache-sys/tap/authme"
       "lache-sys/tap/duckstation"
@@ -127,22 +124,20 @@
       "lache-sys/tap/ntsc-rs"
       "lache-sys/tap/prospect"
       "retroarch-metal"
+      "lache-sys/tap/rusty-backup"
       "veracrypt-fuse-t"
     ];
     masApps = {
       "Amphetamine" = 937984704;
-      "aSPICE" = 1560593107;
       "AutoMute" = 1118136179;
       "Bitwarden" = 1352778147;
       "BrightIntosh" = 6452471855;
       "Clamshell" = 6477896729;
       "DaisyDisk" = 411643860;
-      "Duplicate File Finder Pro" = 962263890;
       "EdgeView" = 1580323719;
       "GarageBand" = 682658836;
       "GrandPerspective" = 1111570163;
       "Hide My Screen" = 6476070422;
-      "Jump Desktop" = 524141863;
       "LINE" = 539883307;
       "MIDI Tape Recorder" = 1598618004;
       "Mp3tag" = 1532597159;
@@ -151,7 +146,6 @@
       "Pure Paste" = 1611378436;
       "RosettaCheck" = 6759349750;
       "Spark" = 1176895641;
-      "TinyHost" = 6757653859;
       "V1MML" = 971745309;
       "Xcode" = 497799835;
       "Yoink" = 457622435;

@@ -1,4 +1,7 @@
+mido
+mutagen
 opencv-python
 pyxel
 pyxel-universal-font
 toml
+https://github.com/cdodd/vgmparse.git
