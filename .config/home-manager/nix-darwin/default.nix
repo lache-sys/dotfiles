@@ -39,9 +39,17 @@
   system = {
     defaults = {
       CustomUserPreferences = {
+#         "app.mp3tag.Mp3tag" = {
+#           PlaylistFileExtension = "m3u";
+#           PlaylistFormat = true;
+#           PlaylistPathFormat = false;
+#         };
         AppleMultitouchTrackpad = {
           FirstClickThreshold = 0;
         };
+#         "com.djhan.EdgeView-3" = {
+#           showOnlyImageInFullScreen = true;
+#         };
         desktopservices = {
           DSDontWriteNetworkStores = true;
           DSDontWriteUSBStores = true;

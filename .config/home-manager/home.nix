@@ -70,6 +70,7 @@
     pkgs.dolphin-emu
     pkgs.dos2unix
     pkgs.dosbox-x
+    pkgs.dvdauthor
     pkgs.exiftool
     pkgs.eza
     pkgs.f3
@@ -77,8 +78,10 @@
     pkgs.fclones
     pkgs.fdupes
     pkgs.ffmpeg-full
+    pkgs.ffms
     pkgs.flac
     pkgs.flex
+    pkgs.fluidsynth
     pkgs.fontconfig
     pkgs.freepats
     pkgs.fzf
@@ -103,6 +106,7 @@
     pkgs.lazyssh
     pkgs.less
     pkgs.libaacs
+    pkgs.libao
     pkgs.libcaca
     pkgs.libisoburn
     pkgs.libogg
@@ -143,6 +147,7 @@
     pkgs.sops
     pkgs.timidity
     pkgs.tombi
+#     pkgs.untrunc-anthwlock
     pkgs.unzrip
     pkgs.uv
     pkgs.vgmstream
@@ -180,6 +185,7 @@
     pkgs.brewCasks.syntax-highlight
     pkgs.brewCasks.twine-app
     pkgs.brewCasks.zoom
+    pkgs.darwin.libiconv
     pkgs.darwin.trash
     pkgs.duti
     pkgs.mas

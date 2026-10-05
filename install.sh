@@ -33,7 +33,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
 fi
 cd ${HOME}
-UV_VENV_CLEAR=1 uv venv --python 3.14
+UV_VENV_CLEAR=1 uv venv --python pypy@3.11
 source ~/.venv/bin/activate
-uv pip install -r "${SCR_DIR}/cfg/uv.txt"
+uv pip install -r "${SCR_DIR}/config/uv.txt"
 exit 0

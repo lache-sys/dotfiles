@@ -23,7 +23,6 @@
     brews = [
       "dvdbackup"
       "felinks"
-      "ffms2"
       "nodebrew"
       "py3cairo"
       "sevenzip"
@@ -35,7 +34,6 @@
       "adobe-creative-cloud"
       "lache-sys/tap/authme"
       "lache-sys/tap/duckstation"
-      "fujitsu-scansnap-home"
       "lache-sys/tap/font-4x4kana"
       "font-aguafina-script"
       "font-alex-brush"
@@ -125,6 +123,7 @@
       "lache-sys/tap/prospect"
       "retroarch-metal"
       "lache-sys/tap/rusty-backup"
+      "scansnap-home"
       "veracrypt-fuse-t"
     ];
     masApps = {
@@ -135,6 +134,7 @@
       "Clamshell" = 6477896729;
       "DaisyDisk" = 411643860;
       "EdgeView" = 1580323719;
+      "EVA Clock Nixie" = 6794831211;
       "GarageBand" = 682658836;
       "GrandPerspective" = 1111570163;
       "Hide My Screen" = 6476070422;
@@ -149,6 +149,7 @@
       "V1MML" = 971745309;
       "Xcode" = 497799835;
       "Yoink" = 457622435;
+      "紀伊國屋書店Kinoppy" = 572547904;
     };
   };
 } 

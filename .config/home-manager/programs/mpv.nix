@@ -8,8 +8,8 @@
       };
       config = {
         "ao" = "avfoundation";
-        "audio-stream-silence" = false;
-        "audio-wait-open" = 0;
+        "audio-stream-silence" = true;
+        "audio-wait-open" = 2;
         "border" = false;
         "cache" = true;
         "demuxer-max-bytes" = "512M";

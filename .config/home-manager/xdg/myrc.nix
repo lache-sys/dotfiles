@@ -177,19 +177,15 @@
             cd "''${_pwd}"
             return 0
           }
-          function mame_main () {
-            local _pwd=''${PWD}
-            if [[ "$(uname)" == "Darwin" ]]; then
-              cd "${config.home.homeDirectory}/Library/Application Support/mame"
-            fi
-            mame
-            cd "''${_pwd}"
-            return 0
-          }
           function mkdire_main () {
             for i in $(seq 1 ''${2}); do
               mkdir "emg__$(printf %01d ''${1})-$(printf %02d ''${i})"
             done
+            return 0
+          }
+          function mkfileinit_main () {
+            mkfile ''${2}G ''${1}
+            diskutil image attach --noMount ''${1}
             return 0
           }
           function nixall_main () {
@@ -205,7 +201,6 @@
             local _pwd=''${PWD}
             cd ${config.home.homeDirectory}/.config/home-manager
             nix store gc
-#             home-manager switch --flake .
             nix run home-manager/master -- switch --flake .
             if [[ "$(uname)" == "Darwin" ]]; then
               brew update
@@ -291,27 +286,31 @@
             done < ''${1}
             return 0
           }
-          function vgmplay_main () {
-            local _pwd=''${PWD}
-            if [[ "$(uname)" == "Darwin" ]]; then
-              cd "${config.home.homeDirectory}/Library/Application Support/mame"
-            fi
-            mame vgmplay -quik ''${1}
-            cd "''${_pwd}"
-            return 0
-          }
           function wav2flac_main () {
             for i in *.wav; do
               flac -8 -f ''${i}
             done
             return 0
           }
+          function xcodereset_main () {
+            sudo xcode-select --reset
+            sudo rm -rf /Library/Developer/CommandLineTools
+            sudo xcode-select --install
+            return 0
+          }
           export GPG_TTY=$(tty)
           if [[ "$(uname)" == "Darwin" ]]; then
             export SSH_AUTH_SOCK="${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
           fi
-          if [[ "$(uname)" == "Darwin" && -x /Applications/BrightIntosh.app ]]; then
-            alias brightintosh='open -a BrightIntosh && /Applications/BrightIntosh.app/Contents/Resources/cli.sh'
+          if [[ "$(uname)" == "Darwin" ]]; then
+            if [[ -x /Applications/BrightIntosh.app ]]; then
+              alias brightintosh='open -a BrightIntosh && /Applications/BrightIntosh.app/Contents/Resources/cli.sh'
+            fi
+            if [[ -x ${config.home.homeDirectory}/Applications/MP4M.app ]]; then
+              alias mp4m='${config.home.homeDirectory}/Applications/MP4M.app/Contents/MacOS/MP4M'
+            elif [[ -x /Applications/MP4M.app ]]; then
+              alias mp4m='/Applications/MP4M.app/Contents/MacOS/MP4M'
+            fi
           fi
           source ~/.venv/bin/activate
           alias brewall='brew upgrade -y && brew upgrade --cask -g -y && brew doctor'
@@ -332,7 +331,7 @@
           alias less='bat'
           alias ls='eza --icons --group-directories-first'
           alias lsg='lsg_main'
-          alias mame='mame_main'
+          alias mkfileinit='mkfileinit_main'
           alias mpvreset='mpv --reset-on-next-file=all'
           alias nixall='nixall_main'
           alias nixupg='nixupg_main'
@@ -348,9 +347,9 @@
           alias sza='7zz a -mmt=on -mx=9 -sdel'
           alias urlfromtsv='urlfromtsv_main'
           alias urlfromtxt='urlfromtxt_main'
-          alias vgmplay='vgmplay_main'
           alias vvim='vim -u NONE -N'
           alias wav2flac='wav2flac_main'
+          alias xcodereset='xcodereset_main'
         '';
       };
     };
