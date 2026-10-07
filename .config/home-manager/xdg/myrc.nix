@@ -183,15 +183,9 @@
             done
             return 0
           }
-          function mkfileinit_main () {
-            mkfile ''${2}G ''${1}
-            diskutil image attach --noMount ''${1}
-            return 0
-          }
           function nixall_main () {
             local _pwd=''${PWD}
             cd ${config.home.homeDirectory}/.config/home-manager
-            nix store gc
             nix flake update
             nixupg_main
             cd "''${_pwd}"
@@ -200,7 +194,6 @@
           function nixupg_main () {
             local _pwd=''${PWD}
             cd ${config.home.homeDirectory}/.config/home-manager
-            nix store gc
             nix run home-manager/master -- switch --flake .
             if [[ "$(uname)" == "Darwin" ]]; then
               brew update
@@ -331,7 +324,6 @@
           alias less='bat'
           alias ls='eza --icons --group-directories-first'
           alias lsg='lsg_main'
-          alias mkfileinit='mkfileinit_main'
           alias mpvreset='mpv --reset-on-next-file=all'
           alias nixall='nixall_main'
           alias nixupg='nixupg_main'

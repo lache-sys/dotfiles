@@ -6,7 +6,7 @@
       "vim/template/t.bash" = {
         text = ''
           #!usr/bin/env bash
-          set -euo pipefail && :<<'USAGE'
+          set -eou pipefail && :<<'USAGE'
           Usage: $(basename "$0") [-h | --help] [NAME]
 
           Options:

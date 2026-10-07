@@ -116,6 +116,7 @@
       "google-chrome"
       "google-drive"
       "hhkb"
+      "lache-sys/tap/imagecanvas"
       "lache-sys/tap/kamvas-pro-13-2-5k-driver"
       "lache-sys/tap/magical-8bit-plug"
       "lache-sys/tap/magical-fds-plug"
@@ -143,6 +144,7 @@
       "Mp3tag" = 1532597159;
       "Name Mangler 3" = 603637384;
       "Photo Naminator" = 1598189356;
+      "Pine Player Pro" = 6474128342;
       "Pure Paste" = 1611378436;
       "RosettaCheck" = 6759349750;
       "Spark" = 1176895641;

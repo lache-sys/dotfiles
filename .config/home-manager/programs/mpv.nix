@@ -26,6 +26,22 @@
         "screenshot-format" = "png";
         "screenshot-png-compression" = 0;
       };
+      profiles = {
+        airpods = {
+          "ao" = "avfoundation";
+          "audio-stream-silence" = true;
+          "audio-wait-open" = 2;
+          "profile-desc" = "AirPods";
+          "profile-restore" = "copy";
+        };
+        generic = {
+          "ao" = "coreaudio";
+          "audio-stream-silence" = false;
+          "audio-wait-open" = 0;
+          "profile-desc" = "Generic headphones/speakers";
+          "profile-restore" = "copy";
+        };
+      };
       scripts = [
         pkgs.mpvScripts.modernx
         pkgs.mpvScripts.thumbfast

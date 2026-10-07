@@ -48,6 +48,7 @@
     pkgs.alegreya-sans
     pkgs.audacity
     pkgs.atool
+    pkgs.azahar
     pkgs.bat
     pkgs.bchunk
     pkgs.bison
@@ -191,6 +192,7 @@
     pkgs.mas
     pkgs.pam-reattach
     pkgs.pinentry_mac
+    pkgs.switchaudio-osx
     pkgs.utm
     pkgs.vlc-bin
   ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
