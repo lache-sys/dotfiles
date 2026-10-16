@@ -139,6 +139,7 @@
       "GarageBand" = 682658836;
       "GrandPerspective" = 1111570163;
       "Hide My Screen" = 6476070422;
+      "Jump Desktop (RDP, VNC, Fluid)" = 524141863;
       "LINE" = 539883307;
       "MIDI Tape Recorder" = 1598618004;
       "Mp3tag" = 1532597159;
@@ -148,6 +149,7 @@
       "Pure Paste" = 1611378436;
       "RosettaCheck" = 6759349750;
       "Spark" = 1176895641;
+      "Synctrain" = 6553985316;
       "V1MML" = 971745309;
       "Xcode" = 497799835;
       "Yoink" = 457622435;

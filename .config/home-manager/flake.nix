@@ -26,6 +26,10 @@
         };
       };
     };
+    mpv-src = {
+      url = "github:mpv-player/mpv";
+      flake = false;
+    };
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs = {
@@ -50,6 +54,8 @@
       ...
     }@inputs:
     let
+      lastModifiedDate = self.lastModifiedDate or self.lastModified or "19700101";
+      version = builtins.substring 0 8 lastModifiedDate;
       systems = [
         "aarch64-darwin"
         "x86_64-linux"
@@ -81,6 +87,7 @@
             ./programs/btop.nix
             ./programs/cargo.nix
             ./programs/mpv.nix
+            ./programs/npm.nix
             ./programs/ranger.nix
             ./programs/ssh.nix
             ./programs/starship.nix

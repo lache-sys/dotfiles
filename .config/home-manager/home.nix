@@ -9,9 +9,11 @@
     "${config.home.homeDirectory}/.local/bin"
   ];
   home.sessionVariables = {
+    CMAKE_MAKE_PROGRAM = "${pkgs.ninja}/bin/ninja";
     CMAKE_PREFIX_PATH = "${config.home.profileDirectory}";
     CPATH = "${config.home.profileDirectory}/include";
     CPLUS_INCLUDE_PATH = "${config.home.profileDirectory}/include";
+    EDITOR = "vim";
     HOMEBREW_NO_ANALYTICS = true;
     LIBRARY_PATH = "${config.home.profileDirectory}/lib";
     PKG_CONFIG_PATH = "${config.home.profileDirectory}/lib/pkgconfig";
@@ -19,6 +21,7 @@
     SOPS_PGP_FP = "9B36E0149A4EAB28E032F2D382BD733A21368364";
     TOMBI_OFFLINE = true;
     TOMBI_NO_CACHE = true;
+    VCPKG_ROOT = "${pkgs.vcpkg}/share/vcpkg";
     XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
   } // (if pkgs.stdenv.hostPlatform.isDarwin then {
     SSH_AUTH_SOCK = "${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
@@ -53,6 +56,7 @@
     pkgs.bchunk
     pkgs.bison
     pkgs.blackout
+    pkgs.boost
     pkgs.btop
     pkgs.bzip2
     pkgs.cdrdao
@@ -148,9 +152,9 @@
     pkgs.sops
     pkgs.timidity
     pkgs.tombi
-#     pkgs.untrunc-anthwlock
     pkgs.unzrip
     pkgs.uv
+    pkgs.vcpkg
     pkgs.vgmstream
     pkgs.wakeonlan
     pkgs.wget
@@ -175,10 +179,9 @@
     pkgs.brewCasks.bartender
     pkgs.brewCasks.bettercmdtab
     pkgs.brewCasks.bettertouchtool
-    pkgs.brewCasks.chatgpt
     pkgs.brewCasks.cog-app
     pkgs.brewCasks.cryptomator
-    pkgs.brewCasks.discord
+#     pkgs.brewCasks.discord
     pkgs.brewCasks.handbrake-app
     pkgs.brewCasks.opendisplay
     pkgs.brewCasks.puremac

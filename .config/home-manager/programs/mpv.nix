@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 
 {
   programs = {
@@ -8,13 +13,15 @@
       };
       config = {
         "ao" = "avfoundation";
-        "audio-stream-silence" = true;
-        "audio-wait-open" = 2;
+        "audio-format" = "float";
+        "audio-stream-silence" = false;
+        "audio-wait-open" = 0;
         "border" = false;
         "cache" = true;
         "demuxer-max-bytes" = "512M";
         "demuxer-readahead-secs" = 20;
         "fullscreen" = true;
+        "gapless-audio" = true;
         "hwdec" = "auto-safe";
         "loop-playlist" = "inf";
         "osc" = false;
@@ -28,16 +35,11 @@
       };
       profiles = {
         airpods = {
-          "ao" = "avfoundation";
-          "audio-stream-silence" = true;
-          "audio-wait-open" = 2;
           "profile-desc" = "AirPods";
           "profile-restore" = "copy";
         };
         generic = {
           "ao" = "coreaudio";
-          "audio-stream-silence" = false;
-          "audio-wait-open" = 0;
           "profile-desc" = "Generic headphones/speakers";
           "profile-restore" = "copy";
         };

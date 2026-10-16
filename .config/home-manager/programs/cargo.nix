@@ -3,7 +3,7 @@
 {
   programs = {
     cargo = {
-      enable = true;
+      enable = false;
     };
   };
 }

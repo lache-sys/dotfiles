@@ -3,11 +3,11 @@
     "brew-api": {
       "flake": false,
       "locked": {
-        "lastModified": 1791338613,
-        "narHash": "sha256-wWs8StQOwGE9NyZmimogDeUjjJjra8/SMR7ugUoVlIQ=",
+        "lastModified": 1792128867,
+        "narHash": "sha256-1+akFCqGV01jR+9DyxqfM43xdoHoB1EX3B0kbvn4TZQ=",
         "owner": "BatteredBunny",
         "repo": "brew-api",
-        "rev": "022af256e8eebec3fc8976d22321ebdb20985a27",
+        "rev": "da5a029122c8bedb6336c6fd27cf58d816a123ac",
         "type": "github"
       },
       "original": {
@@ -45,17 +45,33 @@
         ]
       },
       "locked": {
-        "lastModified": 1791306979,
-        "narHash": "sha256-KuLePuhwJM9NLt/gTLHzXaOoSZKGoB3m7NfXjiQ98HY=",
+        "lastModified": 1792098797,
+        "narHash": "sha256-u4DIIZgznEGzByxXrxWCXK19VcMtTBmi/M9gZ7Jk9bM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "fae6e9e42c3b762ab47635cddcfaf6f52374a61b",
+        "rev": "640725978b99076e18e069f6e7d2959124584f8f",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "ref": "master",
         "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "mpv-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792103327,
+        "narHash": "sha256-s7McHtvHn9cmhq8MerCg6qwpG7jQYP4tFHuscx2qi1c=",
+        "owner": "mpv-player",
+        "repo": "mpv",
+        "rev": "a2cd83c56de859ced3fc8e6055e5878e50f45286",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mpv-player",
+        "repo": "mpv",
         "type": "github"
       }
     },
@@ -134,11 +150,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1791306662,
-        "narHash": "sha256-bIhK7AMT7yU8Hkjzaag0MDpqbqiMTvN6UJ0U6Zs63OI=",
+        "lastModified": 1791966044,
+        "narHash": "sha256-t1hT8UW97rFCWCJO7/pClvu0AhLN5V3uir2M0ic4w/Q=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e2ccecbf30866802b1db536246e0939eccbd7bfb",
+        "rev": "319e4cebef10cbb636c6ea392137b52ad105336a",
         "type": "github"
       },
       "original": {
@@ -153,6 +169,7 @@
         "brew-api": "brew-api",
         "brew-nix": "brew-nix",
         "home-manager": "home-manager",
+        "mpv-src": "mpv-src",
         "nix-darwin": "nix-darwin_2",
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs_2"

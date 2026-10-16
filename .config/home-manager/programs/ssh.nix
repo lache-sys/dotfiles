@@ -9,6 +9,15 @@
         "${config.home.homeDirectory}/.ssh/config.local"
       ];
       settings = {
+        PBS = {
+          AddKeysToAgent = "ask";
+          KbdInteractiveAuthentication = false;
+          PasswordAuthentication = false;
+          Port = 22;
+          PreferredAuthentications = "publickey";
+          PubkeyAuthentication = true;
+          RemoteCommand = "none";
+        };
         Proxmox = {
           AddKeysToAgent = "ask";
           KbdInteractiveAuthentication = false;

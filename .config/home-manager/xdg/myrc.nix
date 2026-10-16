@@ -69,17 +69,17 @@
           }
           function emg_main () {
             local _ssddir=$(ssddir_main)
-            python3 ''${_ssddir}/git/emg/src/main.py -i ''${_ssddir}/git/emg/cfg/settings.toml
+            python3 ''${_ssddir}/git/emg/src/main.py -i ''${_ssddir}/git/emg/config/settings.toml
             return 0
           }
           function emgc_main () {
             local _ssddir=$(ssddir_main)
-            python3 ''${_ssddir}/git/emg/src/main.py -c -i ''${_ssddir}/git/emg/cfg/settings.toml
+            python3 ''${_ssddir}/git/emg/src/main.py -c -i ''${_ssddir}/git/emg/config/settings.toml
             return 0
           }
           function emgl_main () {
             local _ssddir=$(ssddir_main)
-            python3 ''${_ssddir}/git/emg/src/lnk.py -i ''${_ssddir}/git/emg/cfg/settings.toml
+            python3 ''${_ssddir}/git/emg/src/lnk.py -i ''${_ssddir}/git/emg/config/settings.toml
             return 0
           }
           function flac2m4a_main () {
@@ -93,7 +93,7 @@
             return 0
           }
           function gpa_main () {
-            local _gh_dir="''${config.home.homeDirectory}/GitHub"
+            local _gh_dir="${config.home.homeDirectory}/Git"
             local _pwd="''${PWD}"
             cd "''${_gh_dir}"
             for i in */; do
@@ -326,6 +326,7 @@
           alias lsg='lsg_main'
           alias mpvreset='mpv --reset-on-next-file=all'
           alias nixall='nixall_main'
+          alias nixfix='sudo nix-store --verify --check-contents --repair'
           alias nixupg='nixupg_main'
           alias openanyway='openanyway_main'
           alias pdf2png350='pdf2png350_main'
