@@ -39,17 +39,23 @@
   system = {
     defaults = {
       CustomUserPreferences = {
-        "app.mp3tag.Mp3tag" = {
-          PlaylistFileExtension = "m3u";
-          PlaylistFormat = true;
-          PlaylistPathFormat = false;
-        };
+#         "app.mp3tag.Mp3tag" = {
+#           PlaylistFileExtension = "m3u";
+#           PlaylistFormat = true;
+#           PlaylistPathFormat = false;
+#         };
         AppleMultitouchTrackpad = {
           FirstClickThreshold = 0;
         };
-        "com.djhan.EdgeView-3" = {
-          showOnlyImageInFullScreen = true;
+        "com.apple.ComfortSounds" = {
+          comfortSoundsEnabled = true;
+          duckingEnabled = true;
+          soundType = "Rain";
+          relativeVolume = 0.5;
         };
+#         "com.djhan.EdgeView-3" = {
+#           showOnlyImageInFullScreen = true;
+#         };
         desktopservices = {
           DSDontWriteNetworkStores = true;
           DSDontWriteUSBStores = true;
@@ -104,12 +110,17 @@
       };
       NSGlobalDomain = {
         AppleShowAllExtensions = true;
+        ApplePressAndHoldEnabled = false;
         InitialKeyRepeat = 10;
         KeyRepeat = 1;
         NSAutomaticCapitalizationEnabled = false;
+        NSAutomaticDashSubstitutionEnabled = false;
+        NSAutomaticPeriodSubstitutionEnabled = false;
+        NSAutomaticSpellingCorrectionEnabled = false;
+        NSAutomaticQuoteSubstitutionEnabled = false;
+        NSDocumentSaveNewDocumentsToCloud = true;
         NSNavPanelExpandedStateForSaveMode = true;
         NSNavPanelExpandedStateForSaveMode2 = true;
-        NSDocumentSaveNewDocumentsToCloud = true;
       };
       trackpad = {
         Clicking = true;

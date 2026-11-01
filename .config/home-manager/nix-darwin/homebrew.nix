@@ -111,7 +111,7 @@
       "font-zen-kurenaido"
       "font-zen-maru-gothic"
       "font-zen-old-mincho"
-      "freefilesync"
+#       "freefilesync"
       "fuse-t"
       "google-chrome"
       "google-drive"

@@ -9,6 +9,9 @@
         "${config.home.homeDirectory}/.ssh/config.local"
       ];
       settings = {
+        "*" = {
+          forwardX11 = true;
+        };
         PBS = {
           AddKeysToAgent = "ask";
           KbdInteractiveAuthentication = false;

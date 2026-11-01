@@ -13,7 +13,6 @@
       };
       config = {
         "ao" = "avfoundation";
-        "audio-format" = "float";
         "audio-stream-silence" = false;
         "audio-wait-open" = 0;
         "border" = false;

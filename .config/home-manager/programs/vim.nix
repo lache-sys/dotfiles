@@ -1,9 +1,16 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+
 {
   programs = {
     vim = {
       enable = true;
       defaultEditor = true;
+      packageConfigurable = pkgs.vim;
       plugins = [
         pkgs.vimPlugins.fzf-wrapper
         pkgs.vimPlugins.markdown-preview-nvim
@@ -62,6 +69,7 @@
         set listchars=eol:$,tab:^\ ,trail:~
         set mouse=a
         set nobackup
+        set nocompatible
         set noerrorbells
         set nofoldenable
         set noswapfile
@@ -72,6 +80,7 @@
         set shellslash
         set shiftwidth=2
         set tabstop=2
+        syntax on
       '';
     };
   };

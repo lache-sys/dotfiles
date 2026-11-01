@@ -67,21 +67,6 @@
             fi
             return 0
           }
-          function emg_main () {
-            local _ssddir=$(ssddir_main)
-            python3 ''${_ssddir}/git/emg/src/main.py -i ''${_ssddir}/git/emg/config/settings.toml
-            return 0
-          }
-          function emgc_main () {
-            local _ssddir=$(ssddir_main)
-            python3 ''${_ssddir}/git/emg/src/main.py -c -i ''${_ssddir}/git/emg/config/settings.toml
-            return 0
-          }
-          function emgl_main () {
-            local _ssddir=$(ssddir_main)
-            python3 ''${_ssddir}/git/emg/src/lnk.py -i ''${_ssddir}/git/emg/config/settings.toml
-            return 0
-          }
           function flac2m4a_main () {
             for i in *.flac; do
               ffmpeg -i ''${i} -acodec alac -vcodec copy $(basename ''${i} .flac).m4a
@@ -313,9 +298,6 @@
           alias clamdf='clamdf_main'
           alias cut4dl='cut4dl_main'
           alias d2u='dos2unix'
-          alias emg='emg_main'
-          alias emgc='emgc_main'
-          alias emgl='emgl_main'
           alias freshclam='freshclam_main'
           alias gaa='git add -A'
           alias gpa='gpa_main'

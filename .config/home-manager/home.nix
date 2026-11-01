@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, lib, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -13,17 +19,20 @@
     CMAKE_PREFIX_PATH = "${config.home.profileDirectory}";
     CPATH = "${config.home.profileDirectory}/include";
     CPLUS_INCLUDE_PATH = "${config.home.profileDirectory}/include";
-    EDITOR = "vim";
     HOMEBREW_NO_ANALYTICS = true;
+    LANG = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
     LIBRARY_PATH = "${config.home.profileDirectory}/lib";
     PKG_CONFIG_PATH = "${config.home.profileDirectory}/lib/pkgconfig";
 # 9B36E0149A4EAB28E032F2D382BD733A21368364: Expires in 2027-06-04!
     SOPS_PGP_FP = "9B36E0149A4EAB28E032F2D382BD733A21368364";
+    TERM = "tmux-256color";
     TOMBI_OFFLINE = true;
     TOMBI_NO_CACHE = true;
     VCPKG_ROOT = "${pkgs.vcpkg}/share/vcpkg";
     XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
   } // (if pkgs.stdenv.hostPlatform.isDarwin then {
+    NIX_SSL_CERT_FILE = "/etc/ssl/cert.pem";
     SSH_AUTH_SOCK = "${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
   } else {
     SSH_AUTH_SOCK = "${config.home.homeDirectory}/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock";
@@ -49,9 +58,7 @@
     # # "Hello, world!" when run.
     pkgs.alegreya
     pkgs.alegreya-sans
-    pkgs.audacity
     pkgs.atool
-    pkgs.azahar
     pkgs.bat
     pkgs.bchunk
     pkgs.bison
@@ -63,6 +70,7 @@
     pkgs.cdrtools
     pkgs.chafa
     pkgs.clamav
+    pkgs.colima
     pkgs.cmake
     pkgs.colima
     pkgs.coreutils
@@ -89,8 +97,10 @@
     pkgs.fluidsynth
     pkgs.fontconfig
     pkgs.freepats
+    pkgs.furnace
     pkgs.fzf
     pkgs.gcc
+    pkgs.gcc-arm-embedded
     pkgs.geist-font
     pkgs.gettext
     pkgs.gh
@@ -126,6 +136,7 @@
     pkgs.melonds
     pkgs.meson
     pkgs.midicsv
+    pkgs.ncurses
     pkgs.nerd-fonts."m+"
     pkgs.nerd-fonts.bigblue-terminal
     pkgs.ninja
@@ -133,12 +144,16 @@
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts-cjk-serif
     pkgs.openjdk
+    pkgs.openssl
+    pkgs.OVMFFull
     pkgs.pandoc
     pkgs.paperkey
     pkgs.parallel
     pkgs.pcre2
+    pkgs.pigz
     pkgs.pkgconf
     pkgs.poppler-utils
+    pkgs.pv
     pkgs.qemu
     pkgs.rsync
     pkgs.rtmidi
@@ -156,6 +171,7 @@
     pkgs.uv
     pkgs.vcpkg
     pkgs.vgmstream
+    pkgs.vimv
     pkgs.wakeonlan
     pkgs.wget
     pkgs.yt-dlp
@@ -181,13 +197,16 @@
     pkgs.brewCasks.bettertouchtool
     pkgs.brewCasks.cog-app
     pkgs.brewCasks.cryptomator
-#     pkgs.brewCasks.discord
+    pkgs.brewCasks.discord
     pkgs.brewCasks.handbrake-app
+    pkgs.brewCasks.hotkeyclash
+    pkgs.brewCasks.mactoy
     pkgs.brewCasks.opendisplay
     pkgs.brewCasks.puremac
     pkgs.brewCasks.quicklook-video
     pkgs.brewCasks.syntax-highlight
     pkgs.brewCasks.twine-app
+    pkgs.brewCasks.xquartz
     pkgs.brewCasks.zoom
     pkgs.darwin.libiconv
     pkgs.darwin.trash
@@ -195,9 +214,8 @@
     pkgs.mas
     pkgs.pam-reattach
     pkgs.pinentry_mac
-    pkgs.switchaudio-osx
-    pkgs.utm
     pkgs.vlc-bin
+#     pkgs.xquartz
   ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
     pkgs.a2jmidid
     pkgs.carla
@@ -259,36 +277,6 @@
   programs = {
     home-manager = {
       enable = true;
-    };
-    git = {
-      enable = true;
-      ignores = [
-        "**/__pycache__/**"
-        "**/.DS_Store"
-        "**/.env"
-        "**/*.log"
-        "**/Thumbs.db"
-      ];
-      settings = {
-        commit = {
-          gpgsign = true;
-        };
-        include = {
-          path = "${config.home.homeDirectory}/.gitconfig_personal";
-        };
-        http = {
-          postBuffer = 524288000;
-        };
-        init = {
-          defaultBranch = "main";
-        };
-        pull = {
-          ffonly = true;
-        };
-        tag = {
-          gpgsign = true;
-        };
-      };
     };
     gpg = {
       enable = true;

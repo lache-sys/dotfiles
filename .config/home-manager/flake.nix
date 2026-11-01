@@ -86,6 +86,7 @@
             ./programs/bash.nix
             ./programs/btop.nix
             ./programs/cargo.nix
+            ./programs/git.nix
             ./programs/mpv.nix
             ./programs/npm.nix
             ./programs/ranger.nix
@@ -106,7 +107,7 @@
         darwinConfigurations.lache-sys-darwin = nix-darwin.lib.darwinSystem {
           system = system;
           modules = [
-            ./nix-darwin/default.nix
+            ./nix-darwin/defaults.nix
             ./nix-darwin/homebrew.nix
           ];
         };
