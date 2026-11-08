@@ -228,6 +228,7 @@ in
     pkgs.pam-reattach
     pkgs.pinentry_mac
     pkgs.vlc-bin
+    pkgs.xquartz
   ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
     pkgs.a2jmidid
     pkgs.carla
