@@ -10,7 +10,8 @@
       ];
       settings = {
         "*" = {
-          forwardX11 = true;
+          ForwardX11 = true;
+          XAuthLocation = "${pkgs.xauth}";
         };
         PBS = {
           AddKeysToAgent = "ask";
