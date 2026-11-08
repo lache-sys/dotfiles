@@ -111,6 +111,14 @@
             fi
             return 0
           }
+          function img2webp_main () {
+            _pwd=''${PWD}
+            cd "''${_pwd}"
+            for i in *''${1}; do
+              ffmpeg -i ''${i} -c:v libwebp -lossless 1 $(basename ''${i} ''${1}).webp
+            done
+            return 0
+          }
           function itlbkup_main () {
             local _itl="${config.home.homeDirectory}/Music/Music/Music Library.musiclibrary"
             local _pwd="''${PWD}"
@@ -137,14 +145,6 @@
               echo "Sorry, this function is for macOS Only."
               return 1
             fi
-            return 0
-          }
-          function img2webp_main () {
-            _pwd=''${PWD}
-            cd "''${_pwd}"
-            for i in *''${1}; do
-              ffmpeg -i ''${i} -c:v libwebp -lossless 1 $(basename ''${i} ''${1}).webp
-            done
             return 0
           }
           function lsg_main () {
@@ -319,7 +319,8 @@
           alias safarisave='safarisave_main'
           alias smart='smartctl -a'
           alias ssddir='ssddir_main'
-          alias sza='7zz a -mmt=on -mx=9 -sdel'
+          alias sza='7zz a -mx=9 -sdel'
+          alias szam='7zz a -mmt=on -mx=9 -sdel'
           alias urlfromtsv='urlfromtsv_main'
           alias urlfromtxt='urlfromtxt_main'
           alias vvim='vim -u NONE -N'

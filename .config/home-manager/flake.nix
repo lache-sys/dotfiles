@@ -90,6 +90,7 @@
             ./programs/mpv.nix
             ./programs/npm.nix
             ./programs/ranger.nix
+            ./programs/rclone.nix
             ./programs/ssh.nix
             ./programs/starship.nix
             ./programs/texlive.nix

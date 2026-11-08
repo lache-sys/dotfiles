@@ -36,8 +36,7 @@
           };
         };
         env = {
-# 	    term = "xterm-256color";
-          term = "tmux-256color";
+          term = "xterm-256color";
         };
         font = {
           normal = {

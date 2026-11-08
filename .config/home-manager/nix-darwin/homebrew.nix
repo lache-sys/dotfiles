@@ -30,6 +30,7 @@
     ];
     casks = [
       "lache-sys/tap/8bitdo-firmware-updater"
+      "lache-sys/tap/8bitdo-ps3-pairing-tool"
       "adguard"
       "adobe-creative-cloud"
       "lache-sys/tap/authme"
@@ -93,9 +94,6 @@
       "font-tiny5-duo"
       "font-train-one"
       "lache-sys/tap/font-ume"
-      "lache-sys/tap/font-x5y8pxnegaclip"
-      "lache-sys/tap/font-x5y8pxnegatape"
-      "lache-sys/tap/font-x8y12pxdenkichip"
       "lache-sys/tap/font-yozakura"
       "font-ysabeau"
       "font-ysabeau-infant"
@@ -111,12 +109,10 @@
       "font-zen-kurenaido"
       "font-zen-maru-gothic"
       "font-zen-old-mincho"
-#       "freefilesync"
       "fuse-t"
       "google-chrome"
       "google-drive"
       "hhkb"
-      "lache-sys/tap/imagecanvas"
       "lache-sys/tap/kamvas-pro-13-2-5k-driver"
       "lache-sys/tap/magical-8bit-plug"
       "lache-sys/tap/magical-fds-plug"
@@ -151,6 +147,7 @@
       "Spark" = 1176895641;
       "Synctrain" = 6553985316;
       "V1MML" = 971745309;
+      "virtualOS VM" = 1614659226;
       "Xcode" = 497799835;
       "Yoink" = 457622435;
       "紀伊國屋書店Kinoppy" = 572547904;

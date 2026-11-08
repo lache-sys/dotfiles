@@ -6,6 +6,11 @@
   ...
 }:
 
+let
+  x5y8pxnegaclip = pkgs.callPackage ./mkderivation/x5y8pxnegaclip.nix { };
+  x5y8pxnegatape = pkgs.callPackage ./mkderivation/x5y8pxnegatape.nix { };
+  x8y12pxdenkichip = pkgs.callPackage ./mkderivation/x8y12pxdenkichip.nix { };
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -13,6 +18,7 @@
   home.homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/lache-sys" else "/home/lache-sys";
   home.sessionPath = [
     "${config.home.homeDirectory}/.local/bin"
+    "/opt/X11/bin"
   ];
   home.sessionVariables = {
     CMAKE_MAKE_PROGRAM = "${pkgs.ninja}/bin/ninja";
@@ -106,6 +112,7 @@
     pkgs.gh
     pkgs.gnumake
     pkgs.gpac
+#     pkgs.grandorgue
     pkgs.hackgen-nf-font
     pkgs.jack2
     pkgs.jhead
@@ -154,6 +161,7 @@
     pkgs.pkgconf
     pkgs.poppler-utils
     pkgs.pv
+    pkgs.pvetui
     pkgs.qemu
     pkgs.rsync
     pkgs.rtmidi
@@ -174,9 +182,15 @@
     pkgs.vimv
     pkgs.wakeonlan
     pkgs.wget
+    pkgs.xauth
+    pkgs.xdpyinfo
+    pkgs.xhost
     pkgs.yt-dlp
     pkgs.zoxide
     pkgs.zilla-slab
+    x5y8pxnegaclip
+    x5y8pxnegatape
+    x8y12pxdenkichip
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -206,7 +220,6 @@
     pkgs.brewCasks.quicklook-video
     pkgs.brewCasks.syntax-highlight
     pkgs.brewCasks.twine-app
-    pkgs.brewCasks.xquartz
     pkgs.brewCasks.zoom
     pkgs.darwin.libiconv
     pkgs.darwin.trash
@@ -215,7 +228,6 @@
     pkgs.pam-reattach
     pkgs.pinentry_mac
     pkgs.vlc-bin
-#     pkgs.xquartz
   ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
     pkgs.a2jmidid
     pkgs.carla

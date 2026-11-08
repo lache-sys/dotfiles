@@ -53,6 +53,9 @@
           soundType = "Rain";
           relativeVolume = 0.5;
         };
+        "org.nixos.xquartz.X11" = {
+          enable_iglx = true;
+        };
 #         "com.djhan.EdgeView-3" = {
 #           showOnlyImageInFullScreen = true;
 #         };
