@@ -1,9 +1,14 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
 {
   xdg = {
     configFile = {
       "myrc/myprofile" = {
+        executable = true;
         text = ''
           if [[ "$(uname)" == "Darwin" ]]; then
             if [[ $(uname -m) == "arm64" || $(uname -m) == "aarch64" ]]; then
@@ -18,6 +23,7 @@
         '';
       };
       "myrc/myrc" = {
+        executable = true;
         text = ''
           function clamd_main () {
             clamd --config-file=${config.home.homeDirectory}/.config/clamav/clamd.conf

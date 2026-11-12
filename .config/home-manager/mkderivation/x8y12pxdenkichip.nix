@@ -30,7 +30,7 @@ stdenv.mkDerivation (finalAttrs: {
   passthru.updateScript = nix-update-script { };
 
   meta = {
-    description = "DenkiChip (でんきチップ) is a compact and bold Japanese pixel font under SIL OFL 1.1";
+    description = "Compact and bold Japanese pixel font";
     homepage = "https://github.com/hicchicc/x8y12pxDenkiChip";
     changelog = "https://github.com/hicchicc/x8y12pxDenkiChip/releases/tag/${finalAttrs.src.tag}";
     license = lib.licenses.ofl;

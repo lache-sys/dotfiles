@@ -50,6 +50,7 @@
         set cinoptions+=:0
         set clipboard=unnamed,autoselect
         set cmdheight=2
+        set directory=${config.home.homeDirectory}/.vim/tmp
         set display=lastline
         set encoding=utf-8
         set expandtab

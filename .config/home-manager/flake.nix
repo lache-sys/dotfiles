@@ -95,11 +95,14 @@
             ./programs/starship.nix
             ./programs/texlive.nix
             ./programs/tmux.nix
+            ./programs/tmuxinator.nix
             ./programs/vim.nix
             ./programs/zsh.nix
             ./services/gpg-agent.nix
+            ./xdg/bettercmdtab.nix
             ./xdg/clamav.nix
             ./xdg/myrc.nix
+            ./xdg/ranger.nix
             ./xdg/vimt.nix
           ];
           # Optionally use extraSpecialArgs

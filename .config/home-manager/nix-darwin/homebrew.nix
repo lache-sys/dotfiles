@@ -22,11 +22,9 @@
     ];
     brews = [
       "dvdbackup"
-      "felinks"
       "nodebrew"
       "py3cairo"
       "sevenzip"
-      "tag"
     ];
     casks = [
       "lache-sys/tap/8bitdo-firmware-updater"

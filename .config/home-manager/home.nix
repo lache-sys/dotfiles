@@ -7,6 +7,7 @@
 }:
 
 let
+  tag = pkgs.callPackage ./mkderivation/tag.nix { };
   x5y8pxnegaclip = pkgs.callPackage ./mkderivation/x5y8pxnegaclip.nix { };
   x5y8pxnegatape = pkgs.callPackage ./mkderivation/x5y8pxnegatape.nix { };
   x8y12pxdenkichip = pkgs.callPackage ./mkderivation/x8y12pxdenkichip.nix { };
@@ -90,6 +91,7 @@ in
     pkgs.dos2unix
     pkgs.dosbox-x
     pkgs.dvdauthor
+    pkgs.elinks
     pkgs.exiftool
     pkgs.eza
     pkgs.f3
@@ -112,7 +114,7 @@ in
     pkgs.gh
     pkgs.gnumake
     pkgs.gpac
-#     pkgs.grandorgue
+    pkgs.grandorgue
     pkgs.hackgen-nf-font
     pkgs.jack2
     pkgs.jhead
@@ -176,6 +178,7 @@ in
     pkgs.timidity
     pkgs.tombi
     pkgs.unzrip
+    pkgs.uutils-coreutils
     pkgs.uv
     pkgs.vcpkg
     pkgs.vgmstream
@@ -188,6 +191,7 @@ in
     pkgs.yt-dlp
     pkgs.zoxide
     pkgs.zilla-slab
+    tag
     x5y8pxnegaclip
     x5y8pxnegatape
     x8y12pxdenkichip
@@ -220,6 +224,7 @@ in
     pkgs.brewCasks.quicklook-video
     pkgs.brewCasks.syntax-highlight
     pkgs.brewCasks.twine-app
+    pkgs.brewCasks.whatcable
     pkgs.brewCasks.zoom
     pkgs.darwin.libiconv
     pkgs.darwin.trash

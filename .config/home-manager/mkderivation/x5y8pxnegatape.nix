@@ -33,7 +33,7 @@ stdenv.mkDerivation (finalAttrs: {
   passthru.updateScript = nix-update-script { };
 
   meta = {
-    description = "NegaTape (ネガテープ) is a negative space pixel font under SIL OFL 1.1";
+    description = "Negative space pixel font";
     homepage = "https://github.com/hicchicc/x5y8pxNegaTape";
     changelog = "https://github.com/hicchicc/x5y8pxNegaTape/releases/tag/${finalAttrs.src.tag}";
     license = lib.licenses.ofl;

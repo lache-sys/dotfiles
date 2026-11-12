@@ -33,7 +33,7 @@ stdenv.mkDerivation (finalAttrs: {
   passthru.updateScript = nix-update-script { };
 
   meta = {
-    description = "NegaClip (ネガクリップ) is a overlapping outline pixel font under SIL OFL 1.1";
+    description = "Overlapping outline pixel font";
     homepage = "https://github.com/hicchicc/x5y8pxNegaClip";
     changelog = "https://github.com/hicchicc/x5y8pxNegaClip/releases/tag/${finalAttrs.src.tag}";
     license = lib.licenses.ofl;
