@@ -38,8 +38,8 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   installPhase = ''
-    make DESTDIR=$out/bin
-    make DESTDIR=$out/bin install
+    make
+    make install
   '';
 
   passthru.updateScript = nix-update-script { };

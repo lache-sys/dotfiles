@@ -1,4 +1,8 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
 {
   homebrew = {
@@ -117,38 +121,23 @@
       "lache-sys/tap/ntsc-rs"
       "lache-sys/tap/prospect"
       "retroarch-metal"
-      "lache-sys/tap/rusty-backup"
       "scansnap-home"
       "veracrypt-fuse-t"
     ];
     masApps = {
       "Amphetamine" = 937984704;
-      "AutoMute" = 1118136179;
       "Bitwarden" = 1352778147;
-      "BrightIntosh" = 6452471855;
-      "Clamshell" = 6477896729;
       "DaisyDisk" = 411643860;
       "EdgeView" = 1580323719;
-      "EVA Clock Nixie" = 6794831211;
-      "GarageBand" = 682658836;
       "GrandPerspective" = 1111570163;
-      "Hide My Screen" = 6476070422;
-      "Jump Desktop (RDP, VNC, Fluid)" = 524141863;
       "LINE" = 539883307;
-      "MIDI Tape Recorder" = 1598618004;
       "Mp3tag" = 1532597159;
-      "Name Mangler 3" = 603637384;
       "Photo Naminator" = 1598189356;
-      "Pine Player Pro" = 6474128342;
       "Pure Paste" = 1611378436;
       "RosettaCheck" = 6759349750;
       "Spark" = 1176895641;
-      "Synctrain" = 6553985316;
-      "V1MML" = 971745309;
-      "virtualOS VM" = 1614659226;
       "Xcode" = 497799835;
       "Yoink" = 457622435;
-      "紀伊國屋書店Kinoppy" = 572547904;
     };
   };
 } 

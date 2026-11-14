@@ -7,6 +7,8 @@
 }:
 
 let
+  np2kai = pkgs.callPackage ./mkderivation/np2kai.nix { };
+  rusty-backup = pkgs.callPackage ./mkderivation/rusty-backup.nix { };
   tag = pkgs.callPackage ./mkderivation/tag.nix { };
   x5y8pxnegaclip = pkgs.callPackage ./mkderivation/x5y8pxnegaclip.nix { };
   x5y8pxnegatape = pkgs.callPackage ./mkderivation/x5y8pxnegatape.nix { };
@@ -63,6 +65,7 @@ in
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
+    np2kai
     pkgs.alegreya
     pkgs.alegreya-sans
     pkgs.atool
@@ -83,6 +86,7 @@ in
     pkgs.coreutils
     pkgs.cuetools
     pkgs.deno
+    pkgs.dexed
     pkgs.dmtx-utils
     pkgs.docker
     pkgs.docker-compose
@@ -145,6 +149,7 @@ in
     pkgs.melonds
     pkgs.meson
     pkgs.midicsv
+    pkgs.mtools
     pkgs.ncurses
     pkgs.nerd-fonts."m+"
     pkgs.nerd-fonts.bigblue-terminal
@@ -162,6 +167,7 @@ in
     pkgs.pigz
     pkgs.pkgconf
     pkgs.poppler-utils
+    pkgs.premake
     pkgs.pv
     pkgs.pvetui
     pkgs.qemu
@@ -191,7 +197,7 @@ in
     pkgs.yt-dlp
     pkgs.zoxide
     pkgs.zilla-slab
-    tag
+    rusty-backup
     x5y8pxnegaclip
     x5y8pxnegatape
     x8y12pxdenkichip
@@ -208,6 +214,7 @@ in
     #   echo "Hello, ${config.home.username}!"
     # '')
   ] ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
+    pkgs.apple-sdk
     pkgs.brewCasks.affinity
     pkgs.brewCasks.alfred
     pkgs.brewCasks.bartender
@@ -234,6 +241,7 @@ in
     pkgs.pinentry_mac
     pkgs.vlc-bin
     pkgs.xquartz
+    tag
   ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
     pkgs.a2jmidid
     pkgs.carla
