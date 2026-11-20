@@ -27,10 +27,10 @@ else
 fi
 cd ${HM_SRC}
 nix flake update
-nix run home-manager/master -- switch --flake .
-home-manager switch --flake .
+nix run home-manager/master -- switch --flake .#$(whoami)@$(hostname).local
+home-manager switch --flake .#$(whoami)@$(hostname).local
 if [[ "$(uname)" == "Darwin" ]]; then
-  sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
+  sudo nix run nix-darwin -- switch --flake .#$(hostname)
 fi
 cd ${HOME}
 UV_VENV_CLEAR=1 uv venv

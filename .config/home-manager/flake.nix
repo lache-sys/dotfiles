@@ -56,32 +56,26 @@
     let
       lastModifiedDate = self.lastModifiedDate or self.lastModified or "19700101";
       version = builtins.substring 0 8 lastModifiedDate;
-      systems = [
-        "aarch64-darwin"
-        "x86_64-linux"
-      ];
-      forAllSystems = f: builtins.listToAttrs (map (system: {
-        name = system;
-        value = f system;
-      }) systems);
     in
     {
-      packages = forAllSystems (system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-        inherit system;
-        overlays = if pkgs.stdenv.hostPlatform.isLinux then [
-          nixgl.overlay.default
-        ] else [
-        ];
-      in
-      {
-        homeConfigurations."lache-sys" = home-manager.lib.homeManagerConfiguration {
+      darwinConfigurations = {
+        Verdandi = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [
+            ./nix-darwin/defaults.nix
+            ./nix-darwin/homebrew.nix
+          ];
+        };
+      };
+      homeConfigurations = {
+        "lache-sys@Verdandi.local" = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = { inherit inputs; };
-          inherit pkgs;
+          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
           # Specify your home configuration modules here, for example,
           # the path to your home.nix.
           modules = [
-            ./home.nix
+            ./home/home.nix
+            ./home/home_main.nix
             ./programs/alacritty.nix
             ./programs/bash.nix
             ./programs/btop.nix
@@ -108,13 +102,6 @@
           # Optionally use extraSpecialArgs
           # to pass through arguments to home.nix
         };
-        darwinConfigurations.lache-sys-darwin = nix-darwin.lib.darwinSystem {
-          system = system;
-          modules = [
-            ./nix-darwin/defaults.nix
-            ./nix-darwin/homebrew.nix
-          ];
-        };
-      });
+      };
     };
 }

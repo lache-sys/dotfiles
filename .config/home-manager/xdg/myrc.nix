@@ -185,10 +185,10 @@
           function nixupg_main () {
             local _pwd=''${PWD}
             cd ${config.home.homeDirectory}/.config/home-manager
-            nix run home-manager/master -- switch --flake .
+            nix run home-manager/master -- switch --flake .#$(whoami)@$(hostname).local
             if [[ "$(uname)" == "Darwin" ]]; then
               brew update
-              sudo nix run nix-darwin -- switch --flake .#lache-sys-darwin
+              sudo nix run nix-darwin -- switch --flake .#$(hostname)
             fi
             cd "''${_pwd}"
             return 0

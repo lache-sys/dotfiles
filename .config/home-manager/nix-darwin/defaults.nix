@@ -20,6 +20,9 @@
       nixbld = 350;
     };
   };
+  networking = {
+    hostName = "Verdandi";
+  };
   nix = {
     enable = false;
     settings = {
@@ -39,11 +42,11 @@
   system = {
     defaults = {
       CustomUserPreferences = {
-#         "app.mp3tag.Mp3tag" = {
-#           PlaylistFileExtension = "m3u";
-#           PlaylistFormat = true;
-#           PlaylistPathFormat = false;
-#         };
+        "app.mp3tag.Mp3tag" = {
+          PlaylistFileExtension = "m3u";
+          PlaylistFormat = true;
+          PlaylistPathFormat = false;
+        };
         AppleMultitouchTrackpad = {
           FirstClickThreshold = 0;
         };
@@ -56,9 +59,9 @@
         "org.nixos.xquartz.X11" = {
           enable_iglx = true;
         };
-#         "com.djhan.EdgeView-3" = {
-#           showOnlyImageInFullScreen = true;
-#         };
+        "com.djhan.EdgeView-3" = {
+          showOnlyImageInFullScreen = true;
+        };
         desktopservices = {
           DSDontWriteNetworkStores = true;
           DSDontWriteUSBStores = true;
@@ -137,9 +140,9 @@
   };
   users = {
     users = {
-      admin = {
-        name = "admin";
-        home = /Users/admin;
+      lache-sys = {
+        name = "lache-sys";
+        home = /Users/lache-sys;
       };
     };
   };

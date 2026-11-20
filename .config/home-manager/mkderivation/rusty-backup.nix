@@ -2,26 +2,8 @@
   lib,
   rustPlatform,
   fetchFromGitHub,
-  pkg-config,
-  wrapGAppsHook3,
-  atk,
-  aws-lc,
-  bzip2,
-  cairo,
-  cmake,
-  fontconfig,
-  gdk-pixbuf,
-  glib,
-  gtk3,
-  libxkbcommon,
-  mame,
-  pango,
-  vulkan-loader,
-  xz,
-  zstd,
+  pkgs,
   stdenv,
-  alsa-lib,
-  wayland,
   nix-update-script,
 }:
 
@@ -40,30 +22,31 @@ rustPlatform.buildRustPackage (finalAttrs: {
   cargoHash = "sha256-kTeJ3ksU8SGyXvHPk0MOUv3lVhWXuO4Dy9qqqS+Tu0M=";
 
   nativeBuildInputs = [
-    cmake
-    mame
-    pkg-config
-    wrapGAppsHook3
+    pkgs.cmake
+    pkgs.makeWrapper
+    pkgs.mame
+    pkgs.pkg-config
+    pkgs.wrapGAppsHook3
   ];
 
   buildInputs = [
-    atk
-    aws-lc
-    bzip2
-    cairo
-    fontconfig
-    gdk-pixbuf
-    glib
-    gtk3
-    libxkbcommon
-    pango
-    vulkan-loader
-    xz
-    zstd
+    pkgs.atk
+    pkgs.aws-lc
+    pkgs.bzip2
+    pkgs.cairo
+    pkgs.fontconfig
+    pkgs.gdk-pixbuf
+    pkgs.glib
+    pkgs.gtk3
+    pkgs.libxkbcommon
+    pkgs.pango
+    pkgs.vulkan-loader
+    pkgs.xz
+    pkgs.zstd
   ]
   ++ lib.optionals stdenv.hostPlatform.isLinux [
-    alsa-lib
-    wayland
+    pkgs.alsa-lib
+    pkgs.wayland
   ];
 
   env = {

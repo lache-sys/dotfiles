@@ -28,7 +28,6 @@
       "dvdbackup"
       "nodebrew"
       "py3cairo"
-      "sevenzip"
     ];
     casks = [
       "lache-sys/tap/8bitdo-firmware-updater"
@@ -121,6 +120,7 @@
       "lache-sys/tap/ntsc-rs"
       "lache-sys/tap/prospect"
       "retroarch-metal"
+      "lache-sys/tap/sana-8bit-vst"
       "scansnap-home"
       "veracrypt-fuse-t"
     ];
