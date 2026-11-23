@@ -39,6 +39,13 @@ in
       HOMEBREW_NO_ANALYTICS = true;
       LANG = "en_US.UTF-8";
       LC_ALL = "en_US.UTF-8";
+      LD_LIBRARY_PATH = lib.concatStringsSep ":" [
+        (lib.makeLibraryPath [
+          pkgs.libglvnd
+          pkgs.mesa
+        ])
+        "$LD_LIBRARY_PATH"
+      ];
       LIBRARY_PATH = "${config.home.profileDirectory}/lib";
       PKG_CONFIG_PATH = "${config.home.profileDirectory}/lib/pkgconfig";
 # 9B36E0149A4EAB28E032F2D382BD733A21368364: Expires in 2027-06-04!
@@ -128,6 +135,7 @@ in
       pkgs.libaacs
       pkgs.libao
       pkgs.libcaca
+      pkgs.libglvnd
       pkgs.libisoburn
       pkgs.libogg
       pkgs.libvorbis
@@ -139,6 +147,7 @@ in
       pkgs.mcomix
       pkgs.mediainfo
       pkgs.melonds
+      pkgs.mesa
       pkgs.meson
       pkgs.midicsv
       pkgs.mtools
