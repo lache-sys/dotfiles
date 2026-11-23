@@ -185,10 +185,12 @@
           function nixupg_main () {
             local _pwd=''${PWD}
             cd ${config.home.homeDirectory}/.config/home-manager
-            nix run home-manager/master -- switch --flake .#$(whoami)@$(hostname).local
             if [[ "$(uname)" == "Darwin" ]]; then
+              nix run home-manager/master -- switch --flake .#$(whoami)@$(scutil --get ComputerName).local
               brew update
-              sudo nix run nix-darwin -- switch --flake .#$(hostname)
+              sudo nix run nix-darwin -- switch --flake .#$(scutil --get ComputerName)
+            elif [[ "$(uname)" == "Linux" ]]; then
+              nix run home-manager/master -- switch --flake .#$(whoami)@$(cat /etc/hostname)
             fi
             cd "''${_pwd}"
             return 0
@@ -326,8 +328,7 @@
           alias safarisave='safarisave_main'
           alias smart='smartctl -a'
           alias ssddir='ssddir_main'
-          alias sza='7zz a -mx=9 -sdel'
-          alias szam='7zz a -mmt=on -mx=9 -sdel'
+          alias sza='7zz a -mmt=on -mx=9 -sdel'
           alias urlfromtsv='urlfromtsv_main'
           alias urlfromtxt='urlfromtxt_main'
           alias vvim='vim -u NONE -N'

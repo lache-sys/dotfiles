@@ -68,6 +68,37 @@
         };
       };
       homeConfigurations = {
+        "lache-sys@OSNDTJFA" = home-manager.lib.homeManagerConfiguration {
+          extraSpecialArgs = { inherit inputs; };
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          # Specify your home configuration modules here, for example,
+          # the path to your home.nix.
+          modules = [
+            ./home.nix
+            ./programs/alacritty.nix
+            ./programs/bash.nix
+            ./programs/btop.nix
+            ./programs/cargo.nix
+            ./programs/git.nix
+            ./programs/mpv.nix
+            ./programs/npm.nix
+            ./programs/ranger.nix
+            ./programs/rclone.nix
+            ./programs/ssh.nix
+            ./programs/starship.nix
+            ./programs/texlive.nix
+            ./programs/tmux.nix
+            ./programs/tmuxinator.nix
+            ./programs/vim.nix
+            ./programs/zsh.nix
+            ./services/gpg-agent.nix
+            ./xdg/btop.nix
+            ./xdg/clamav.nix
+            ./xdg/myrc.nix
+            ./xdg/ranger.nix
+            ./xdg/vimt.nix
+          ];
+        };
         "lache-sys@Verdandi.local" = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = { inherit inputs; };
           pkgs = nixpkgs.legacyPackages.aarch64-darwin;
