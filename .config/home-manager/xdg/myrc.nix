@@ -307,6 +307,7 @@
           alias freshclam='freshclam_main'
           alias gaa='git add -A'
           alias gpa='gpa_main'
+          alias hmnews='nix run home-manager/master -- news --flake .#$(whoami)@$(hostname).local'
           alias img2webp='img2webp_main'
           alias itlbkup='itlbkup_main'
           alias less='bat'

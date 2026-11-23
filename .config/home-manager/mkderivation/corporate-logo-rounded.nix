@@ -30,9 +30,6 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postUnpack
   '';
 
-  installPhase = ''
-  '';
-
   meta = {
     description = "Corporate Logo (Rounded) ver. 3";
     homepage = "https://logotype.jp/font-corpmaru.html";

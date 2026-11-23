@@ -7,18 +7,57 @@
 }:
 
 let
-  corporate-logo-rounded = pkgs.callPackage ../mkderivation/corporate-logo-rounded.nix { };
-  np2kai = pkgs.callPackage ../mkderivation/np2kai.nix { };
-  rusty-backup = pkgs.callPackage ../mkderivation/rusty-backup.nix { };
-  tag = pkgs.callPackage ../mkderivation/tag.nix { };
-  x5y8pxnegaclip = pkgs.callPackage ../mkderivation/x5y8pxnegaclip.nix { };
-  x5y8pxnegatape = pkgs.callPackage ../mkderivation/x5y8pxnegatape.nix { };
-  x8y12pxdenkichip = pkgs.callPackage ../mkderivation/x8y12pxdenkichip.nix { };
+  aozora-mincho = pkgs.callPackage ./mkderivation/aozora-mincho.nix { };
+  corporate-logo-rounded = pkgs.callPackage ./mkderivation/corporate-logo-rounded.nix { };
+  mgenplus = pkgs.callPackage ./mkderivation/mgenplus.nix { };
+  np2kai = pkgs.callPackage ./mkderivation/np2kai.nix { };
+  rounded-l-mgenplus = pkgs.callPackage ./mkderivation/rounded-l-mgenplus.nix { };
+  rounded-mgenplus = pkgs.callPackage ./mkderivation/rounded-mgenplus.nix { };
+  rounded-x-mgenplus = pkgs.callPackage ./mkderivation/rounded-x-mgenplus.nix { };
+  rusty-backup = pkgs.callPackage ./mkderivation/rusty-backup.nix { };
+  tag = pkgs.callPackage ./mkderivation/tag.nix { };
+  ume = pkgs.callPackage ./mkderivation/ume.nix { };
+  x5y8pxnegaclip = pkgs.callPackage ./mkderivation/x5y8pxnegaclip.nix { };
+  x5y8pxnegatape = pkgs.callPackage ./mkderivation/x5y8pxnegatape.nix { };
+  x8y12pxdenkichip = pkgs.callPackage ./mkderivation/x8y12pxdenkichip.nix { };
 in
 {
   home = {
+    username = "lache-sys";
+    homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/lache-sys" else "/home/lache-sys";
+    stateVersion = "26.05";
+# Please read the comment before changing.
+    sessionPath = [
+      "${config.home.homeDirectory}/.local/bin"
+      "/opt/X11/bin"
+    ];
+    sessionVariables = {
+      CMAKE_MAKE_PROGRAM = "${pkgs.ninja}/bin/ninja";
+      CMAKE_PREFIX_PATH = "${config.home.profileDirectory}";
+      CPATH = "${config.home.profileDirectory}/include";
+      CPLUS_INCLUDE_PATH = "${config.home.profileDirectory}/include";
+      HOMEBREW_NO_ANALYTICS = true;
+      LANG = "en_US.UTF-8";
+      LC_ALL = "en_US.UTF-8";
+      LIBRARY_PATH = "${config.home.profileDirectory}/lib";
+      PKG_CONFIG_PATH = "${config.home.profileDirectory}/lib/pkgconfig";
+# 9B36E0149A4EAB28E032F2D382BD733A21368364: Expires in 2027-06-04!
+      SOPS_PGP_FP = "9B36E0149A4EAB28E032F2D382BD733A21368364";
+      TERM = "tmux-256color";
+      TOMBI_OFFLINE = true;
+      TOMBI_NO_CACHE = true;
+      VCPKG_ROOT = "${pkgs.vcpkg}/share/vcpkg";
+      XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
+    } // (if pkgs.stdenv.hostPlatform.isDarwin then {
+      NIX_SSL_CERT_FILE = "/etc/ssl/cert.pem";
+      SSH_AUTH_SOCK = "${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
+    } else {
+      SSH_AUTH_SOCK = "${config.home.homeDirectory}/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock";
+    });
     packages = [
+      aozora-mincho
       corporate-logo-rounded
+      mgenplus
       np2kai
       pkgs._7zz
       pkgs.alegreya
@@ -150,6 +189,9 @@ in
       pkgs.yt-dlp
       pkgs.zoxide
       pkgs.zilla-slab
+      rounded-l-mgenplus
+      rounded-mgenplus
+      rounded-x-mgenplus
       rusty-backup
       x5y8pxnegaclip
       x5y8pxnegatape
@@ -183,6 +225,7 @@ in
       pkgs.vlc-bin
       pkgs.xquartz
       tag
+      ume
     ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
       pkgs.a2jmidid
       pkgs.carla
@@ -193,11 +236,42 @@ in
       pkgs.pinentry-all
       pkgs.yabridge
     ];
+    activation = {
+      createClamAVDirs = ''
+        mkdir -p "${config.home.homeDirectory}/.config/clamav/db"
+      '';
+    };
     file = {
+    };
+  };
+  fonts = {
+    fontconfig = {
+      enable = true;
+    };
+  };
+  manual = {
+    manpages = {
+      enable = false;
+    };
+  };
+  nixpkgs = {
+    overlays = [
+      inputs.brew-nix.overlays.default
+    ];
+  };
+  programs = {
+    home-manager = {
+      enable = true;
+    };
+    gpg = {
+      enable = true;
     };
   };
   xdg = {
     configFile = {
+      "mpv/fonts/Material-Design-Iconic-Font.ttf" = {
+        source = ./config/mpv/fonts/Material-Design-Iconic-Font.ttf;
+      };
       "homebrew/trust.json" = {
         text = ''
           {
@@ -205,7 +279,6 @@ in
               "https://codeberg.org/lache-sys/homebrew-tap"
             ]
           }
-          A
         '';
       };
     };
