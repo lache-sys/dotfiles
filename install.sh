@@ -27,10 +27,13 @@ else
 fi
 cd ${HM_SRC}
 nix flake update
-nix run home-manager/master -- switch --flake .#$(whoami)@$(hostname).local
-home-manager switch --flake .#$(whoami)@$(hostname).local
 if [[ "$(uname)" == "Darwin" ]]; then
-  sudo nix run nix-darwin -- switch --flake .#$(hostname)
+  nix run home-manager/master -- switch --flake .#$(whoami)@$(scutil --get ComputerName).local
+  home-manager switch --flake .#$(whoami)@$(scutil --get ComputerName).local
+  sudo nix run nix-darwin -- switch --flake .#$(scutil --get ComputerName)
+elif [[ "$(uname)" == "Linux" ]]; then
+  nix run home-manager/master -- switch --flake .#$(whoami)@$(cat /etc/hostname)
+  home-manager switch --flake .#$(whoami)@$(cat /etc/hostname)
 fi
 cd ${HOME}
 UV_VENV_CLEAR=1 uv venv
