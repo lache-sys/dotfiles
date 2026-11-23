@@ -12,7 +12,6 @@
       bindings = {
       };
       config = {
-        "ao" = "avfoundation";
         "audio-stream-silence" = false;
         "audio-wait-open" = 0;
         "border" = false;
@@ -31,17 +30,24 @@
         "screenshot-dir" = "${config.home.homeDirectory}/Downloads";
         "screenshot-format" = "png";
         "screenshot-png-compression" = 0;
-      };
+      } // (if pkgs.stdenv.hostPlatform.isDarwin then {
+        "ao" = "avfoundation";
+      } else {
+        "ao" = "pipewire";
+      });
       profiles = {
         airpods = {
           "profile-desc" = "AirPods";
           "profile-restore" = "copy";
         };
         generic = {
-          "ao" = "coreaudio";
           "profile-desc" = "Generic headphones/speakers";
           "profile-restore" = "copy";
-        };
+        } // (if pkgs.stdenv.hostPlatform.isDarwin then {
+          "ao" = "coreaudio";
+        } else {
+          "ao" = "pipewire";
+        });
       };
       scripts = [
         pkgs.mpvScripts.modernx

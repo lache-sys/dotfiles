@@ -46,8 +46,11 @@
           bold = {
             style = "Bold";
           };
+        } // (if pkgs.stdenv.hostPlatform.isDarwin then {
           size = 12;
-        };
+        } else {
+          size = 9;
+        });
         window = {
           dimensions = {
             columns = 80;
