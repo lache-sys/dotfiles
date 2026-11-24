@@ -9,6 +9,7 @@
 let
   aozora-mincho = pkgs.callPackage ./mkderivation/aozora-mincho.nix { };
   corporate-logo-rounded = pkgs.callPackage ./mkderivation/corporate-logo-rounded.nix { };
+  gputeks = pkgs.callPackage ./mkderivation/gputeks.nix { };
   mgenplus = pkgs.callPackage ./mkderivation/mgenplus.nix { };
   np2kai = pkgs.callPackage ./mkderivation/np2kai.nix { };
   rounded-l-mgenplus = pkgs.callPackage ./mkderivation/rounded-l-mgenplus.nix { };
@@ -39,13 +40,6 @@ in
       HOMEBREW_NO_ANALYTICS = true;
       LANG = "en_US.UTF-8";
       LC_ALL = "en_US.UTF-8";
-      LD_LIBRARY_PATH = lib.concatStringsSep ":" [
-        (lib.makeLibraryPath [
-          pkgs.libglvnd
-          pkgs.mesa
-        ])
-        "$LD_LIBRARY_PATH"
-      ];
       LIBRARY_PATH = "${config.home.profileDirectory}/lib";
       PKG_CONFIG_PATH = "${config.home.profileDirectory}/lib/pkgconfig";
 # 9B36E0149A4EAB28E032F2D382BD733A21368364: Expires in 2027-06-04!
@@ -59,11 +53,19 @@ in
       NIX_SSL_CERT_FILE = "/etc/ssl/cert.pem";
       SSH_AUTH_SOCK = "${config.home.homeDirectory}/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
     } else {
+      LD_LIBRARY_PATH = lib.concatStringsSep ":" [
+        (lib.makeLibraryPath [
+          pkgs.libglvnd
+          pkgs.mesa
+        ])
+        "$LD_LIBRARY_PATH"
+      ];
       SSH_AUTH_SOCK = "${config.home.homeDirectory}/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock";
     });
     packages = [
       aozora-mincho
       corporate-logo-rounded
+      gputeks
       mgenplus
       np2kai
       pkgs._7zz
@@ -135,7 +137,6 @@ in
       pkgs.libaacs
       pkgs.libao
       pkgs.libcaca
-      pkgs.libglvnd
       pkgs.libisoburn
       pkgs.libogg
       pkgs.libvorbis
@@ -147,7 +148,6 @@ in
       pkgs.mcomix
       pkgs.mediainfo
       pkgs.melonds
-      pkgs.mesa
       pkgs.meson
       pkgs.midicsv
       pkgs.mtools
@@ -237,9 +237,12 @@ in
       ume
     ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
       pkgs.a2jmidid
+      pkgs.caffeine-ng
       pkgs.carla
       pkgs.cryptomator
       pkgs.freefilesync
+      pkgs.libglvnd
+      pkgs.mesa
       pkgs.niri
       pkgs.nirius
       pkgs.pinentry-all

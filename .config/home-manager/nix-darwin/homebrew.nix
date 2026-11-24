@@ -54,7 +54,6 @@
       "lache-sys/tap/font-k8x12"
       "lache-sys/tap/font-kaeru-kaeru"
       "lache-sys/tap/font-kh-dot"
-      "lache-sys/tap/font-gputeks"
       "lache-sys/tap/font-hyper-scrypt"
       "font-klee-one"
       "font-metal"
