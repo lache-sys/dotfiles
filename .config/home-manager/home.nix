@@ -7,6 +7,7 @@
 }:
 
 let
+  authme = pkgs.callPackage ./mkderivation/authme/default.nix { };
   aozora-mincho = pkgs.callPackage ./mkderivation/aozora-mincho.nix { };
   corporate-logo-rounded = pkgs.callPackage ./mkderivation/corporate-logo-rounded.nix { };
   gputeks = pkgs.callPackage ./mkderivation/gputeks.nix { };
@@ -21,6 +22,7 @@ let
   x5y8pxnegaclip = pkgs.callPackage ./mkderivation/x5y8pxnegaclip.nix { };
   x5y8pxnegatape = pkgs.callPackage ./mkderivation/x5y8pxnegatape.nix { };
   x8y12pxdenkichip = pkgs.callPackage ./mkderivation/x8y12pxdenkichip.nix { };
+  ymfm = pkgs.callPackage ./mkderivation/ymfm.nix { };
 in
 {
   home = {
@@ -205,7 +207,9 @@ in
       x5y8pxnegaclip
       x5y8pxnegatape
       x8y12pxdenkichip
+      ymfm
     ] ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
+      authme
       pkgs.apple-sdk
       pkgs.brewCasks.affinity
       pkgs.brewCasks.alfred
@@ -222,6 +226,7 @@ in
       pkgs.brewCasks.puremac
       pkgs.brewCasks.quicklook-video
       pkgs.brewCasks.syntax-highlight
+      pkgs.brewCasks.tactile
       pkgs.brewCasks.twine-app
       pkgs.brewCasks.whatcable
       pkgs.brewCasks.zoom

@@ -3,11 +3,11 @@
     "brew-api": {
       "flake": false,
       "locked": {
-        "lastModified": 1795473045,
-        "narHash": "sha256-467rvswe4eisMpmjThOPeP9comSerdF34cqO+lwcfxU=",
+        "lastModified": 1795575595,
+        "narHash": "sha256-HPkuVaiiYuNdOkJlvBtci6LbhzoopKhTUjchKaR0HL0=",
         "owner": "BatteredBunny",
         "repo": "brew-api",
-        "rev": "1699ed0fef8ca838db1cf51f6a54269596b1b137",
+        "rev": "53b3158204d47ddfb15e1512c129d7991ca09f7b",
         "type": "github"
       },
       "original": {
@@ -45,11 +45,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795366757,
-        "narHash": "sha256-Tp4Kh4R7ID1f2mMCDlb2PiFQ/DZZsnXB2u2juWN+TT4=",
+        "lastModified": 1795534022,
+        "narHash": "sha256-xkRZ+PcPWaAyf9YrEBszYD5w2S6/Ac2tIfsufzd4dEQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "3b8140d21fa0a70b1b38c2ed29853dfe686234a6",
+        "rev": "b56bcd042b5e69ad188eca20d9bec1bfbf3dd453",
         "type": "github"
       },
       "original": {
@@ -62,11 +62,11 @@
     "mpv-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1795449553,
-        "narHash": "sha256-YgTOkejh9oV2Cj7DJUlHVJ5Ea5QeOgrtJHWG8IIrKoY=",
+        "lastModified": 1795534060,
+        "narHash": "sha256-wRYWfjmqDObC426sNGJxDMm4yQlcTE3P28zlGP67WyM=",
         "owner": "mpv-player",
         "repo": "mpv",
-        "rev": "35efcf53d59470b3941e61a50c8a3133035a093d",
+        "rev": "d32c910be63d1dd325c7b3efeaa09c3c4c8d51ce",
         "type": "github"
       },
       "original": {

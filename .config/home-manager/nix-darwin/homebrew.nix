@@ -26,7 +26,6 @@
       "lache-sys/tap/8bitdo-ps3-pairing-tool"
       "adguard"
       "adobe-creative-cloud"
-      "lache-sys/tap/authme"
       "lache-sys/tap/duckstation"
       "lache-sys/tap/font-4x4kana"
       "font-aguafina-script"
@@ -115,9 +114,12 @@
       "DaisyDisk" = 411643860;
       "EdgeView" = 1580323719;
       "GrandPerspective" = 1111570163;
+      "Hide My Screen" = 6476070422;
+      "Jump Desktop" = 524141863;
       "LINE" = 539883307;
       "Mp3tag" = 1532597159;
       "Photo Naminator" = 1598189356;
+      "Pine Player Pro" = 6474128342;
       "Pure Paste" = 1611378436;
       "RosettaCheck" = 6759349750;
       "Spark" = 1176895641;
