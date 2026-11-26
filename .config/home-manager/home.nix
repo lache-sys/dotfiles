@@ -11,13 +11,16 @@ let
   aozora-mincho = pkgs.callPackage ./mkderivation/aozora-mincho.nix { };
   corporate-logo-rounded = pkgs.callPackage ./mkderivation/corporate-logo-rounded.nix { };
   gputeks = pkgs.callPackage ./mkderivation/gputeks.nix { };
+  kh-dot = pkgs.callPackage ./mkderivation/kh-dot.nix { };
   mgenplus = pkgs.callPackage ./mkderivation/mgenplus.nix { };
   np2kai = pkgs.callPackage ./mkderivation/np2kai.nix { };
+  ntsc-rs = pkgs.callPackage ./mkderivation/ntsc-rs.nix { };
   rounded-l-mgenplus = pkgs.callPackage ./mkderivation/rounded-l-mgenplus.nix { };
   rounded-mgenplus = pkgs.callPackage ./mkderivation/rounded-mgenplus.nix { };
   rounded-x-mgenplus = pkgs.callPackage ./mkderivation/rounded-x-mgenplus.nix { };
   rusty-backup = pkgs.callPackage ./mkderivation/rusty-backup.nix { };
   tag = pkgs.callPackage ./mkderivation/tag.nix { };
+  tiny5 = pkgs.callPackage ./mkderivation/tiny5.nix { };
   ume = pkgs.callPackage ./mkderivation/ume.nix { };
   x5y8pxnegaclip = pkgs.callPackage ./mkderivation/x5y8pxnegaclip.nix { };
   x5y8pxnegatape = pkgs.callPackage ./mkderivation/x5y8pxnegatape.nix { };
@@ -68,8 +71,10 @@ in
       aozora-mincho
       corporate-logo-rounded
       gputeks
+      kh-dot
       mgenplus
       np2kai
+      ntsc-rs
       pkgs._7zz
       pkgs.alegreya
       pkgs.alegreya-sans
@@ -204,6 +209,7 @@ in
       rounded-mgenplus
       rounded-x-mgenplus
       rusty-backup
+      tiny5
       x5y8pxnegaclip
       x5y8pxnegatape
       x8y12pxdenkichip
